@@ -1,5 +1,5 @@
 {
-  description = "Custom flake to build NixOS for MacbookPro T2";
+  description = "My Personal NixOS and Darwin System Flake Configuration";
 
   inputs = {
     home-manager = {
