@@ -117,6 +117,13 @@ def move_cursor_to_screen(screen):
   cmd = "xdotool mousemove " + x_axis_position + " 540"
   os.system(cmd)
 
+# Allows you to input a name when adding treetab section.
+@lazy.layout.function
+def add_treetab_section(layout):
+  prompt = qtile.widgets_map["prompt"]
+  prompt.start_input("Section name: ", layout.cmd_add_section)
+
+
 ###############################################################################
 ####### LAYOUTS ###############################################################
 
@@ -143,20 +150,23 @@ layouts = [
             ),
     layout.TreeTab(
                 name = 'TreeTab',
-                active_bg = '#017ebd',
-                active_fg = '#000000',
-                inactive_bg =  '#003854',
-                border_color = "#fff243",
-                bg_color = '001018',
+                active_bg = '#393552',
+                active_fg = '#ffffff',
+                inactive_bg =  '#2a273f',
+#                 border_focus = "#fff243",
+                bg_color = '232136',
                 padding_x = 6,
                 padding_y = 6,
                 panel_width = 140,
                 vspace = 4,
-                sections = ["Apps"],
+                margin_left = 24,
+                # sections = ["Apps"],
+                sections = ["Apps 1", "Apps 2", "Apps 3", "Apps 4", "Apps 5"],
                 section_fontsize = 13,
                 section_padding = 10,
                 section_top = 10,
                 section_left = 12,
+                section_bottom = 20,
                 **layout_defaults
             )
 ]
@@ -194,7 +204,7 @@ if isMultiMonitorMode :
             ),
             groupGenInfo(),
             groupGenInfo(
-              spawn=["betterbird"]
+              spawn=["mailspring"]
             ),
             groupGenInfo(),
             groupGenInfo(),
@@ -331,6 +341,22 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "mod1"], "q", lazy.spawn("rofi -show power-menu -modi power-menu:rofi-power-menu"), desc="Power menu"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+
+    # Treetab prompt
+    Key([mod, "shift"], "a", add_treetab_section, desc='Prompt to add new section in treetab'),
+
+    Key([mod, "shift"], "k",
+        lazy.layout.shuffle_down(),
+        lazy.layout.section_down().when(layout=["TreeTab"]),
+        desc="Move window down/move down a section in treetab"
+    ),
+    Key([mod, "shift"], "i",
+        lazy.layout.shuffle_up(),
+        lazy.layout.section_up().when(layout=["TreeTab"]),
+        desc="Move window downup/move up a section in treetab"
+    ),
+
+
 
     ## Volume Controls
     Key([], 'XF86AudioRaiseVolume', lazy.spawn('pw-volume change +2%')),

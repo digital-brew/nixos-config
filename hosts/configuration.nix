@@ -155,6 +155,9 @@ in
   # Enable CUPS to print documents
   services.printing.enable = true;
 
+  # Enable for Mailspring
+  services.gnome.gnome-keyring.enable = true;
+
   # Enable sound
   sound = {
     enable = true;
@@ -205,8 +208,14 @@ in
       junction
       rose-pine-gtk-theme
       rose-pine-icon-theme
+      clockify
+      mailspring
     ];
   };
+ 
+  nixpkgs.config.permittedInsecurePackages = [ 
+    "electron-11.5.0"
+  ];
  
   nixpkgs.config.allowUnfree = true;
   
@@ -238,6 +247,10 @@ in
       xsel                                       # manipulate the X selection
       firefox                                    # browser
       xfce.thunar                                # xfce file manager
+      xfce.thunar-volman                         # Thunar extension for automatic management of removable drives and media
+      xfce.thunar-dropbox-plugin                 # A plugin that adds context-menu items for Dropbox to Thunar
+      xfce.thunar-archive-plugin                 # Thunar plugin providing file context menus for archives
+      xfce.thunar-media-tags-plugin              # Thunar plugin providing tagging and renaming features for media files
       dolphin                                    # kde file manager
       ranger                                     # cli based file manager
       direnv                                     # shell extension that manages your environment
@@ -296,6 +309,8 @@ in
       # libsForQt5.kdenlive
       # davinci-resolve
       vscode
+      libsecret
+      gnome.gnome-calendar
     ];
   };
 
