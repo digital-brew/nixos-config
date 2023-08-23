@@ -251,7 +251,7 @@ in
       xfce.thunar-dropbox-plugin                 # A plugin that adds context-menu items for Dropbox to Thunar
       xfce.thunar-archive-plugin                 # Thunar plugin providing file context menus for archives
       xfce.thunar-media-tags-plugin              # Thunar plugin providing tagging and renaming features for media files
-      dolphin                                    # kde file manager
+      xfce.mousepad
       ranger                                     # cli based file manager
       direnv                                     # shell extension that manages your environment
       zsh                                        # the z shell
@@ -311,6 +311,7 @@ in
       vscode
       libsecret
       gnome.gnome-calendar
+      p7zip
     ];
   };
 
