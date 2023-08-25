@@ -8,7 +8,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = inputs @ { self, nixpkgs, home-manager, ... }:
   let 
     system = "x86_64-linux";
     pkgs = import nixpkgs {
@@ -16,10 +16,13 @@
       config.allowUnfree = true;
     };
     lib = nixpkgs.lib;
+
+    user = "moonlander";
   in {
     nixosConfigurations = (
       import ./hosts {
-        inherit system pkgs lib home-manager;
+        inherit (nixpkgs) lib;
+        inherit inputs system nixpkgs home-manager user;
       }
     );
   };

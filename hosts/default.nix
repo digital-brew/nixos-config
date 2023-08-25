@@ -1,14 +1,9 @@
-{ lib, inputs, nixpkgs, nixpkgs-unstable, home-manager, nur, user, location, hyprland, plasma-manager, ... }:
+{ lib, inputs, nixpkgs, home-manager, user, ... }:
 
 let
   system = "x86_64-linux";                                  # System architecture
 
   pkgs = import nixpkgs {
-    inherit system;
-    config.allowUnfree = true;                              # Allow proprietary software
-  };
-
-  unstable = import nixpkgs-unstable {
     inherit system;
     config.allowUnfree = true;                              # Allow proprietary software
   };
@@ -20,34 +15,20 @@ in
   work = lib.nixosSystem {                                # Laptop profile
     inherit system;
     specialArgs = {
-      inherit unstable inputs user location;
-      host = {
-        hostName = "DBi9XRL";
-        laptopMonitor = "eDP-1";
-        leftMonitor = "";
-        centerMonitor = "";
-        rightMonitor = "";
-      };
+      inherit system inputs user;
     };
     modules = [
+      ./common
       ./work
-      ./configuration.nix
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit unstable user;
-          host = {
-            hostName = "DBi9XRL";
-            laptopMonitor = "eDP-1";
-            leftMonitor = "";
-            centerMonitor = "";
-            rightMonitor = "";
-          };
+          inherit user;
         };
-        home-manager.users.${user} = {
-          imports = [(import ./home.nix)] ++ [(import ./work/home.nix)];
+        home-manager.users.${user}  = {
+          imports = [(import ./common/home.nix)] ++ [(import ./work/home.nix)];
         };
       }
     ];
@@ -56,26 +37,26 @@ in
   nextcloud = lib.nixosSystem {                                  # Work profile
     inherit system;
     specialArgs = {
-      inherit unstable system inputs user location hyprland;
+      inherit system inputs user;
       host = {
         hostName = "DBNC3G";
       };
     };
     modules = [
+      ./common
       ./nextcloud
-      ./configuration.nix
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit unstable user;
+          inherit user;
           host = {
             hostName = "DBNC3G";
           };
         };
         home-manager.users.${user} = {
-          imports = [(import ./home.nix)] ++ [(import ./nextcloud/home.nix)];
+          imports = [(import ./common/home.nix)] ++ [(import ./nextcloud/home.nix)];
         };
       }
     ];
@@ -84,28 +65,28 @@ in
   vm = lib.nixosSystem {                                    # VM profile
     inherit system;
     specialArgs = {
-      inherit unstable inputs user location;
+      inherit inputs user;
       host = {
         hostName = "DBVM";
         mainMonitor = "Virtual-1";
       };
     };
     modules = [
+      ./common
       ./vm
-      ./configuration.nix
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit unstable user;
+          inherit user;
           host = {
             hostName = "DBVM";
             mainMonitor = "Virtual-1";
           };
         };
         home-manager.users.${user} = {
-          imports = [(import ./home.nix)] ++ [(import ./vm/home.nix)];
+          imports = [(import ./common/home.nix)] ++ [(import ./vm/home.nix)];
         };
       }
     ];
@@ -114,28 +95,28 @@ in
   kids = lib.nixosSystem {                                # Laptop profile
     inherit system;
     specialArgs = {
-      inherit unstable inputs user location;
+      inherit inputs user;
       host = {
         hostName = "DBi9XRL";
         laptopMonitor = "eDP-1";
       };
     };
     modules = [
+      ./common
       ./kids
-      ./configuration.nix
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit unstable user;
+          inherit user;
           host = {
             hostName = "DB15MBP";
             laptopMonitor = "eDP-1";
           };
         };
         home-manager.users.${user} = {
-          imports = [(import ./home.nix)] ++ [(import ./kids/home.nix)];
+          imports = [(import ./common/home.nix)] ++ [(import ./kids/home.nix)];
         };
       }
     ];
