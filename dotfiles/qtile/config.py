@@ -21,10 +21,10 @@ mod = "mod4"
 terminal = "alacritty"
 isMultiMonitorMode = "DP-2" in subprocess.getoutput('xrandr | grep "DP-2 connected"')
 
-bar_height = 26
-bar_opacity = 0.8
-bar_border = 5
-bar_margin = [6, 6, 3, 6]
+bar_height = 24  # 26
+bar_opacity = 0.5   #0.8
+bar_border = 2 #5
+bar_margin = [0, 0, 3, 0]   # [6, 6, 3, 6]
 colors = {
   "bar": "#232136",
   "bar-border": "#232136",
@@ -131,7 +131,7 @@ layout_defaults = dict(
     border_focus = "#fff243",
     border_width = 2,
     margin = 3,
-    font="Ubuntu",
+    font="Be Vietnam Pro",
     fontsize=14
 )
 
@@ -162,7 +162,7 @@ layouts = [
                 margin_left = 24,
                 # sections = ["Apps"],
                 sections = ["Apps 1", "Apps 2", "Apps 3", "Apps 4", "Apps 5"],
-                section_fontsize = 13,
+                section_fontsize = 14,
                 section_padding = 10,
                 section_top = 10,
                 section_left = 12,
@@ -416,9 +416,9 @@ floating_layout = layout.Floating(
 ####### WIDGETS ###############################################################
 
 widget_defaults = dict(
-    font="Ubuntu Semibold",
+    font="Be Vietnam Pro, Semibold",
     foreground = "#001018",
-    fontsize=12,
+    fontsize=13,
     padding=8,
 )
 extension_defaults = widget_defaults.copy()
@@ -434,7 +434,7 @@ if isMultiMonitorMode :
                               padding = 2,
                           ),
                     widget.Image(
-                              filename = "~/nixos-config/media/images/svg/nix-logo-white.svg",
+                              filename = "~/nixos-config/modules/home-manager/themes/images/svg/nix-logo-white.svg",
                               margin_x = 12,
                               margin_y = 3
                           ),
@@ -445,7 +445,7 @@ if isMultiMonitorMode :
                               visible_groups=["1:1", "1:2", "1:3", "1:4", "1:5", "1:6", "1:7", "1:8", "1:9"],
                               inactive = "#ffffff",
                               active = "#fff243",
-                              font = "Ubuntu Bold",
+                              font = "Be Vietnam Pro, Bold",
                               highlight_method = "block",
                               this_current_screen_border = colors['bar-lighter'],
                               this_screen_border = colors['bar-lighter'],
@@ -487,7 +487,7 @@ if isMultiMonitorMode :
                           ),
                     widget.WindowName(
                               parse_text=longNameParse,
-                              font = "Ubuntu Semibold",
+                              font = "Be Vietnam Pro, Semibold",
                               foreground = "#ffffff"
                           ),
                     widget.Sep(
@@ -516,7 +516,7 @@ if isMultiMonitorMode :
                               padding = 2,
                           ),
                     widget.Image(
-                              filename = "~/nixos-config/media/images/svg/nix-logo-white.svg",
+                              filename = "~/nixos-config/modules/home-manager/themes/images/svg/nix-logo-white.svg",
                               margin_x = 12,
                               margin_y = 3
                           ),
@@ -527,7 +527,7 @@ if isMultiMonitorMode :
                               visible_groups=["2:1", "2:2", "2:3", "2:4", "2:5", "2:6", "2:7", "2:8", "2:9"],
                               inactive = "#ffffff",
                               active = "#fff243",
-                              font = "Ubuntu Bold",
+                              font = "Be Vietnam Pro, Bold",
                               highlight_method = "block",
                               this_current_screen_border = colors['bar-lighter'],
                               this_screen_border = colors['bar-lighter'],
@@ -570,7 +570,7 @@ if isMultiMonitorMode :
                          ),
                     widget.WindowName(
                               parse_text=longNameParse,
-                              font = "Ubuntu Semibold",
+                              font = "Be Vietnam Pro, Semibold",
                               foreground = "#ffffff"
                           ),
                     widget.Sep(
@@ -717,7 +717,7 @@ if isMultiMonitorMode :
                               padding = 4
                           ),
                     widget.Image(
-                              filename = "~/nixos-config/media/images/svg/switch-white.svg",
+                              filename = "~/nixos-config/modules/home-manager/themes/images/svg/switch-white.svg",
                               margin_y = 2,
                               mouse_callbacks = {
                                   'Button1': lambda: qtile.cmd_spawn(
@@ -751,7 +751,7 @@ if isMultiMonitorMode :
                               padding = 2,
                           ),
                     widget.Image(
-                              filename = "~/nixos-config/media/images/svg/nix-logo-white.svg",
+                              filename = "~/nixos-config/modules/home-manager/themes/images/svg/nix-logo-white.svg",
                               margin_x = 12,
                               margin_y = 3
                           ),
@@ -762,7 +762,7 @@ if isMultiMonitorMode :
                               visible_groups=["3:1", "3:2", "3:3", "3:4", "3:5", "3:6", "3:7", "3:8", "3:9"],
                               inactive = "#ffffff",
                               active = "#fff243",
-                              font = "Ubuntu Bold",
+                              font = "Be Vietnam Pro, Bold",
                               highlight_method = "block",
                               this_current_screen_border = colors['bar-lighter'],
                               this_screen_border = colors['bar-lighter'],
@@ -805,7 +805,7 @@ if isMultiMonitorMode :
                           ),
                     widget.WindowName(
                               parse_text=longNameParse,
-                              font = "Ubuntu Semibold",
+                              font = "Be Vietnam Pro, Semibold",
                               foreground = "#ffffff"
                           ),
                     widget.Sep(
@@ -837,7 +837,7 @@ else :
                               padding = 2,
                           ),
                     widget.Image(
-                              filename = "~/nixos-config/media/images/svg/nix-logo-white.svg",
+                              filename = "~/nixos-config/modules/home-manager/themes/images/svg/nix-logo-white.svg",
                               margin_x = 12,
                               margin_y = 3
                           ),
@@ -847,7 +847,7 @@ else :
                     widget.GroupBox(
                               inactive = "#ffffff",
                               active = "#fff243",
-                              font = "Ubuntu Bold",
+                              font = "Be Vietnam Pro, Bold",
                               highlight_method = "block",
                               this_current_screen_border = colors['bar-lighter'],
                               this_screen_border = colors['bar-lighter'],
@@ -890,7 +890,7 @@ else :
                           ),
                     widget.WindowName(
                               parse_text=longNameParse,
-                              font = "Ubuntu Semibold",
+                              font = "Be Vietnam Pro, Semibold",
                               foreground = "#ffffff"
                           ),
                     widget.Sep(

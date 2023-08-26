@@ -10,7 +10,7 @@
       enable = true;
       settings = {
         General = {                               # Settings
-          savePath = "/home/${user}/Desktop/Screenshots";
+          savePath = "/home/${user}/Screenshots";
           saveAsFileExtension = ".png";
           uiColor = "#2d0096";
           showHelp = "true";

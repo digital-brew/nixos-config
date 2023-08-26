@@ -26,15 +26,14 @@
 #      vscodium
       brave
       epiphany
-      chromium
+      # chromium
       google-chrome
       google-chrome-dev
 #      firefox
-      firefox-devedition
+      # firefox-devedition
       librewolf
       nitrogen
-      thunderbird
-      libsForQt5.breeze-gtk
+      # thunderbird
       _1password-gui
       signal-desktop
       slack
@@ -54,19 +53,38 @@
       mailspring
     ];
 
-    # pointerCursor = {                         # This will set cursor system-wide so applications can not choose their own
-    #   gtk.enable = true;
-    #   #name = "Dracula-cursors";
-    #   name = "Catppuccin-Mocha-Dark-Cursors";
-    #   #package = pkgs.dracula-theme;
-    #   package = pkgs.catppuccin-cursors.mochaDark;
-    #   size = 16;
-    # };
+    pointerCursor = {                         # This will set cursor system-wide so applications can not choose their own
+      gtk.enable = true;
+      #name = "Dracula-cursors";
+      name = "Breeze_Snow";
+      #package = pkgs.dracula-theme;
+      package = pkgs.libsForQt5.breeze-gtk;
+      size = 16;
+    };
   };
 
-  #programs = {
-  #  home-manager.enable = true;
- # };
+  programs = {
+   chromium.enable = true;
+   firefox.enable = true;
+   direnv = {
+    enable = true; 
+    enableZshIntegration = true;
+   };                     # shell extension that manages your environment
+   jq.enable = true;
+   sioyek.enable = true;                      # PDF reader
+   vscode = {
+    enable = true;
+   };
+  };
+
+  services = {
+    kdeconnect = {
+      enable = true;
+      indicator = true;
+    };
+    nextcloud-client.enable = true;
+    network-manager-applet.enable = true;
+  };
 
   gtk = {                                     # Theming
     enable = true;
@@ -75,15 +93,20 @@
       # package = pkgs.adw-gtk3;
       # name = "adw-gtk3";
     };
-    cursorTheme = {
-      name = "BreezeX-Light";
-      size = 28;
-    };
+    # cursorTheme = {
+    #   # name = "BreezeX-Light";
+    #   name = "Breeze_Snow";
+    #   size = 28;
+    # };
     iconTheme = {
       name = "maia-dark";
       # package = gruvboxPlus;
       # name = "GruvboxPlus";
     };
+  };
+
+  qt = {
+    enable = true;
   };
 
   systemd.user.targets.tray = {               # Tray.target can not be found when xsession is not enabled. This fixes the issue.

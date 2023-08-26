@@ -20,5 +20,8 @@
 
   programs = {
     home-manager.enable = true;
+    btop.enable = true;                       # a monitor of system resources
+    htop.enable = true;
+    gh.enable = true;
   };
 }

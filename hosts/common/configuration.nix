@@ -46,11 +46,11 @@ in
     wget                                       # non-interactive network downloader
     killall                                    # kill processes by name
     xorg.xkill                                 # kill a client by its X resource - by click on window
-    htop                                       # interactive process viewer
-    btop                                       # a monitor of system resources
-    git
+    # htop                                       # interactive process viewer
+    # btop                                       # a monitor of system resources
+    # git
     ranger                                     # cli based file manager
-    zsh                                        # the z shell
+    # zsh                                        # the z shell
     zip                                        # compressor/archiver for creating and modifying zipfiles
     unzip                                      # an extraction utility for archives compressed in .zip format
     lsof                                       # list open files
@@ -58,7 +58,7 @@ in
     glibc
     ack                                        # a grep-like tool tailored to working with large trees of source code
     fd                                         # A simple, fast and user-friendly alternative to find
-    gh                                         # GitHub CLI tool
+    # gh                                         # GitHub CLI tool
   ];
 
 
@@ -70,9 +70,9 @@ in
           enable = true;
           style = "full";
         };
-        defaultFonts.serif = [ "Ubuntu" ];
-        defaultFonts.sansSerif = [ "Ubuntu" ];
-        defaultFonts.monospace = [ "Ubuntu Mono" ];
+        defaultFonts.serif = [ "Hack Nerd Font Propo" ];
+        defaultFonts.sansSerif = [ "Hack Nerd Font Propo" ];
+        defaultFonts.monospace = [ "Hack Nerd Font Propo" ];
       };
       packages = with pkgs; [
           noto-fonts
@@ -92,9 +92,15 @@ in
     };
 
     nix = {
-      settings.trusted-users = ["root" "moonlander"];
+      settings = {
+        trusted-users = ["root" "moonlander"];
+        auto-optimise-store = true;
+      };
       package = pkgs.nixFlakes;
-      extraOptions = "experimental-features = nix-command flakes";
+      extraOptions = ''
+        experimental-features = nix-command flakes
+        warn-dirty = false
+      '';
     };
 
     system.stateVersion = "23.05"; # Did you read the comment?

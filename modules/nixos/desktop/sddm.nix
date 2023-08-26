@@ -9,8 +9,8 @@
         ScreenWidth = "1920";
         ScreenHeight = "1080";
         FormPosition = "center";
-        CursorTheme = "BreezeX-Light";
-        CursorSize = 28;
+        CursorTheme = "Breeze_Snow";
+        CursorSize = 16;
       };
     };
   };

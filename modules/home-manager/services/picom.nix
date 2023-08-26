@@ -46,8 +46,12 @@
       use-damage = false;                         # Fixes flickering and visual bugs with borders
       resize-damage = 1;
       refresh-rate = 0;
-      corner-radius = 10;                          # Corners
-      round-borders = 10;
+      corner-radius = 10; #10                         # Corners
+      round-borders = 10; #10
+
+      rounded-corners-exclude = [
+        "QTILE_INTERNAL:32c = 1"
+      ];
 
       # Animations Pijulius
       #animations = true;                          # All Animations

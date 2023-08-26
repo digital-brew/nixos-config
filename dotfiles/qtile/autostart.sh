@@ -19,6 +19,6 @@ killall picom && picom -b &
 nm-applet &
 
 # Set the mouse cursor
-xsetroot -cursor_name breeze &
+xsetroot -cursor_name Breeze_Snow &
 
 #flameshot &

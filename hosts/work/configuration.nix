@@ -20,12 +20,12 @@ in
   # Hostname
   networking = {
     hostName = "DBi9XRL";
-    hosts = {
-      "127.0.0.1" = [
-        "local.stratus.earth"
-        "local.nades.com"
-        ];
-    };
+    # hosts = {
+    #   "127.0.0.1" = [
+    #     "local.stratus.earth"
+    #     "local.nades.com"
+    #     ];
+    # };
     networkmanager = {
       enable = true;
       wifi = {
@@ -62,13 +62,15 @@ in
     enable = true;
     mediaKeys.enable = true;
   };
- services.pipewire.enable = true;
- services.pipewire.pulse.enable = true;
- services.pipewire.alsa.enable = true;
- hardware.pulseaudio.enable = false;
- systemd.user.services.pipewire.environment = {
-   LADSPA_PATH = "${pkgs.ladspaPlugins}/lib/ladspa";
- };
+  services.pipewire.enable = true;
+  services.pipewire.pulse.enable = true;
+  services.pipewire.alsa.enable = true;
+  hardware.pulseaudio.enable = false;
+  systemd.user.services.pipewire.environment = {
+    LADSPA_PATH = "${pkgs.ladspaPlugins}/lib/ladspa";
+  };
+
+  services.onlyoffice.enable = true;
 
   environment = {
     pathsToLink = [ "/share/zsh" ];
@@ -85,14 +87,14 @@ in
       libsForQt5.plasma-thunderbolt              # plasma integration for controlling Thunderbolt devicesx
       xclip                                      # command line interface to X selections (clipboard)
       xsel                                       # manipulate the X selection
-      firefox                                    # browser
+      # firefox                                    # browser
       xfce.thunar                                # xfce file manager
       xfce.thunar-volman                         # Thunar extension for automatic management of removable drives and media
       xfce.thunar-dropbox-plugin                 # A plugin that adds context-menu items for Dropbox to Thunar
       xfce.thunar-archive-plugin                 # Thunar plugin providing file context menus for archives
       xfce.thunar-media-tags-plugin              # Thunar plugin providing tagging and renaming features for media files
       dolphin                                    # kde file manager
-      direnv                                     # shell extension that manages your environment
+      # direnv                                     # shell extension that manages your environment
 #     .feh                                        # image viewer
       ngrok                                      # expose a web server running on your local machine to the internet
       neofetch                                   # system info script
@@ -107,7 +109,7 @@ in
       postman
       figma-linux
       vlc
-      onlyoffice-bin
+      libreoffice
       # qmk
       spotifyd
       xkeysnail
@@ -126,19 +128,21 @@ in
       playerctl
       pw-volume
       xdotool
+      google-fonts
       # swappy
       # swaylock
       # wl-clipboard
       # wlr-randr
       # wofi
-      # krita
-      # inkscape
-      # blender
-      # gimp
-      # darktable
-      # libsForQt5.kdenlive
-      # davinci-resolve
-      vscode
+      krita
+      inkscape
+      blender
+      gimp
+      darktable
+      libsForQt5.kdenlive
+      davinci-resolve
+      pro-office-calculator
+      # vscode
       libsecret
       gnome.gnome-calendar
       pika-backup
