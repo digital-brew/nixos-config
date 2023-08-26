@@ -2,7 +2,7 @@
 
 { 
   imports = [
-    ../../modules/home-manager/services/udiskie.nix
+  #  ../../modules/home-manager/services/udiskie.nix
   ];
 
   home = {
@@ -10,7 +10,7 @@
     homeDirectory = "/home/moonlander";
 
     packages = with pkgs; [
-
+	    dconf
     ];
 
     stateVersion = "23.05";

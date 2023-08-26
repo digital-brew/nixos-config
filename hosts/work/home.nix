@@ -64,36 +64,32 @@
     };
   };
 
-  programs = {
-    home-manager.enable = true;
-  };
+  #programs = {
+  #  home-manager.enable = true;
+ # };
 
   gtk = {                                     # Theming
     enable = true;
     theme = {
-      #name = "Dracula";
-      name = "Catppuccin-Mocha-Compact-Blue-Dark";
-      #package = pkgs.dracula-theme;
-      package = pkgs.catppuccin-gtk.override {
-        accents = ["blue"];
-        size = "compact";
-        variant = "mocha";
-      };
+      name = "rose-pine";
+      # package = pkgs.adw-gtk3;
+      # name = "adw-gtk3";
+    };
+    cursorTheme = {
+      name = "BreezeX-Light";
+      size = 28;
     };
     iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
+      name = "maia-dark";
+      # package = gruvboxPlus;
+      # name = "GruvboxPlus";
     };
-    font = {
-      #name = "JetBrains Mono Medium";
-      name = "FiraCode Nerd Font Mono Medium";
-    };                                        # Cursor is declared under home.pointerCursor
   };
 
   systemd.user.targets.tray = {               # Tray.target can not be found when xsession is not enabled. This fixes the issue.
-    Unit = {
-      Description = "Home Manager System Tray";
-      Requires = [ "graphical-session-pre.target" ];
+   Unit = {
+     Description = "Home Manager System Tray";
+     Requires = [ "graphical-session-pre.target" ];
     };
   };
 }

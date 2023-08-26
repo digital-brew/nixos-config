@@ -8,6 +8,6 @@
     ../../modules/nixos/desktop/qtile.nix
     ../../modules/nixos/desktop/sddm.nix
     ../../modules/nixos/services/ssh.nix
-    ../../modules/nixos/services/flatpak.nix
+#    ../../modules/nixos/services/flatpak.nix
   ];
 }

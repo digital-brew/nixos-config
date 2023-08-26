@@ -104,9 +104,9 @@
           white = "#BAC2DE"; # subtext1
         };
       };
-      shell = {
-        program = "/etc/profiles/per-user/moonlander/bin/zsh";
-      };
+      # shell = {
+      #   program = "/etc/profiles/per-user/moonlander/bin/zsh";
+      # };
     };
   };
 }

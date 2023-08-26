@@ -48,6 +48,7 @@ in
     xorg.xkill                                 # kill a client by its X resource - by click on window
     htop                                       # interactive process viewer
     btop                                       # a monitor of system resources
+    git
     ranger                                     # cli based file manager
     zsh                                        # the z shell
     zip                                        # compressor/archiver for creating and modifying zipfiles
