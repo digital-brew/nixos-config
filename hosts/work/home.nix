@@ -54,14 +54,14 @@
       mailspring
     ];
 
-    pointerCursor = {                         # This will set cursor system-wide so applications can not choose their own
-      gtk.enable = true;
-      #name = "Dracula-cursors";
-      name = "Catppuccin-Mocha-Dark-Cursors";
-      #package = pkgs.dracula-theme;
-      package = pkgs.catppuccin-cursors.mochaDark;
-      size = 16;
-    };
+    # pointerCursor = {                         # This will set cursor system-wide so applications can not choose their own
+    #   gtk.enable = true;
+    #   #name = "Dracula-cursors";
+    #   name = "Catppuccin-Mocha-Dark-Cursors";
+    #   #package = pkgs.dracula-theme;
+    #   package = pkgs.catppuccin-cursors.mochaDark;
+    #   size = 16;
+    # };
   };
 
   #programs = {
