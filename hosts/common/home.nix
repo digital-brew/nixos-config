@@ -2,7 +2,7 @@
 
 { 
   imports = [
-    ../../modules/home-manager/services/udiskie.nix
+#    ../../modules/home-manager/services/udiskie.nix
     ../../modules/home-manager/programs/git.nix
     ../../modules/home-manager/programs/zsh.nix
   ];
