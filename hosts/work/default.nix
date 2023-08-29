@@ -12,5 +12,8 @@
     # Apple sound setting patch
     [(import ../../modules/nixos/firmware/work/sound/pipewire_sink_conf.nix)] ++
     [(import ../../modules/nixos/desktop/gnome.nix)] ++
-    [(import ./configuration.nix)];
+    # [(import ../../modules/nixos/themes/catppuccin.nix)] ++
+#    [(import ../../modules/nixos/packages/nix-alien.nix)] ++
+    [(import ./configuration.nix)] ++
+    [(import ./hosts.nix)];
 }
