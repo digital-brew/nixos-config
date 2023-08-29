@@ -10,18 +10,16 @@
     ../../modules/home-manager/programs/kitty.nix
     ../../modules/home-manager/programs/obs.nix
     ../../modules/home-manager/programs/rofi.nix
+#    ../../modules/home-manager/packages/nix-alien.nix
   ];
+#  [(import ../../modules/home-manager/packages/nix-alien.nix)];
 
-  home.file.".config/qtile".source = ./../../dotfiles/qtile;
+  # home.file.".config/qtile".source = ./../../dotfiles/qtile;
 #  file.".config/wall".source = ../modules/themes/wall;
 #  file.".config/wall.mp4".source = ../modules/themes/wall.mp4;
 
   home = {
     packages = with pkgs; [
-      rofi
-      rofi-power-menu
-      rofi-calc
-      rofi-emoji
       dmenu
 #      vscodium
       brave
@@ -66,10 +64,10 @@
   programs = {
    chromium.enable = true;
    firefox.enable = true;
-   direnv = {
-    enable = true; 
-    enableZshIntegration = true;
-   };                     # shell extension that manages your environment
+#   direnv = {
+#    enable = true;
+#    enableZshIntegration = true;
+#   };                     # shell extension that manages your environment
    jq.enable = true;
    sioyek.enable = true;                      # PDF reader
    vscode = {
@@ -89,19 +87,10 @@
   gtk = {                                     # Theming
     enable = true;
     theme = {
-      name = "rose-pine";
-      # package = pkgs.adw-gtk3;
-      # name = "adw-gtk3";
+      name = "Adwaita-dark";
     };
-    # cursorTheme = {
-    #   # name = "BreezeX-Light";
-    #   name = "Breeze_Snow";
-    #   size = 28;
-    # };
     iconTheme = {
-      name = "maia-dark";
-      # package = gruvboxPlus;
-      # name = "GruvboxPlus";
+      name = "Adwaita";
     };
   };
 
@@ -109,10 +98,10 @@
     enable = true;
   };
 
-  systemd.user.targets.tray = {               # Tray.target can not be found when xsession is not enabled. This fixes the issue.
-   Unit = {
-     Description = "Home Manager System Tray";
-     Requires = [ "graphical-session-pre.target" ];
-    };
-  };
+#  systemd.user.targets.tray = {               # Tray.target can not be found when xsession is not enabled. This fixes the issue.
+#   Unit = {
+#     Description = "Home Manager System Tray";
+#     Requires = [ "graphical-session-pre.target" ];
+#    };
+#  };
 }
