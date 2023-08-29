@@ -21,15 +21,15 @@ mod = "mod4"
 terminal = "alacritty"
 isMultiMonitorMode = "DP-2" in subprocess.getoutput('xrandr | grep "DP-2 connected"')
 
-bar_height = 24  # 26
-bar_opacity = 0.5   #0.8
-bar_border = 2 #5
+bar_height = 27 # 26
+bar_opacity = 0.85   #0.8
+bar_border = 0 #5
 bar_margin = [0, 0, 3, 0]   # [6, 6, 3, 6]
 colors = {
-  "bar": "#232136",
-  "bar-border": "#232136",
-  "bar-light": "#2a273f",  # #393552
-  "bar-lighter": "#393552", # #44415a
+  "bar": "#282c34",  # #232136
+  "bar-border": "#282c34",
+  "bar-light": "#252525",  # #393552
+  "bar-lighter": "#3f3e37", # #44415a
   "foreground": "#ffffff",
   "dimmed": "#f1f1f1",
   "blue": "#96CDFB",
@@ -39,6 +39,9 @@ colors = {
   "orange": "#F8BD96"
 }
 gap_size = 3
+# backiee-198100-landscape.jpg
+wallpaper = '~/Pictures/wallpapers/forest-sunset-artwork.jpg'
+wallpaper_mode = 'fill'
 
 startScreen = 0
 groups = []
@@ -72,7 +75,7 @@ class groupGenInfo:
 
 
 ###############################################################################
-####### CUSTOM METHODS ########################################################
+####### CUSTOM FUNCTIONS ######################################################
 
 def focus_group(qtile, screen, group):
     qtile.focus_screen(screen)
@@ -120,8 +123,57 @@ def move_cursor_to_screen(screen):
 # Allows you to input a name when adding treetab section.
 @lazy.layout.function
 def add_treetab_section(layout):
-  prompt = qtile.widgets_map["prompt"]
-  prompt.start_input("Section name: ", layout.cmd_add_section)
+    prompt = qtile.widgets_map["prompt"]
+    prompt.start_input("Section name: ", layout.cmd_add_section)
+
+def show_or_hide_tabs(screen=None, offset=0):
+    if screen is None:
+        screen = qtile.current_screen
+
+    bar = screen.bottom
+    if not bar:
+        return
+
+    if screen.group.layout.name == 'Max':
+        nwindows = len(screen.group.windows) + offset
+        if nwindows > 1:
+            bar.show()
+        else:
+            if bar.window:
+                bar.show(False)
+                bar.Gap(gap_size)
+    else:
+        if bar.window:
+            bar.show(False)
+            bar.Gap(gap_size)
+
+
+@hook.subscribe.client_killed
+def update_tabs_client_killed(window):
+    show_or_hide_tabs(offset=-1)
+
+
+@hook.subscribe.group_window_add
+def update_tabs_group_window_add(group, window):
+    show_or_hide_tabs(offset=1)
+
+
+@hook.subscribe.layout_change
+def update_tabs_layout_change(layout, group):
+    show_or_hide_tabs()
+
+
+@hook.subscribe.setgroup
+def update_tabs_setgroup():
+    for screen in qtile.screens:
+        show_or_hide_tabs(screen)
+
+
+@hook.subscribe.startup_complete
+def update_tabs_startup_complete():
+    for screen in qtile.screens:
+        show_or_hide_tabs(screen)
+
 
 
 ###############################################################################
@@ -148,27 +200,28 @@ layouts = [
                 name = 'Max',
                 **layout_defaults
             ),
-    layout.TreeTab(
-                name = 'TreeTab',
-                active_bg = '#393552',
-                active_fg = '#ffffff',
-                inactive_bg =  '#2a273f',
-#                 border_focus = "#fff243",
-                bg_color = '232136',
-                padding_x = 6,
-                padding_y = 6,
-                panel_width = 140,
-                vspace = 4,
-                margin_left = 24,
-                # sections = ["Apps"],
-                sections = ["Apps 1", "Apps 2", "Apps 3", "Apps 4", "Apps 5"],
-                section_fontsize = 14,
-                section_padding = 10,
-                section_top = 10,
-                section_left = 12,
-                section_bottom = 20,
-                **layout_defaults
-            )
+    # layout.TreeTab(
+    #             name = 'TreeTab',
+    #             active_bg = '#35383d',
+    #             active_fg = '#ffffff',
+    #             inactive_bg =  '#2a273f',
+    #             bg_color = '282c34',
+    #             padding_x = 6,
+    #             padding_y = 6,
+    #             panel_width = 140,
+    #             vspace = 4,
+    #             margin_left = 24,
+    #             # sections = ["Apps"],
+    #             sections = ["Apps 1", "Apps 2", "Apps 3"],
+    #             section_fontsize = 14,
+    #             section_padding = 10,
+    #             section_top = 10,
+    #             section_left = 12,
+    #             section_right = 12,
+    #             section_bottom = 20,
+    #             rounded = True,
+    #             **layout_defaults
+    #         )
 ]
 
 
@@ -180,18 +233,18 @@ if isMultiMonitorMode :
     screenGens = [
         screenGenInfo(groupScreen=1, groups=[
             groupGenInfo(
-              spawn=["slack", "discord", "signal-desktop", "telegram-desktop"],
-              layout="TreeTab"
+              spawn=[],  # "slack", "discord", "signal-desktop", "telegram-desktop"
+              layout="Max"
             ),
             groupGenInfo(
               spawn=["alacritty"],
-              layout="TreeTab"
+              layout="Max"
             ),
             groupGenInfo(),
             groupGenInfo(),
             groupGenInfo(
-              spawn=["freetube", "rhythmbox"],
-              layout="TreeTab"
+              spawn=[],  # "freetube", "rhythmbox"
+              layout="Max"
             ),
             groupGenInfo(),
             groupGenInfo(),
@@ -204,7 +257,7 @@ if isMultiMonitorMode :
             ),
             groupGenInfo(),
             groupGenInfo(
-              spawn=["mailspring"]
+              spawn=[]  # "mailspring"
             ),
             groupGenInfo(),
             groupGenInfo(),
@@ -215,14 +268,14 @@ if isMultiMonitorMode :
         ]),
         screenGenInfo(groupScreen=3, groups=[
             groupGenInfo(
-              spawn=["codium"],
+              spawn=["code"],
               layout="MonadWide"
             ),
             groupGenInfo(),
             groupGenInfo(),
             groupGenInfo(),
             groupGenInfo(
-              spawn=["notion"]
+              spawn=[]  # "notion"
             ),
             groupGenInfo(),
             groupGenInfo(),
@@ -245,7 +298,7 @@ else:
             ),
             groupGenInfo(
               spawn=["freetube", "rhythmbox"],
-              layout="TreeTab"
+              layout="Max"
             ),
             groupGenInfo(),
             groupGenInfo(),
@@ -302,7 +355,7 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "k", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "i", lazy.layout.up(), desc="Move focus up"),
-    # Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
+    Key([mod], "b", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
     Key([mod, "shift"], "j", lazy.layout.shuffle_left(), desc="Move window to the left"),
@@ -343,7 +396,7 @@ keys = [
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 
     # Treetab prompt
-    Key([mod, "shift"], "a", add_treetab_section, desc='Prompt to add new section in treetab'),
+    Key([mod, "shift"], "a", add_treetab_section),
 
     Key([mod, "shift"], "k",
         lazy.layout.shuffle_down(),
@@ -407,6 +460,7 @@ floating_layout = layout.Floating(
         *layout.Floating.default_float_rules,
         Match(wm_class="zoom-us"),
         Match(wm_class="1password"),
+        Match(wm_class="re.sonny.Junction"),
     ], **layout_defaults
 )
 
@@ -418,7 +472,7 @@ floating_layout = layout.Floating(
 widget_defaults = dict(
     font="Be Vietnam Pro, Semibold",
     foreground = "#001018",
-    fontsize=13,
+    fontsize=11,
     padding=8,
 )
 extension_defaults = widget_defaults.copy()
@@ -433,10 +487,17 @@ if isMultiMonitorMode :
                               linewidth = 0,
                               padding = 2,
                           ),
-                    widget.Image(
-                              filename = "~/nixos-config/modules/home-manager/themes/images/svg/nix-logo-white.svg",
-                              margin_x = 12,
-                              margin_y = 3
+                    # widget.Image(
+                    #           filename = "/home/moonlander/nixos-config/modules/home-manager/themes/images/svg/nix-logo-white.svg",
+                    #           margin_x = 12,
+                    #           margin_y = 3
+                    widget.TextBox(
+                                text="",
+                                fontsize = 17,
+                                foreground = "#ffffff",
+                                margin_x = 12,
+                                margin_y = 0,
+                                padding_y = 0
                           ),
                     widget.Sep(
                               linewidth = 0
@@ -445,22 +506,23 @@ if isMultiMonitorMode :
                               visible_groups=["1:1", "1:2", "1:3", "1:4", "1:5", "1:6", "1:7", "1:8", "1:9"],
                               inactive = "#ffffff",
                               active = "#fff243",
-                              font = "Be Vietnam Pro, Bold",
+                              font = "Be Vietnam Pro, Extrabold",
+                              fontsize = 11,
                               highlight_method = "block",
                               this_current_screen_border = colors['bar-lighter'],
                               this_screen_border = colors['bar-lighter'],
                               rounded = False,
                               borderwidth = 0,
                               padding_x = 12,
-                              padding_y = 7,
-                              margin = 2,
+                              padding_y = 6,
+                              margin = 3,
                           ),
                     widget.Sep(
                             linewidth = 0,
                             padding = 10
                           ),
                     widget.CurrentLayoutIcon(
-                              scale = 0.8,
+                              scale = 0.65,
                               padding = 0
                           ),
                     widget.Sep(
@@ -477,9 +539,10 @@ if isMultiMonitorMode :
                           ),
                     widget.TextBox(
                               text="󰄾",
-                              fontsize = 20,
+                              fontsize = 18,
                               foreground = "#ffffff",
-                              padding = 0
+                              padding = 0,
+                              margin_y = 0
                           ),
                     widget.Sep(
                               linewidth = 0,
@@ -504,8 +567,24 @@ if isMultiMonitorMode :
             ),
             left=bar.Gap(gap_size),
             right=bar.Gap(gap_size),
-            bottom=bar.Gap(gap_size),
-            wallpaper='~/wallpapers/lamp-macro.jpg'
+            # bottom=bar.Gap(gap_size), 
+            bottom=bar.Bar([
+                    widget.TaskList(
+                            highlight_method = 'block',
+                            foreground = colors['foreground'],
+                            icon_size = 0,
+                            padding_y = 4,
+                            parse_text=longNameParse
+                        )
+                ], 
+                bar_height,
+                background = '#ff0000.0',
+                border_color = colors['bar-border'],
+                border_width = bar_border,
+                opacity = bar_opacity,
+                margin = bar_margin),
+            wallpaper = wallpaper,
+            wallpaper_mode = wallpaper_mode,
         ),
         # Center screen
         Screen(
@@ -515,10 +594,17 @@ if isMultiMonitorMode :
                               linewidth = 0,
                               padding = 2,
                           ),
-                    widget.Image(
-                              filename = "~/nixos-config/modules/home-manager/themes/images/svg/nix-logo-white.svg",
-                              margin_x = 12,
-                              margin_y = 3
+                    # widget.Image(
+                    #           filename = "/home/moonlander/nixos-config/modules/home-manager/themes/images/svg/nix-logo-white.svg",
+                    #           margin_x = 12,
+                    #           margin_y = 3
+                    widget.TextBox(
+                                text="",
+                                fontsize = 17,
+                                foreground = "#ffffff",
+                                margin_x = 12,
+                                margin_y = 0,
+                                padding_y = 0
                           ),
                     widget.Sep(
                               linewidth = 0
@@ -527,47 +613,48 @@ if isMultiMonitorMode :
                               visible_groups=["2:1", "2:2", "2:3", "2:4", "2:5", "2:6", "2:7", "2:8", "2:9"],
                               inactive = "#ffffff",
                               active = "#fff243",
-                              font = "Be Vietnam Pro, Bold",
+                              font = "Be Vietnam Pro, Extrabold",
+                              fontsize = 11,
                               highlight_method = "block",
                               this_current_screen_border = colors['bar-lighter'],
                               this_screen_border = colors['bar-lighter'],
                               rounded = False,
                               borderwidth = 0,
                               padding_x = 12,
-                              padding_y = 7,
-                              margin = 2,
-#                               background = "#03344d"
+                              padding_y = 6,
+                              margin = 3,
                           ),
-                   widget.Sep(
-                           linewidth = 0,
-                           padding = 10
-                         ),
-                   widget.CurrentLayoutIcon(
-                             scale = 0.8,
-                             padding = 0
-                         ),
-                   widget.Sep(
-                             linewidth = 0,
-                             padding = 10
-                         ),
-                   widget.CurrentLayout(
-                             foreground = colors['foreground'],
-                             padding = 0
-                         ),
-                   widget.Sep(
-                             linewidth = 0,
-                             padding = 18
-                         ),
-                   widget.TextBox(
-                             text="󰄾",
-                             fontsize = 20,
-                             foreground = "#ffffff",
-                             padding = 0
-                         ),
-                   widget.Sep(
-                             linewidth = 0,
-                             padding =  10
-                         ),
+                    widget.Sep(
+                            linewidth = 0,
+                            padding = 10
+                          ),
+                    widget.CurrentLayoutIcon(
+                              scale = 0.65,
+                              padding = 0
+                          ),
+                    widget.Sep(
+                              linewidth = 0,
+                              padding = 10
+                          ),
+                    widget.CurrentLayout(
+                              foreground = colors['foreground'],
+                              padding = 0
+                          ),
+                    widget.Sep(
+                              linewidth = 0,
+                              padding = 18
+                          ),
+                    widget.TextBox(
+                              text="󰄾",
+                              fontsize = 18,
+                              foreground = "#ffffff",
+                              padding = 0,
+                              margin_y = 0
+                          ),
+                    widget.Sep(
+                              linewidth = 0,
+                              padding =  10
+                          ),
                     widget.WindowName(
                               parse_text=longNameParse,
                               font = "Be Vietnam Pro, Semibold",
@@ -578,71 +665,73 @@ if isMultiMonitorMode :
                               padding = 6
                           ),
                     widget.Systray(
-                              icon_size = 20,
-                              fontsize = 16,
-                              background = colors['bar-light']
+                              icon_size = 18,
+                              fontsize = 11,
+                            #   background = colors['bar-light']
                           ),
+                      widget.Sep(
+                            linewidth = 0,
+                            padding = 10
+                        ),
                     widget.OpenWeather(
-                              fontsize = 16,
-                              location = 'Leek',
-                              format='{icon}',
+                              fontsize = 11,
+#                               location='Leek',
+                              cityid = 2644684,
+#                               format=' {main_temp}*{units_temperature}    {sunrise}  {sunset}',
+                              format=' {main_temp}*{units_temperature}',
                               foreground = colors['foreground'],
-                              background = colors['bar-light']
-                          ),
-                    widget.Sep(
-                              linewidth = 0,
-                              padding = 6
+                            #   background = colors['bar-light']
                           ),
                     widget.Sep(
                               linewidth = 0,
                               padding = 10,
-                              background = colors['bar-light']
+                            #   background = colors['bar-light']
                           ),
 #                     widget.Image(
-#                               filename = "~/nixos-config/assets/speaker.svg",
+#                               filename = "/home/moonlander/nixos-config/assets/speaker.svg",
 #                               margin_y = 3,
 #                               background = "#96CDFB"
 #                           ),
                     widget.TextBox(
                               text="",
-                              fontsize = 20,
+                              fontsize = 19,
                               foreground = colors['blue'],
                               padding = 0,
-                              background = colors['bar-light']
+                            #   background = colors['bar-light']
                           ),
                     widget.Volume(
                               padding = 6,
                               foreground = colors['foreground'],
-                              background = colors['bar-light']
+                            #   background = colors['bar-light']
                           ),
                     widget.Sep(
                               linewidth = 0,
                               padding = 6,
-                              background = colors['bar-light']
+                            #   background = colors['bar-light']
                           ),
 #                     widget.Image(
-#                               filename = "~/nixos-config/assets/battery.svg",
+#                               filename = "/home/moonlander/nixos-config/assets/battery.svg",
 #                               margin_y = 4,
 #                               margin_x = 4,
 #                               background = "#ABE9B3"
 #                           ),
                     widget.TextBox(
                               text="󱊣",
-                              fontsize = 20,
+                              fontsize = 17,
                               padding = 4,
                               foreground = colors['green'],
-                              background = colors['bar-light']
+                            #   background = colors['bar-light']
                           ),
                     widget.Battery(
                               format = "{percent:2.0%}",
                               padding = 0,
                               foreground = colors['foreground'],
-                              background = colors['bar-light']
+                            #   background = colors['bar-light']
                           ),
                     widget.Sep(
                               linewidth = 0,
                               padding = 6,
-                              background = colors['bar-light']
+                            #   background = colors['bar-light']
                           ),
 #                     widget.Sep(
 #                               linewidth = 0,
@@ -651,24 +740,24 @@ if isMultiMonitorMode :
                     widget.Sep(
                               linewidth = 0,
                               padding = 6,
-                              background = colors['bar-light']
+                            #   background = colors['bar-light']
                           ),
 #                     widget.Image(
-#                               filename = "~/nixos-config/assets/keyboard.svg",
+#                               filename = "/home/moonlander/nixos-config/assets/keyboard.svg",
 #                               margin_y = 1,
 #                               background = "#FAE3B0"
 #                           ),
                     widget.TextBox(
                               text="󰌌",
-                              fontsize = 20,
+                              fontsize = 18,
                               padding = 4,
                               foreground = colors['yellow'],
-                              background = colors['bar-light']
+                            #   background = colors['bar-light']
                           ),
                     widget.KeyboardLayout(
                               configured_keyboards = ['pl', 'gb', 'us'],
                               foreground = colors['foreground'],
-                              background = colors['bar-light']
+                            #   background = colors['bar-light']
                           ),
                     widget.Sep(
                               linewidth = 0,
@@ -677,7 +766,7 @@ if isMultiMonitorMode :
                           ),
                     widget.TextBox(
                               text="",
-                              fontsize = 16,
+                              fontsize = 15,
                               padding = 6,
                               foreground = colors['pink'],
 #                               background = colors['bar-light']
@@ -694,7 +783,7 @@ if isMultiMonitorMode :
                           ),
                     widget.TextBox(
                               text="󱑎",
-                              fontsize = 20,
+                              fontsize = 17,
                               padding = 5,
                               foreground = colors['orange'],
 #                               background = colors['bar-light']
@@ -716,14 +805,27 @@ if isMultiMonitorMode :
                               linewidth = 0,
                               padding = 4
                           ),
-                    widget.Image(
-                              filename = "~/nixos-config/modules/home-manager/themes/images/svg/switch-white.svg",
-                              margin_y = 2,
-                              mouse_callbacks = {
-                                  'Button1': lambda: qtile.cmd_spawn(
-                                      "rofi -show power-menu -modi power-menu:rofi-power-menu"
-                                  )
-                              }
+                    # widget.Image(
+                    #           filename = "/home/moonlander/nixos-config/modules/home-manager/themes/images/svg/switch-white.svg",
+                    #           margin_y = 2,
+                    #           mouse_callbacks = {
+                    #               'Button1': lambda: qtile.cmd_spawn(
+                    #                   "rofi -show power-menu -modi power-menu:rofi-power-menu"
+                    #               )
+                    #           }
+                    #       ),
+                    widget.TextBox(
+                                text="",
+                                fontsize = 17,
+                                foreground = "#ffffff",
+                                margin_x = 12,
+                                margin_y = 0,
+                                padding_y = 0,
+                                mouse_callbacks = {
+                                    'Button1': lambda: qtile.cmd_spawn(
+                                        "rofi -show power-menu -modi power-menu:rofi-power-menu"
+                                    )
+                                }
                           ),
                     widget.Sep(
                               linewidth = 0,
@@ -739,8 +841,24 @@ if isMultiMonitorMode :
             ),
             left=bar.Gap(gap_size),
             right=bar.Gap(gap_size),
-            bottom=bar.Gap(gap_size),
-            wallpaper='~/wallpapers/lamp-macro.jpg'
+            # bottom=bar.Gap(gap_size),
+            bottom=bar.Bar([
+                    widget.TaskList(
+                            highlight_method = 'block',
+                            foreground = colors['foreground'],
+                            icon_size = 0,
+                            padding_y = 4,
+                            parse_text=longNameParse
+                        )
+                ], 
+                bar_height,
+                background = '#ff0000.0',
+                border_color = colors['bar-border'],
+                border_width = bar_border,
+                opacity = bar_opacity,
+                margin = bar_margin),
+            wallpaper = wallpaper,
+            wallpaper_mode = wallpaper_mode
         ),
         # Right screen
         Screen(
@@ -750,10 +868,17 @@ if isMultiMonitorMode :
                               linewidth = 0,
                               padding = 2,
                           ),
-                    widget.Image(
-                              filename = "~/nixos-config/modules/home-manager/themes/images/svg/nix-logo-white.svg",
-                              margin_x = 12,
-                              margin_y = 3
+                    # widget.Image(
+                    #           filename = "/home/moonlander/nixos-config/modules/home-manager/themes/images/svg/nix-logo-white.svg",
+                    #           margin_x = 12,
+                    #           margin_y = 3
+                    widget.TextBox(
+                                text="",
+                                fontsize = 17,
+                                foreground = "#ffffff",
+                                margin_x = 12,
+                                margin_y = 0,
+                                padding_y = 0
                           ),
                     widget.Sep(
                               linewidth = 0
@@ -762,23 +887,23 @@ if isMultiMonitorMode :
                               visible_groups=["3:1", "3:2", "3:3", "3:4", "3:5", "3:6", "3:7", "3:8", "3:9"],
                               inactive = "#ffffff",
                               active = "#fff243",
-                              font = "Be Vietnam Pro, Bold",
+                              font = "Be Vietnam Pro, Extrabold",
+                              fontsize = 11,
                               highlight_method = "block",
                               this_current_screen_border = colors['bar-lighter'],
                               this_screen_border = colors['bar-lighter'],
                               rounded = False,
                               borderwidth = 0,
                               padding_x = 12,
-                              padding_y = 7,
-                              margin = 2,
-#                               background = "#03344d"
+                              padding_y = 6,
+                              margin = 3,
                           ),
                     widget.Sep(
                             linewidth = 0,
                             padding = 10
                           ),
                     widget.CurrentLayoutIcon(
-                              scale = 0.8,
+                              scale = 0.65,
                               padding = 0
                           ),
                     widget.Sep(
@@ -795,9 +920,10 @@ if isMultiMonitorMode :
                           ),
                     widget.TextBox(
                               text="󰄾",
-                              fontsize = 20,
+                              fontsize = 18,
                               foreground = "#ffffff",
-                              padding = 0
+                              padding = 0,
+                              margin_y = 0
                           ),
                     widget.Sep(
                               linewidth = 0,
@@ -818,12 +944,28 @@ if isMultiMonitorMode :
                 border_color = colors['bar-border'],
                 border_width = bar_border,
                 opacity = bar_opacity,
-                margin = bar_margin
+                margin = bar_margin,
             ),
             left=bar.Gap(gap_size),
             right=bar.Gap(gap_size),
-            bottom=bar.Gap(gap_size),
-            wallpaper='~/wallpapers/lamp-macro.jpg'
+            # bottom=bar.Gap(gap_size),
+            bottom=bar.Bar([
+                    widget.TaskList(
+                            highlight_method = 'block',
+                            foreground = colors['foreground'],
+                            icon_size = 0,
+                            padding_y = 4,
+                            parse_text=longNameParse
+                        )
+                ], 
+                bar_height,
+                background = '#ff0000.0',
+                border_color = colors['bar-border'],
+                border_width = bar_border,
+                opacity = bar_opacity,
+                margin = bar_margin),
+            wallpaper = wallpaper,
+            wallpaper_mode = wallpaper_mode
         )
     ]
 else :
@@ -837,7 +979,7 @@ else :
                               padding = 2,
                           ),
                     widget.Image(
-                              filename = "~/nixos-config/modules/home-manager/themes/images/svg/nix-logo-white.svg",
+                              filename = "/home/moonlander/nixos-config/modules/home-manager/themes/images/svg/nix-logo-white.svg",
                               margin_x = 12,
                               margin_y = 3
                           ),
@@ -919,7 +1061,7 @@ else :
                               background = colors['bar-light']
                           ),
 #                     widget.Image(
-#                               filename = "~/nixos-config/assets/speaker.svg",
+#                               filename = "/home/moonlander/nixos-config/assets/speaker.svg",
 #                               margin_y = 3,
 #                               background = "#96CDFB"
 #                           ),
@@ -941,7 +1083,7 @@ else :
                               background = colors['bar-light']
                           ),
 #                     widget.Image(
-#                               filename = "~/nixos-config/assets/battery.svg",
+#                               filename = "/home/moonlander/nixos-config/assets/battery.svg",
 #                               margin_y = 4,
 #                               margin_x = 4,
 #                               background = "#ABE9B3"
@@ -974,7 +1116,7 @@ else :
                               background = colors['bar-light']
                           ),
 #                     widget.Image(
-#                               filename = "~/nixos-config/assets/keyboard.svg",
+#                               filename = "/home/moonlander/nixos-config/assets/keyboard.svg",
 #                               margin_y = 1,
 #                               background = "#FAE3B0"
 #                           ),
@@ -1037,7 +1179,7 @@ else :
                               padding = 4
                           ),
                     widget.Image(
-                              filename = "~/nixos-config/assets/switch-white.svg",
+                              filename = "/home/moonlander/nixos-config/assets/switch-white.svg",
                               margin_y = 2,
 #                               mouse_callbacks = {
 #                                   'Button1': show_power_menu(qtile)
