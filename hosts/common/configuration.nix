@@ -59,6 +59,7 @@ in
     ack                                        # a grep-like tool tailored to working with large trees of source code
     fd                                         # A simple, fast and user-friendly alternative to find
     # gh                                         # GitHub CLI tool
+    openssl
   ];
 
 
@@ -70,8 +71,8 @@ in
           enable = true;
           style = "full";
         };
-        defaultFonts.serif = [ "Hack Nerd Font Propo" ];
-        defaultFonts.sansSerif = [ "Hack Nerd Font Propo" ];
+        defaultFonts.serif = [ "Be Vietnam Pro, Semibold" ];
+        defaultFonts.sansSerif = [ "Be Vietnam Pro, Semibold" ];
         defaultFonts.monospace = [ "Hack Nerd Font Propo" ];
       };
       packages = with pkgs; [
@@ -94,12 +95,11 @@ in
     nix = {
       settings = {
         trusted-users = ["root" "moonlander"];
-        auto-optimise-store = true;
+#        auto-optimise-store = true;
       };
       package = pkgs.nixFlakes;
       extraOptions = ''
         experimental-features = nix-command flakes
-        warn-dirty = false
       '';
     };
 
