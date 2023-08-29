@@ -8,6 +8,9 @@ let
   ];
 in
 {
+  imports = [
+    import ../../modules/nixos/packages/nix-alien.nix
+  ];
   # Systemd-boot EFI boot loader
   boot = {
     loader.systemd-boot.enable = true;
@@ -42,9 +45,9 @@ in
     defaultGateway = "192.168.1.1";
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
     firewall = {
-      enable = false;
-      allowedTCPPorts = [ 22 80 443 4040 ];
-      allowedUDPPorts = [ 22 80 443 4040 ];
+      enable = true;
+      allowedTCPPorts = [ 22 80 443 4040 2019 ];
+      allowedUDPPorts = [ 22 80 443 4040 2019 ];
     };
   };
 
@@ -70,8 +73,6 @@ in
     LADSPA_PATH = "${pkgs.ladspaPlugins}/lib/ladspa";
   };
 
-  services.onlyoffice.enable = true;
-
   environment = {
     pathsToLink = [ "/share/zsh" ];
     systemPackages = with pkgs;
@@ -94,7 +95,7 @@ in
       xfce.thunar-archive-plugin                 # Thunar plugin providing file context menus for archives
       xfce.thunar-media-tags-plugin              # Thunar plugin providing tagging and renaming features for media files
       dolphin                                    # kde file manager
-      # direnv                                     # shell extension that manages your environment
+      direnv                                     # shell extension that manages your environment
 #     .feh                                        # image viewer
       ngrok                                      # expose a web server running on your local machine to the internet
       neofetch                                   # system info script
@@ -151,6 +152,11 @@ in
       lsp-plugins
       pipewire
       wireplumber
+#      (import (fetchTarball https://install.devenv.sh/latest)).default # devenv
+#      (import (fetchTarball {
+#        url = "https://github.com/thiagokokada/nix-alien/tarball/master";
+#        sha256 = "1q1l0jzrq6ssc21ra6gvj5k01qn49cmd3403g0j05jvqhfkvs4z0";
+#      })).nix-alien
     ];
   };
 }

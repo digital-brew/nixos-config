@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, home-manager, user, ... }:
+{ lib, nixpkgs, home-manager, user, ... }:
 
 let
   system = "x86_64-linux";                                  # System architecture
@@ -15,7 +15,7 @@ in
   work = lib.nixosSystem {                                # Laptop profile
     inherit system;
     specialArgs = {
-      inherit system inputs user;
+      inherit system user;
     };
     modules = [
       ./common
@@ -37,7 +37,7 @@ in
   nextcloud = lib.nixosSystem {                                  # Work profile
     inherit system;
     specialArgs = {
-      inherit system inputs user;
+      inherit system user;
       host = {
         hostName = "DBNC3G";
       };
@@ -65,7 +65,7 @@ in
   vm = lib.nixosSystem {                                    # VM profile
     inherit system;
     specialArgs = {
-      inherit inputs user;
+      inherit user;
       host = {
         hostName = "DBVM";
         mainMonitor = "Virtual-1";
@@ -95,7 +95,7 @@ in
   kids = lib.nixosSystem {                                # Laptop profile
     inherit system;
     specialArgs = {
-      inherit inputs user;
+      inherit user;
       host = {
         hostName = "DBi9XRL";
         laptopMonitor = "eDP-1";
