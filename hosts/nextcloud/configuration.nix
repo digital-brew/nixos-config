@@ -60,11 +60,13 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  pathsToLink = [ "/share/zsh" ];
-  systemPackages = with pkgs; [
-    neofetch                                   # system info script
-    xarchiver                                  # frontend to 7z, zip, rar, tar, bzip2, gzip, arj, lha, rpm and deb
-  ];
+  environment = {
+    pathsToLink = [ "/share/zsh" ];
+    systemPackages = with pkgs; [
+      neofetch                                   # system info script
+      xarchiver                                  # frontend to 7z, zip, rar, tar, bzip2, gzip, arj, lha, rpm and deb
+    ];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
