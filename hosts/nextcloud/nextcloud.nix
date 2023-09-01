@@ -3,7 +3,7 @@
 {
   security.acme = {
     acceptTerms = true;
-    email = "rafal+nextcloud@digitalbrew.io";
+    defaults.email = "rafal+nextcloud@digitalbrew.io";
   };
 
   services.nginx = {
@@ -37,6 +37,7 @@
 
   services.nextcloud = {
       enable = true;
+      package = pkgs.nextcloud27;
       hostName = "cloud.digitalbrew.io";
 
       # Use HTTPS for links
