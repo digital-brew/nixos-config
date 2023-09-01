@@ -10,13 +10,13 @@
     enable = true;
 
     # Use recommended settings
-    recommendedGzipSettings = true;
-    recommendedOptimisation = true;
-    recommendedProxySettings = true;
-    recommendedTlsSettings = true;
+#    recommendedGzipSettings = true;
+#    recommendedOptimisation = true;
+#    recommendedProxySettings = true;
+#    recommendedTlsSettings = true;
 
     # Only allow PFS-enabled ciphers with AES256
-    sslCiphers = "ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384";
+#    sslCiphers = "ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384";
 
     # Setup Nextcloud virtual host to listen on ports
     virtualHosts = {
@@ -59,9 +59,9 @@
       dbuser = "nextcloud";
       dbhost = "localhost"; # nextcloud will add /.s.PGSQL.5432 by itself
       dbname = "nextcloud";
-      dbpassFile = "/var/nextcloud/db-pass";
+      dbpassFile = "${pkgs.writeText "dbpass" "test1234"}";
 
-      adminpassFile = "/var/nextcloud/admin-pass";
+      adminpassFile = "${pkgs.writeText "adminpass" "test1234"}";
       adminuser = "admin";
     };
 
