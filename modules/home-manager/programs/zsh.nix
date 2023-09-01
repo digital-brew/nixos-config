@@ -8,7 +8,10 @@ in
     enableAutosuggestions = true;
     enableCompletion = true;
     enableVteIntegration = true;
-    initExtra = "zsh -c 'neofetch'";
+    initExtra = ''
+      zsh -c 'neofetch'
+      export PATH="$HOME/.npm-packages/bin:$PATH"
+      '';
     envExtra = "eval \"$(direnv hook zsh)\"";
     shellAliases = {
 

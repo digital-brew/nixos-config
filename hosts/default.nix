@@ -1,4 +1,4 @@
-{ lib, nixpkgs, home-manager, user, ... }:
+{ lib, nixpkgs, home-manager, nix-alien, user, ... }:
 
 let
   system = "x86_64-linux";                                  # System architecture
@@ -12,7 +12,7 @@ let
 in
 {
 
-  work = lib.nixosSystem {                                # Laptop profile
+  work = lib.nixosSystem {                                # Work profile
     inherit system;
     specialArgs = {
       inherit system user;
@@ -20,6 +20,11 @@ in
     modules = [
       ./common
       ./work
+      ({ self, system, ... }: {
+        environment.systemPackages = [
+          nix-alien.packages.${system}.nix-alien
+        ];
+      })
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
@@ -34,13 +39,10 @@ in
     ];
   };
 
-  nextcloud = lib.nixosSystem {                                  # Work profile
+  nextcloud = lib.nixosSystem {                                  # Nextcloud profile
     inherit system;
     specialArgs = {
       inherit system user;
-      host = {
-        hostName = "DBNC3G";
-      };
     };
     modules = [
       ./common
@@ -51,9 +53,6 @@ in
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
           inherit user;
-          host = {
-            hostName = "DBNC3G";
-          };
         };
         home-manager.users.${user} = {
           imports = [(import ./common/home.nix)] ++ [(import ./nextcloud/home.nix)];

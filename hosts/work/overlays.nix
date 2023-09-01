@@ -1,7 +1,7 @@
-{ pkgs, lib, ... }:
+{ config, lib, pkgs, modulesPath, ... }:
 
 {
-  nixpkgs.overlays = [
+nixpkgs.overlays = [
     (self: super: {
       discord = super.discord.overrideAttrs(
         _: { src = builtins.fetchTarball {
@@ -23,13 +23,6 @@
           sha256 = "0xppbjpq2n3c97rznixrvn57z05d7ama8w99fw3awwcfjrfdk9vw";
         }; }
       );
-
-#      devenv = super.devenv.overrideAttrs(
-#        _: { src = builtins.fetchTarball {
-#          url = "https://discord.com/api/download?platform=linux&format=tar.gz";
-#          sha256 = "0wj5455mk0kgm4vnvqia6x4qhkwwf3cn07pdsd4wmfdbp9rxr44a";
-#        }; }
-#      );
     })
   ];
 }

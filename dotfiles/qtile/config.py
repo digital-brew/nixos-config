@@ -91,8 +91,8 @@ def longNameParse(text):
     for string in ["Chromium", "Firefox", "Brave", "Slack", "PhpStorm", "FreeTube", "Thunderbird", "Discord"]:
         if string in text:
             text = string
-        elif "moonlander@" in text:
-            text = "Alacritty"
+#         elif "moonlander@" in text:
+#             text = "Alacritty"
         else:
             text = text
     return text
@@ -671,14 +671,21 @@ if isMultiMonitorMode :
                           ),
                       widget.Sep(
                             linewidth = 0,
-                            padding = 10
+                            padding = 18
                         ),
+                    widget.TextBox(
+                              text="",
+                              fontsize = 15,
+                              padding = 0,
+                              foreground = colors['pink'],
+                            #   background = colors['bar-light']
+                          ),
                     widget.OpenWeather(
                               fontsize = 11,
 #                               location='Leek',
                               cityid = 2644684,
 #                               format=' {main_temp}*{units_temperature}    {sunrise}  {sunset}',
-                              format=' {main_temp}*{units_temperature}',
+                              format='{main_temp}*{units_temperature}',
                               foreground = colors['foreground'],
                             #   background = colors['bar-light']
                           ),

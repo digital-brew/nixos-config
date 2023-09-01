@@ -40,12 +40,6 @@
       fsType = "ext4";
     };
 
-#  fileSystems."/home" =
-#    { device = "/dev/disk/by-label/home";
-#      device = "/dev/disk/by-uuid/cad64231-cb2b-47fd-9234-739d3b7a23f8";
-#      fsType = "ext4";
-#    };
-
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/5F66-17ED";
       fsType = "vfat";

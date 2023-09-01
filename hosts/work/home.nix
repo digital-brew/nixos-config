@@ -10,28 +10,31 @@
     ../../modules/home-manager/programs/kitty.nix
     ../../modules/home-manager/programs/obs.nix
     ../../modules/home-manager/programs/rofi.nix
-#    ../../modules/home-manager/packages/nix-alien.nix
+#    ../../modules/home-manager/programs/ssh.nix
   ];
-#  [(import ../../modules/home-manager/packages/nix-alien.nix)];
 
   # home.file.".config/qtile".source = ./../../dotfiles/qtile;
 #  file.".config/wall".source = ../modules/themes/wall;
 #  file.".config/wall.mp4".source = ../modules/themes/wall.mp4;
 
+#  home.file.".ssh/id_ed_digitalbrew".source = ./../../dotfiles/ssh/id_ed_digitalbrew;
+#  home.file.".ssh/id_ed_digitalbrew.pub".source = ./../../dotfiles/ssh/id_ed_digitalbrew.pub;
+#  home.file.".ssh/id_ed_muchmore".source = ./../../dotfiles/ssh/id_ed_muchmore;
+#  home.file.".ssh/id_ed_muchmore.pub".source = ./../../dotfiles/ssh/id_ed_muchmore.pub;
+#  home.file.".ssh/id_rsa".source = ./../../dotfiles/ssh/id_rsa;
+#  home.file.".ssh/id_rsa.pub".source = ./../../dotfiles/ssh/id_rsa.pub;
+
+  home.file.".npmrc".source = ./../../dotfiles/node/npmrc;
+
   home = {
     packages = with pkgs; [
       dmenu
-#      vscodium
       brave
       epiphany
-      # chromium
       google-chrome
       google-chrome-dev
-#      firefox
-      # firefox-devedition
       librewolf
       nitrogen
-      # thunderbird
       _1password-gui
       signal-desktop
       slack
@@ -41,7 +44,6 @@
       freetube
       ruby
       zoom-us
-      teams-for-linux
       caffeine-ng
       gnome.gnome-disk-utility
       junction
@@ -53,9 +55,7 @@
 
     pointerCursor = {                         # This will set cursor system-wide so applications can not choose their own
       gtk.enable = true;
-      #name = "Dracula-cursors";
       name = "Breeze_Snow";
-      #package = pkgs.dracula-theme;
       package = pkgs.libsForQt5.breeze-gtk;
       size = 16;
     };
@@ -64,10 +64,10 @@
   programs = {
    chromium.enable = true;
    firefox.enable = true;
-#   direnv = {
-#    enable = true;
-#    enableZshIntegration = true;
-#   };                     # shell extension that manages your environment
+   direnv = {
+    enable = true;
+    enableZshIntegration = true;
+   };                     # shell extension that manages your environment
    jq.enable = true;
    sioyek.enable = true;                      # PDF reader
    vscode = {
@@ -98,10 +98,10 @@
     enable = true;
   };
 
-#  systemd.user.targets.tray = {               # Tray.target can not be found when xsession is not enabled. This fixes the issue.
-#   Unit = {
-#     Description = "Home Manager System Tray";
-#     Requires = [ "graphical-session-pre.target" ];
-#    };
-#  };
+  systemd.user.targets.tray = {               # Tray.target can not be found when xsession is not enabled. This fixes the issue.
+   Unit = {
+     Description = "Home Manager System Tray";
+     Requires = [ "graphical-session-pre.target" ];
+    };
+  };
 }
