@@ -17,6 +17,14 @@ in
     };
   };
 
+  nixpkgs.config = {
+    permittedInsecurePackages = [
+      "electron-11.5.0"
+    ];
+  };
+
+  systemd.network.wait-online.enable = false;
+
   # Hostname
   networking = {
     hostName = "DBi9XRL";

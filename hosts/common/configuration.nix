@@ -5,12 +5,7 @@ in
 {
   nixpkgs.config = {
     allowUnfree = true;
-    permittedInsecurePackages = [
-      "electron-11.5.0"
-    ];
   };
-
-  systemd.network.wait-online.enable = false;
 
   # Time zone
   time.timeZone = "Europe/London";
