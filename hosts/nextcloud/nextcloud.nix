@@ -37,7 +37,7 @@
 
   services.nextcloud = {
       enable = true;
-      package = pkgs.nextcloud27;
+#      package = pkgs.nextcloud27;
       hostName = "cloud.digitalbrew.io";
 
       # Use HTTPS for links
