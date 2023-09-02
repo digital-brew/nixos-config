@@ -86,7 +86,7 @@
 
   nix = {
         settings = {
-          trusted-users = ["root" "moonlander" "nextcloud"];
+          trusted-users = ["root" "nextcloud"];
           auto-optimise-store = true;
         };
         extraOptions = ''
