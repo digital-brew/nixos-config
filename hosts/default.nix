@@ -53,7 +53,7 @@ in
         home-manager.extraSpecialArgs = {
           inherit user;
         };
-        home-manager.users.nextcloud = {
+        home-manager.users.moonlander = {
           imports = [(import ./nextcloud/home.nix)];
         };
       }
