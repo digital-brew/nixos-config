@@ -40,6 +40,15 @@
         ensurePermissions = { "nextcloud.*" = "ALL PRIVILEGES"; };
       }
     ];
+    configFile = pkgs.writeText "my.cnf" ''
+       [mysqld]
+       datadir = /var/lib/mysql
+       bind-address = 127.0.0.1
+       port = 3336
+       innodb_force_recovery = 1
+
+       !includedir /etc/mysql/conf.d/
+    '';
   };
 
 #  systemd.services."nextcloud-setup" = {
