@@ -78,7 +78,7 @@
     # Set what time makes sense for you
     autoUpdateApps.startAt = "03:00:00";
 
-#    config = {
+    config = {
       # Further forces Nextcloud to use HTTPS
 #      overwriteProtocol = "https";
 
@@ -91,7 +91,7 @@
 #
       adminpassFile = "/var/nextcloud/admin-pass";
 #      adminuser = "admin";
-#    };
+    };
 
     extraApps = with config.services.nextcloud.package.packages.apps; {
       inherit news contacts calendar tasks;
