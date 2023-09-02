@@ -71,7 +71,7 @@
     enable = true;
     package = pkgs.nextcloud27;
     hostName = "cloud.digitalbrew.io";
-#    home = "/srv/lib/nextcloud";
+    home = "/srv/lib/nextcloud";
 
     # Use HTTPS for links
     https = true;
