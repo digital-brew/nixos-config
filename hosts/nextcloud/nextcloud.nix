@@ -37,7 +37,6 @@
     ensureUsers = [
       {
         name = "nextcloud";
-        password = "q6Fp8dJg2Q";
         ensurePermissions = { "nextcloud.*" = "ALL PRIVILEGES"; };
       }
     ];
