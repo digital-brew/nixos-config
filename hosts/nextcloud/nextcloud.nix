@@ -59,9 +59,9 @@
       dbuser = "nextcloud";
       dbhost = "localhost"; # nextcloud will add /.s.PGSQL.5432 by itself
       dbname = "nextcloud";
-      dbpassFile = "${pkgs.writeText "dbpass" "test1234"}";
+      dbpassFile = "/var/nextcloud/db-pass";
 
-      adminpassFile = "${pkgs.writeText "adminpass" "test1234"}";
+      adminpassFile = "/var/nextcloud/admin-pass";
       adminuser = "admin";
     };
 

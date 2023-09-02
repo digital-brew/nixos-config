@@ -84,7 +84,7 @@ in
 
     nix = {
       settings = {
-        trusted-users = ["root" "moonlander"];
+        trusted-users = ["root" "moonlander" "nextcloud"];
         auto-optimise-store = true;
       };
       package = pkgs.nixFlakes;

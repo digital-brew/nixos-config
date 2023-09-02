@@ -55,7 +55,7 @@
   console.keyMap = "pl";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.graphicfreaq = {
+  users.users.nextcloud = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
   };
