@@ -80,14 +80,14 @@
 
     config = {
       # Further forces Nextcloud to use HTTPS
-#      overwriteProtocol = "https";
+      overwriteProtocol = "https";
 
       # Nextcloud PostegreSQL database configuration, recommended over using SQLite
-      dbtype = "pgsql";
-      dbuser = "nextcloud";
+#      dbtype = "pgsql";
+#      dbuser = "nextcloud";
 #      dbhost = "/run/postgresql"; # nextcloud will add /.s.PGSQL.5432 by itself
-      dbname = "nextcloud";
-      dbpassFile = "/var/nextcloud/db-pass";
+#      dbname = "nextcloud";
+#      dbpassFile = "/var/nextcloud/db-pass";
 #
       adminpassFile = "/var/nextcloud/admin-pass";
       adminuser = "admin";
