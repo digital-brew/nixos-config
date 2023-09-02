@@ -80,7 +80,7 @@
 
     config = {
       # Further forces Nextcloud to use HTTPS
-      overwriteProtocol = "https";
+#      overwriteProtocol = "https";
 
       # Nextcloud PostegreSQL database configuration, recommended over using SQLite
 #      dbtype = "pgsql";
