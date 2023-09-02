@@ -30,19 +30,36 @@
     };
   };
 
-  services.mysql = {
-    enable = false;
-    user = "admin";
-    package = pkgs.mariadb;
-    ensureUsers = [
-      {
-        name = "nextcloud";
-        ensurePermissions = {
-          "nextcloud.*" = "ALL PRIVILEGES";
-        };
-      }
-    ];
+#  services.mysql = {
+#    enable = false;
+#    user = "admin";
+#    package = pkgs.mariadb;
+#    ensureUsers = [
+#      {
+#        name = "nextcloud";
+#        ensurePermissions = {
+#          "nextcloud.*" = "ALL PRIVILEGES";
+#        };
+#      }
+#    ];
+#    ensureDatabases = [ "nextcloud" ];
+#  };
+
+  services.postgresql = {
+    enable = true;
+
+    # Ensure the database, user, and permissions always exist
     ensureDatabases = [ "nextcloud" ];
+    ensureUsers = [
+     { name = "nextcloud";
+       ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
+     }
+    ];
+  };
+
+   systemd.services."nextcloud-setup" = {
+      requires = ["postgresql.service"];
+      after = ["postgresql.service"];
   };
 
   services.nextcloud = {
@@ -66,9 +83,9 @@
       overwriteProtocol = "https";
 
       # Nextcloud PostegreSQL database configuration, recommended over using SQLite
-      dbtype = "mysql";
+      dbtype = "pgsql";
       dbuser = "nextcloud";
-      dbhost = "/run/mysql"; # nextcloud will add /.s.PGSQL.5432 by itself
+      dbhost = "/run/postgresql"; # nextcloud will add /.s.PGSQL.5432 by itself
       dbname = "nextcloud";
       dbpassFile = "/var/nextcloud/db-pass";
 
