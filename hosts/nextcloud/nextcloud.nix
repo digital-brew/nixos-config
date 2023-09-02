@@ -30,43 +30,43 @@
     };
   };
 
-#  services.mysql = {
-#    enable = false;
-#    user = "admin";
-#    package = pkgs.mariadb;
-#    ensureUsers = [
-#      {
-#        name = "nextcloud";
-#        ensurePermissions = {
-#          "nextcloud.*" = "ALL PRIVILEGES";
-#        };
-#      }
-#    ];
-#    ensureDatabases = [ "nextcloud" ];
-#  };
-
-  services.postgresql = {
-    enable = true;
-
-    # Ensure the database, user, and permissions always exist
-    ensureDatabases = [ "nextcloud" ];
+  services.mysql = {
+    enable = false;
+    user = "admin";
+    package = pkgs.mariadb;
     ensureUsers = [
-     { name = "nextcloud";
-       ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
-     }
+      {
+        name = "nextcloud";
+        ensurePermissions = {
+          "nextcloud.*" = "ALL PRIVILEGES";
+        };
+      }
     ];
+    ensureDatabases = [ "nextcloud" ];
   };
 
+#  services.postgresql = {
+#    enable = true;
+#
+#    # Ensure the database, user, and permissions always exist
+#    ensureDatabases = [ "nextcloud" ];
+#    ensureUsers = [
+#     { name = "nextcloud";
+#       ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
+#     }
+#    ];
+#  };
+
    systemd.services."nextcloud-setup" = {
-      requires = ["postgresql.service"];
-      after = ["postgresql.service"];
+      requires = ["mysql.service"];
+      after = ["mysql.service"];
   };
 
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud27;
     hostName = "cloud.digitalbrew.io";
-#    home = "/srv/lib/nextcloud";
+    home = "/srv/lib/nextcloud";
 
     # Use HTTPS for links
     https = true;
@@ -80,17 +80,17 @@
 
     config = {
       # Further forces Nextcloud to use HTTPS
-#      overwriteProtocol = "https";
+      overwriteProtocol = "https";
 
       # Nextcloud PostegreSQL database configuration, recommended over using SQLite
-#      dbtype = "pgsql";
-#      dbuser = "nextcloud";
-#      dbhost = "/run/postgresql"; # nextcloud will add /.s.PGSQL.5432 by itself
-#      dbname = "nextcloud";
-#      dbpassFile = "/var/nextcloud/db-pass";
-#
+      dbtype = "mysql";
+      dbuser = "nextcloud";
+      dbhost = "/run/mysql"; # nextcloud will add /.s.PGSQL.5432 by itself
+      dbname = "nextcloud";
+      dbpassFile = "/var/nextcloud/db-pass";
+
       adminpassFile = "/var/nextcloud/admin-pass";
-#      adminuser = "admin";
+      adminuser = "admin";
     };
 
     extraApps = with config.services.nextcloud.package.packages.apps; {
