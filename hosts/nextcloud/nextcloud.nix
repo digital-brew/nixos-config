@@ -35,7 +35,7 @@
     user = "root";
     package = pkgs.mariadb;
     initialDatabases = {
-      name = "nextcloud";
+      { name = "nextcloud"; }
     };
     ensureUsers = [
       {
