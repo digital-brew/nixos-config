@@ -57,6 +57,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nextcloud = {
     isNormalUser = true;
+    isSystemUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
