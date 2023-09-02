@@ -89,8 +89,8 @@
 #      dbname = "nextcloud";
 #      dbpassFile = "/var/nextcloud/db-pass";
 #
-#      adminpassFile = "/var/nextcloud/admin-pass";
-#      adminuser = "admin";
+      adminpassFile = "/var/nextcloud/admin-pass";
+      adminuser = "admin";
     };
 
     extraApps = with config.services.nextcloud.package.packages.apps; {
