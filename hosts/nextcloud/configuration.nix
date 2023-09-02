@@ -55,9 +55,15 @@
   console.keyMap = "pl";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.nextcloud = {
-    isSystemUser = true;
-    extraGroups = [ "networkmanager" "wheel" ];
+  users.users = {
+    moonlander = {
+      isNormalUser = true;
+      extraGroups = [ "networkmanager" "wheel" ];
+    };
+    nextcloud = {
+      isSystemUser = true;
+      extraGroups = [ "networkmanager" "wheel" ];
+    };
   };
 
   environment = {
@@ -86,7 +92,7 @@
 
   nix = {
         settings = {
-          trusted-users = ["root" "nextcloud"];
+          trusted-users = ["root" "moonlander" "nextcloud"];
           auto-optimise-store = true;
         };
         extraOptions = ''

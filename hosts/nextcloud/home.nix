@@ -7,8 +7,8 @@
   ];
 
   home = {
-    username = "nextcloud";
-    homeDirectory = "/home/nextcloud";
+    username = "moonlander";
+    homeDirectory = "/home/moonlander";
 
     packages = with pkgs; [
       dconf
