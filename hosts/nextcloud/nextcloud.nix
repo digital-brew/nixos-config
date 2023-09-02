@@ -32,7 +32,7 @@
 
   services.mysql = {
     enable = true;
-    package = pkgs.mariadb_110;
+    package = pkgs.mariadb;
     initialDatabases = [{ name = "nextcloud"; }];
     ensureUsers = [
       {
