@@ -41,6 +41,7 @@
         };
       }
     ];
+    ensureDatabases = [ "nextcloud" ];
   };
 
   services.nextcloud = {
