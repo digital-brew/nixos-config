@@ -33,13 +33,13 @@
   services.mysql = {
     enable = true;
     package = pkgs.mariadb;
-    initialDatabases = [{ name = "nextcloud"; }];
-    ensureUsers = [
-      {
-        name = "nextcloud";
-        ensurePermissions = { "nextcloud.*" = "ALL PRIVILEGES"; };
-      }
-    ];
+#    initialDatabases = [{ name = "nextcloud"; }];
+#    ensureUsers = [
+#      {
+#        name = "nextcloud";
+#        ensurePermissions = { "nextcloud.*" = "ALL PRIVILEGES"; };
+#      }
+#    ];
   };
 
   systemd.services."nextcloud-setup" = {
@@ -85,12 +85,12 @@
       overwriteProtocol = "https";
 
       # Nextcloud PostegreSQL database configuration, recommended over using SQLite
-#      dbtype = "mysql";
-#      dbuser = "nextcloud";
-#      dbhost = "localhost"; # nextcloud will add /.s.PGSQL.5432 by itself
-#      dbport = 3306;
-#      dbname = "nextcloud";
-#      dbpassFile = "/var/nextcloud/db-pass";
+      dbtype = "mysql";
+      dbuser = "nextcloud";
+      dbhost = "localhost"; # nextcloud will add /.s.PGSQL.5432 by itself
+      dbport = 3306;
+      dbname = "nextcloud";
+      dbpassFile = "/var/nextcloud/db-pass";
 #
       adminpassFile = "/var/nextcloud/admin-pass";
       adminuser = "admin";
