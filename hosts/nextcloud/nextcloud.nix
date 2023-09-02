@@ -33,6 +33,14 @@
     enable = false;
     user = "admin";
     package = pkgs.mariadb;
+    ensureUsers = [
+      {
+        name = "nextcloud";
+        ensurePermissions = {
+          "nextcloud.*" = "ALL PRIVILEGES";
+        };
+      }
+    ];
   };
 
   services.nextcloud = {
