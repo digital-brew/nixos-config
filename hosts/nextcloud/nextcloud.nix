@@ -32,6 +32,7 @@
 
   services.mysql = {
     enable = true;
+    package = pkgs.mysql;
     initialDatabases = [{ name = "nextcloud"; }];
     ensureUsers = [
       {
