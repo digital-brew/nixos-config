@@ -44,6 +44,12 @@
           "nextcloud.*" = "ALL PRIVILEGES";
         };
       }
+      {
+        name = "root";
+        ensurePermissions = {
+          "nextcloud.*" = "ALL PRIVILEGES";
+      };
+    }
     ];
     ensureDatabases = [ "nextcloud" ];
   };
