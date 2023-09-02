@@ -89,7 +89,7 @@
 #      dbname = "nextcloud";
 #      dbpassFile = "/var/nextcloud/db-pass";
 #
-#      adminpassFile = "/var/nextcloud/admin-pass";
+      adminpassFile = "/var/nextcloud/admin-pass";
 #      adminuser = "admin";
 #    };
 
