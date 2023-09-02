@@ -45,7 +45,6 @@ in
       inherit system user;
     };
     modules = [
-      ./common
       ./nextcloud
 
       home-manager.nixosModules.home-manager {
@@ -55,7 +54,7 @@ in
           inherit user;
         };
         home-manager.users.${user} = {
-          imports = [(import ./common/home.nix)] ++ [(import ./nextcloud/home.nix)];
+          imports = [(import ./nextcloud/home.nix)];
         };
       }
     ];

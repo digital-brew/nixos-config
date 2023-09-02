@@ -63,7 +63,6 @@
   environment = {
     pathsToLink = [ "/share/zsh" ];
     systemPackages = with pkgs; [
-      neofetch                                   # system info script
       xarchiver                                  # frontend to 7z, zip, rar, tar, bzip2, gzip, arj, lha, rpm and deb
     ];
   };
@@ -83,6 +82,17 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+
+  nix = {
+        settings = {
+          trusted-users = ["root" "moonlander" "nextcloud"];
+          auto-optimise-store = true;
+        };
+        extraOptions = ''
+          experimental-features = nix-command flakes
+        '';
+      };
 
   system.stateVersion = "23.05";
 
