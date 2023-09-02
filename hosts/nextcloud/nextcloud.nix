@@ -30,36 +30,41 @@
     };
   };
 
-#  services.mysql = {
-#    enable = false;
-#    user = "admin";
-#    package = pkgs.mariadb;
-#    ensureUsers = [
-#      {
-#        name = "nextcloud";
-#        ensurePermissions = {
-#          "nextcloud.*" = "ALL PRIVILEGES";
-#        };
-#      }
-#    ];
-#    ensureDatabases = [ "nextcloud" ];
-#  };
-
-  services.postgresql = {
+  services.mysql = {
     enable = true;
-
-    # Ensure the database, user, and permissions always exist
-    ensureDatabases = [ "nextcloud" ];
+    user = "root";
+    package = pkgs.mariadb;
     ensureUsers = [
-     { name = "nextcloud";
-       ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
-     }
+      {
+        name = "nextcloud";
+        ensurePermissions = {
+          "nextcloud.*" = "ALL PRIVILEGES";
+        };
+      }
     ];
+    ensureDatabases = [ "nextcloud" ];
   };
 
-   systemd.services."nextcloud-setup" = {
-      requires = ["postgresql.service"];
-      after = ["postgresql.service"];
+#  services.postgresql = {
+#    enable = true;
+#
+#    # Ensure the database, user, and permissions always exist
+#    ensureDatabases = [ "nextcloud" ];
+#    ensureUsers = [
+#     { name = "nextcloud";
+#       ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
+#     }
+#    ];
+#  };
+
+#   systemd.services."nextcloud-setup" = {
+#      requires = ["postgresql.service"];
+#      after = ["postgresql.service"];
+#  };
+
+  systemd.services."nextcloud-setup" = {
+      requires = ["mysql.service"];
+      after = ["mysql.service"];
   };
 
   services.nextcloud = {
