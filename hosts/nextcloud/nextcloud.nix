@@ -32,32 +32,20 @@
 
   services.mysql = {
     enable = true;
-    user = "root";
-    package = pkgs.mariadb;
-    initialDatabases = [
-      { name = "nextcloud"; }
-    ];
+    initialDatabases = [{ name = "nextcloud"; }];
     ensureUsers = [
       {
         name = "nextcloud";
-        ensurePermissions = {
-          "nextcloud.*" = "ALL PRIVILEGES";
-        };
+        password = "q6Fp8dJg2Q";
+        ensurePermissions = { "nextcloud.*" = "ALL PRIVILEGES"; };
       }
-      {
-        name = "root";
-        ensurePermissions = {
-          "nextcloud.*" = "ALL PRIVILEGES";
-      };
-    }
     ];
-    ensureDatabases = [ "nextcloud" ];
   };
 
-  systemd.services."nextcloud-setup" = {
-    requires = ["mysql.service"];
-    after = ["mysql.service"];
-  };
+#  systemd.services."nextcloud-setup" = {
+#    requires = ["mysql.service"];
+#    after = ["mysql.service"];
+#  };
 
 #  services.postgresql = {
 #    enable = true;
