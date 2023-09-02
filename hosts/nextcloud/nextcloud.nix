@@ -92,10 +92,10 @@
       # Nextcloud PostegreSQL database configuration, recommended over using SQLite
       dbtype = "mysql";
       dbuser = "nextcloud";
-      dbhost = "run/mysql"; # nextcloud will add /.s.PGSQL.5432 by itself
+#      dbhost = "run/mysql"; # nextcloud will add /.s.PGSQL.5432 by itself
       dbport = 3306;
       dbname = "nextcloud";
-      dbpassFile = "/var/nextcloud/db-pass";
+#      dbpassFile = "/var/nextcloud/db-pass";
 #
       adminpassFile = "/var/nextcloud/admin-pass";
       adminuser = "admin";
