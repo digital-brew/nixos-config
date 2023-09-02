@@ -83,16 +83,19 @@
     # Set what time makes sense for you
     autoUpdateApps.startAt = "03:00:00";
 
+    database.createLocally = true;
+
     config = {
       # Further forces Nextcloud to use HTTPS
       overwriteProtocol = "https";
 
       # Nextcloud PostegreSQL database configuration, recommended over using SQLite
       dbtype = "mysql";
-#      dbuser = "nextcloud";
-#      dbhost = "localhost"; # nextcloud will add /.s.PGSQL.5432 by itself
-#      dbname = "nextcloud";
-#      dbpassFile = "/var/nextcloud/db-pass";
+      dbuser = "nextcloud";
+      dbhost = "run/mysql"; # nextcloud will add /.s.PGSQL.5432 by itself
+      dbport = 3306;
+      dbname = "nextcloud";
+      dbpassFile = "/var/nextcloud/db-pass";
 #
       adminpassFile = "/var/nextcloud/admin-pass";
       adminuser = "admin";
