@@ -4,7 +4,7 @@
   services.nextcloud = {
     enable = true;
     home = "/srv/lib/nextcloud";
-    hostname = "cloud.digitalbrew.io";
+    hostName = "cloud.digitalbrew.io";
     https = true;
     maxUploadSize = "1024M";
     config = {
@@ -27,7 +27,7 @@
 
     security.acme = {
       acceptTerms = true;
-      defaults.email = "rafal+nextcloud@digitalbrew.io";
+      defaults.email = "rafal@digitalbrew.io";
     };
 
    services.nginx = {
@@ -50,7 +50,7 @@
            ## LetsEncrypt
            enableACME = true;
         };
-        "localhost".listen = [ { addr = "127.0.0.1"; port = 8080; } ];
+#        "localhost".listen = [ { addr = "127.0.0.1"; port = 8080; } ];
       };
     };
 
