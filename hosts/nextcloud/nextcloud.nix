@@ -75,11 +75,9 @@
         adminpassFile = "/var/secrets/admin-pass";
         dbtype = "pgsql";
         dbhost = "/run/postgresql";
-        dbport = "3306";
         dbuser = "nextcloud";
         dbpassFile = "/var/secrets/db-pass";
         dbname = "nextcloud";
-        dbtableprefix = "oc_";
         overwriteProtocol = "https";
       };
   #    caching = {
