@@ -28,6 +28,6 @@
   services.mysql = {
     enable = true;
     package = pkgs.mariadb;
-    user = "root";
+#    user = "root";
   };
 }
