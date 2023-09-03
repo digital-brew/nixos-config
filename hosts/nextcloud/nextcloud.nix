@@ -39,7 +39,7 @@
     services.postgresql = {
       package = pkgs.postgresql_15;
       enable = true;
-      dataDir = "/var/lib/postgresql";
+      dataDir = "/var/lib/postgresql/${config.services.postgresql.package.psqlSchema}";
       ensureDatabases = [ "nextcloud" ];
       ensureUsers = [{
         name = "nextcloud";
