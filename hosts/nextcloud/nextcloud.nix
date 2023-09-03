@@ -25,6 +25,30 @@
 #    };
   };
 
+   services.nginx = {
+      enable = true;
+
+      # Use recommended settings
+      recommendedGzipSettings = true;
+      recommendedOptimisation = true;
+      recommendedProxySettings = true;
+      recommendedTlsSettings = true;
+
+      # Only allow PFS-enabled ciphers with AES256
+  #    sslCiphers = "ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384";
+
+      # Setup Nextcloud virtual host to listen on ports
+      virtualHosts = {
+        ${config.services.nextcloud.hostName} = {
+           ## Force HTTP redirect to HTTPS
+           forceSSL = true;
+           ## LetsEncrypt
+           enableACME = true;
+        };
+        "localhost".listen = [ { addr = "127.0.0.1"; port = 8080; } ];
+      };
+    };
+
   services.mysql = {
     enable = true;
     package = pkgs.mariadb;
