@@ -9,12 +9,12 @@
     maxUploadSize = "1024M";
     config = {
       adminuser = "moonlander";
-      adminpassFile = "/var/lib/nextcloud/admin-pass";
+      adminpassFile = toString /var/lib/nextcloud/admin-pass;
       dbtype = "mysql";
       dbhost = "localhost";
       dbport = "3306";
       dbuser = "nextcloud";
-      dbpassFile = "/var/lib/nextcloud/db-pass";
+      dbpassFile = toString /var/lib/nextcloud/db-pass;
       dbname = "nextcloud";
       dbtableprefix = "oc_";
     };
