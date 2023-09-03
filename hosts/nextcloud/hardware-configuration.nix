@@ -5,25 +5,25 @@
 
 {
   imports =
-    [ (modulesPath + "/profiles/qemu-guest.nix")
-    ];
+      [ (modulesPath + "/profiles/qemu-guest.nix")
+      ];
 
-  boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "sd_mod" "sr_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+    boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "sd_mod" "sr_mod" ];
+    boot.initrd.kernelModules = [ ];
+    boot.kernelModules = [ "kvm-amd" ];
+    boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/36e84c5d-6bcd-43e7-b841-d5aa95cc0fb4";
-      fsType = "ext4";
-    };
+    fileSystems."/" =
+      { device = "/dev/disk/by-uuid/03d1fb57-0353-44d8-801e-e1eeacaed65a";
+        fsType = "ext4";
+      };
 
-  fileSystems."/srv" =
-    { device = "/dev/disk/by-uuid/29f3770a-5f96-4b34-8e0c-3f721f847487";
-      fsType = "ext4";
-    };
+    fileSystems."/srv" =
+      { device = "/dev/disk/by-uuid/cd86e8b4-dee5-4501-8235-14a53c6d4d43";
+        fsType = "ext4";
+      };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/73a30c65-c29a-4d6d-9e83-4cfb73320aec"; }
+    swapDevices = [
+      { device = "/dev/disk/by-uuid/12ffe00b-a1a0-4316-b8ab-78d4ad4212c0"; }
     ];
 }
