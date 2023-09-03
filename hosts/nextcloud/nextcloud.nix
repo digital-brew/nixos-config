@@ -3,7 +3,7 @@
 {
   services.nextcloud = {
     enable = true;
-    home = "/srv/lib/nextcloud";
+#    home = "/srv/lib/nextcloud";
     hostName = "cloud.digitalbrew.io";
     https = true;
     maxUploadSize = "1024M";
@@ -18,15 +18,16 @@
 #      dbname = "nextcloud";
 #      dbtableprefix = "oc_";
     };
-    caching = {
-      apcu = true;
-      memcached = true;
-      redis = false;
-    };
+#    caching = {
+#      apcu = true;
+#      memcached = true;
+#      redis = false;
+#    };
   };
 
   services.mysql = {
     enable = true;
     package = pkgs.mariadb;
+    user = "root";
   };
 }
