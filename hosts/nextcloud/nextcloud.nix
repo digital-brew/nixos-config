@@ -2,7 +2,7 @@
 
 {
   services.nextcloud = {
-    enable = false;
+    enable = true;
     home = "/srv/lib/nextcloud";
     hostName = "cloud.digitalbrew.io";
     https = true;
@@ -10,13 +10,13 @@
     config = {
       adminuser = "moonlander";
       adminpassFile = "/var/lib/nextcloud/admin-pass";
-      dbtype = "mysql";
-      dbhost = "localhost";
-      dbport = "3306";
-      dbuser = "nextcloud";
-      dbpassFile = "/var/lib/nextcloud/db-pass";
-      dbname = "nextcloud";
-      dbtableprefix = "oc_";
+#      dbtype = "mysql";
+#      dbhost = "localhost";
+#      dbport = "3306";
+#      dbuser = "nextcloud";
+#      dbpassFile = "/var/lib/nextcloud/db-pass";
+#      dbname = "nextcloud";
+#      dbtableprefix = "oc_";
     };
     caching = {
       apcu = true;
