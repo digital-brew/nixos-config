@@ -1,29 +1,11 @@
 { config, pkgs, lib, ... }:
 
 {
-  services.nextcloud = {
-    enable = true;
-    home = "/srv/lib/nextcloud";
-    hostName = "cloud.digitalbrew.io";
-    https = true;
-    maxUploadSize = "1024M";
-    config = {
-      adminuser = "moonlander";
-      adminpassFile = "/var/secrets/admin-pass";
-      dbtype = "mysql";
-      dbhost = "localhost";
-      dbport = "3306";
-      dbuser = "nextcloud";
-      dbpassFile = "/var/secrets/db-pass";
-      dbname = "nextcloud";
-      dbtableprefix = "oc_";
+
+    systemd.services."nextcloud-setup" = {
+      requires = ["postgresql.service"];
+      after    = ["postgresql.service"];
     };
-#    caching = {
-#      apcu = true;
-#      memcached = true;
-#      redis = false;
-#    };
-  };
 
     security.acme = {
       acceptTerms = true;
@@ -54,9 +36,57 @@
       };
     };
 
+    services.postgresql = {
+      package = pkgs.postgresql_15;
+      enable = true;
+      dataDir = "/var/lib/postgresql-15";
+      ensureDatabases = [ "nextcloud" ];
+      ensureUsers = [{
+        name = "nextcloud";
+        ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
+      }];
+    };
+
   services.mysql = {
     enable = true;
     package = pkgs.mariadb;
 #    user = "root";
   };
+
+  services.nextcloud = {
+      enable = true;
+      home = "/srv/lib/nextcloud";
+      hostName = "cloud.digitalbrew.io";
+      https = true;
+      maxUploadSize = "1024M";
+  #    config = {
+  #      adminuser = "moonlander";
+  #      adminpassFile = "/var/secrets/admin-pass";
+  #      dbtype = "mysql";
+  #      dbhost = "localhost";
+  #      dbport = "3306";
+  #      dbuser = "nextcloud";
+  #      dbpassFile = "/var/secrets/db-pass";
+  #      dbname = "nextcloud";
+  #      dbtableprefix = "oc_";
+  #    };
+      config = {
+        adminuser = "moonlander";
+        adminpassFile = "/var/secrets/admin-pass";
+        dbtype = "pgsql";
+        dbhost = "/run/postgresql";
+        dbport = "3306";
+        dbuser = "nextcloud";
+        dbpassFile = "/var/secrets/db-pass";
+        dbname = "nextcloud";
+        dbtableprefix = "oc_";
+        overwriteProtocol = "https";
+      };
+  #    caching = {
+  #      apcu = true;
+  #      memcached = true;
+  #      redis = false;
+  #    };
+    };
+
 }
