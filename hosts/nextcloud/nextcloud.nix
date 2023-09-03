@@ -2,7 +2,7 @@
 
 {
   services.nextcloud = {
-    enable = true;
+    enable = false;
     home = "/srv/lib/nextcloud";
     hostName = "cloud.digitalbrew.io";
     https = true;
