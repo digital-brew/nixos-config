@@ -25,6 +25,11 @@
 #    };
   };
 
+    security.acme = {
+      acceptTerms = true;
+      defaults.email = "rafal+nextcloud@digitalbrew.io";
+    };
+
    services.nginx = {
       enable = true;
 
