@@ -4,7 +4,7 @@
   services.nextcloud = {
     enable = true;
     home = "/srv/lib/nextcloud";
-    hostName = "cloud.digitalbrew.io";
+    hostname = "cloud.digitalbrew.io";
     https = true;
     maxUploadSize = "1024M";
     config = {
