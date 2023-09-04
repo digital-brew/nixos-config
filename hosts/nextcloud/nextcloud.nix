@@ -36,21 +36,26 @@
       };
     };
 
-    services.postgresql = {
-      package = pkgs.postgresql_15;
-      enable = true;
-      dataDir = "/var/lib/postgresql";
-      ensureDatabases = [ "nextcloud" ];
-      ensureUsers = [{
-        name = "nextcloud";
-        ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
-      }];
-    };
+#    services.postgresql = {
+#      package = pkgs.postgresql_15;
+#      enable = true;
+#      dataDir = "/var/lib/postgresql";
+#      ensureDatabases = [ "nextcloud" ];
+#      ensureUsers = [{
+#        name = "nextcloud";
+#        ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
+#      }];
+#    };
 
   services.mysql = {
     enable = true;
     package = pkgs.mariadb;
 #    user = "root";
+    ensureDatabases = [ "nextcloud" ];
+    ensureUsers = [{
+      name = "nextcloud";
+      ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
+    }];
   };
 
   services.nextcloud = {
@@ -60,27 +65,26 @@
       hostName = "cloud.digitalbrew.io";
       https = true;
       maxUploadSize = "1024M";
-  #    config = {
-  #      adminuser = "moonlander";
-  #      adminpassFile = "/var/secrets/admin-pass";
-  #      dbtype = "mysql";
-  #      dbhost = "localhost";
-  #      dbport = "3306";
-  #      dbuser = "nextcloud";
-  #      dbpassFile = "/var/secrets/db-pass";
-  #      dbname = "nextcloud";
-  #      dbtableprefix = "oc_";
-  #    };
       config = {
         adminuser = "moonlander";
         adminpassFile = "/var/secrets/admin-pass";
-        dbtype = "pgsql";
-        dbhost = "/run/postgresql/${config.services.postgresql.package.psqlSchema}";
+        dbtype = "mysql";
+        dbhost = "localhost";
         dbuser = "nextcloud";
         dbpassFile = "/var/secrets/db-pass";
         dbname = "nextcloud";
-        overwriteProtocol = "https";
+        dbtableprefix = "oc_";
       };
+#      config = {
+#        adminuser = "moonlander";
+#        adminpassFile = "/var/secrets/admin-pass";
+#        dbtype = "pgsql";
+#        dbhost = "/run/postgresql/${config.services.postgresql.package.psqlSchema}";
+#        dbuser = "nextcloud";
+#        dbpassFile = "/var/secrets/db-pass";
+#        dbname = "nextcloud";
+#        overwriteProtocol = "https";
+#      };
   #    caching = {
   #      apcu = true;
   #      memcached = true;
