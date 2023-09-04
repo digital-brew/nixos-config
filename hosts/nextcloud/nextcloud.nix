@@ -86,9 +86,9 @@
     hostname = "${config.services.nextcloud.hostName}";
     primaryDomain = "${config.services.nextcloud.hostName}";
     # Disable any sender validation checks
-    config = lib.concatStrings (
-      builtins.match "(.*)authorize_sender.*identity\n[ ]+\}(.*)" options.services.maddy.config.default
-    );
+#    config = lib.concatStrings (
+#      builtins.match "(.*)authorize_sender.*identity\n[ ]+\}(.*)" options.services.maddy.config.default
+#    );
   };
 
   # Configure local mail delivery
