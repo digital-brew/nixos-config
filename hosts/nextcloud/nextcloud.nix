@@ -3,8 +3,8 @@
 {
 
     systemd.services."nextcloud-setup" = {
-      requires = ["postgresql.service"];
-      after    = ["postgresql.service"];
+      requires = ["mysql.service"];
+      after    = ["mysql.service"];
     };
 
     security.acme = {
