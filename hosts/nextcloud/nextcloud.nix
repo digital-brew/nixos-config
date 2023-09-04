@@ -81,27 +81,27 @@
   };
 
  # Setup mail server
-  services.maddy = {
-    enable = true;
-    hostname = "${config.services.nextcloud.hostName}";
-    primaryDomain = "${config.services.nextcloud.hostName}";
-    # Disable any sender validation checks
-#    config = lib.concatStrings (
-#      builtins.match "(.*)authorize_sender.*identity\n[ ]+\}(.*)" options.services.maddy.config.default
-#    );
-  };
+#  services.maddy = {
+#    enable = true;
+#    hostname = "digitalbrew.io";
+#    primaryDomain = "digitalbrew.io";
+#    # Disable any sender validation checks
+##    config = lib.concatStrings (
+##      builtins.match "(.*)authorize_sender.*identity\n[ ]+\}(.*)" options.services.maddy.config.default
+##    );
+#  };
 
   # Configure local mail delivery
-  programs.msmtp = {
-    enable = true;
-    accounts.default = {
-      host = "${config.services.nextcloud.hostName}";
-      port = 587;
-      auth = "login";
-      tls = "off";
-      from = "rafal+nextcloud@digitalbrew.io";
-      user = "rafal+nextcloud@digitalbrew.io";
-      password = "GJTerbbYaLpf8gi8T7utMVePmqiHBiQ4P9iaQwFAK9ZYUrrB";
-    };
-  };
+#  programs.msmtp = {
+#    enable = true;
+#    accounts.default = {
+#      host = "digitalbrew.io";
+#      port = 465;
+#      auth = "login";
+#      tls = "off";
+#      from = "info@digitalbrew.io";
+#      user = "info@digitalbrew.io";
+#      password = "dB2FYkeCR!GHvP@HJyTEcLTF2Wu!q-n";
+#    };
+#  };
 }
