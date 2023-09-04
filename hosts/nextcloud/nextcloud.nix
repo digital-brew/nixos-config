@@ -39,7 +39,7 @@
     services.postgresql = {
       package = pkgs.postgresql_15;
       enable = true;
-      dataDir = "/var/lib/postgresql/${config.services.postgresql.package.psqlSchema}";
+      dataDir = "/var/lib/postgresql";
       ensureDatabases = [ "nextcloud" ];
       ensureUsers = [{
         name = "nextcloud";
@@ -75,7 +75,7 @@
         adminuser = "moonlander";
         adminpassFile = "/var/secrets/admin-pass";
         dbtype = "pgsql";
-        dbhost = "/run/postgresql";
+        dbhost = "/run/postgresql/${config.services.postgresql.package.psqlSchema}";
         dbuser = "nextcloud";
         dbpassFile = "/var/secrets/db-pass";
         dbname = "nextcloud";
