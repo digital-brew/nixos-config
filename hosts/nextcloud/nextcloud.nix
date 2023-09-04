@@ -13,7 +13,7 @@
     # Set what time makes sense for you
     autoUpdateApps.startAt = "03:00:00";
     extraApps = with config.services.nextcloud.package.packages.apps; {
-      inherit news contacts calendar tasks;
+      inherit news contacts calendar tasks mail;
     };
 #    extraApps = {
 #      mail = pkgs.fetchNextcloudApp rec {
