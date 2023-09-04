@@ -66,6 +66,11 @@
 #      };
 #    };
     extraAppsEnable = true;
+#    caching = {
+#      apcu = true;
+#      memcached = true;
+#      redis = false;
+#    };
     config = {
       adminuser = "moonlander";
       adminpassFile = "/var/secrets/admin-pass";
