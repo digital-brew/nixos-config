@@ -69,11 +69,11 @@
         adminuser = "moonlander";
         adminpassFile = "/var/secrets/admin-pass";
         dbtype = "mysql";
-        dbhost = "localhost";
         dbuser = "nextcloud";
-        dbpassFile = "/var/secrets/db-pass";
         dbname = "nextcloud";
-        dbtableprefix = "oc_";
+#        dbhost = "localhost";
+#        dbpassFile = "/var/secrets/db-pass";
+#        dbtableprefix = "oc_";
       };
 #      config = {
 #        adminuser = "moonlander";
