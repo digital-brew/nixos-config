@@ -2,10 +2,10 @@
 
 {
 
-#    systemd.services."nextcloud-setup" = {
-#      requires = ["mysql.service"];
-#      after    = ["mysql.service"];
-#    };
+    systemd.services."nextcloud-setup" = {
+      requires = ["mysql.service"];
+      after = ["mysql.service"];
+    };
 
     security.acme = {
       acceptTerms = true;
@@ -51,11 +51,14 @@
     enable = true;
     package = pkgs.mariadb;
 #    user = "root";
-#    ensureDatabases = [ "nextcloud" ];
-#    ensureUsers = [{
-#      name = "nextcloud";
-#      ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
-#    }];
+    ensureDatabases = [ "nextcloud" ];
+    ensureUsers = [
+     { name = "nextcloud";
+       ensurePermissions = {
+        "nextcloud.*" = "ALL PRIVILEGES";
+        };
+     }
+    ];
   };
 
   services.nextcloud = {
