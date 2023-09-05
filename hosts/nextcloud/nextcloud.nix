@@ -29,7 +29,7 @@ in
       };
       calendar = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/nextcloud-releases/calendar/releases/download/v4.4.4/calendar-v4.4.4.tar.gz";
-        sha256 = "0000000000000000000000000000000000000000000000000000";
+        sha256 = "sha256-ASHF9mT2EHoanwqUSDstXQmmQDIQA5WsNuGk74poRhk=";
       };
       notes = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/nextcloud-releases/notes/releases/download/v4.8.1/notes.tar.gz";
