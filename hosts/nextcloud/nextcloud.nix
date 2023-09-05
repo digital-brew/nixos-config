@@ -25,7 +25,7 @@
 #        sha256 = "sha256-eTc51pkg3OdHJB7X4/hD39Ce+9vKzw1nlJ7BhPOzdy0=";
 #      };
 #    };
-    extraAppsEnable = true;
+    extraAppsEnable = false;
 #    caching = {
 #      apcu = true;
 #      memcached = true;
