@@ -45,7 +45,7 @@ in
       };
       mail = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/nextcloud-releases/mail/releases/download/v3.3.1/mail-v3.3.1.tar.gz";
-        sha256 = "0000000000000000000000000000000000000000000000000000";
+        sha256 = "sha256-ASHF9mT2EHoanwqUSDstXQmmQDIQA5WsNuGk74poRhk=";
       };
       breezedark = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/mwalbeck/nextcloud-breeze-dark/releases/download/v26.0.0/breezedark.tar.gz";
