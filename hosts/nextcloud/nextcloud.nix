@@ -14,8 +14,6 @@
     autoUpdateApps.startAt = "03:00:00";
     extraApps = with config.services.nextcloud.package.packages.apps; {
       inherit news contacts calendar tasks mail notes;
-    };
-    extraApps = {
       customcss = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/juliushaertl/theming_customcss/releases/download/v1.14.0/theming_customcss.tar.gz";
         sha256 = "0000000000000000000000000000000000000000000000000000";
@@ -29,7 +27,7 @@
 #        sha256 = "sha256-eTc51pkg3OdHJB7X4/hD39Ce+9vKzw1nlJ7BhPOzdy0=";
 #      };
     };
-    extraAppsEnable = true;
+     extraAppsEnable = true;
 #    caching = {
 #      apcu = true;
 #      memcached = true;
