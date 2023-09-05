@@ -25,7 +25,7 @@ in
 #      };
       mail = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/nextcloud-releases/mail/releases/download/v3.4.0-rc.1/mail-v3.4.0-rc.1.tar.gz";
-        sha256 = "0000000000000000000000000000000000000000000000000000";
+        sha256 = "sha256-/0TzLHFX0+QlN15UaBzIQWeng/uQ9YKhDLVBHsqPCYQ=";
       };
       contacts = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/nextcloud-releases/contacts/releases/download/v5.4.0-rc1/contacts-v5.4.0-rc1.tar.gz";
