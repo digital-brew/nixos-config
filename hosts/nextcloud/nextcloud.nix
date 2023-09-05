@@ -18,7 +18,6 @@ in
     # Set what time makes sense for you
     autoUpdateApps.startAt = "03:00:00";
     extraApps = {
-#      inherit news contacts calendar tasks mail notes;
       theming_customcss = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/juliushaertl/theming_customcss/releases/download/v1.14.0/theming_customcss.tar.gz";
         sha256 = "sha256-tNTr4teb5K9GGERzyxksowNe4EVYbhQYNjvgaQ0B9JM=";
@@ -69,7 +68,7 @@ in
       };
       Cookbook = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/nextcloud/cookbook/releases/download/v0.10.2/Cookbook-0.10.2.tar.gz";
-        sha256 = "0000000000000000000000000000000000000000000000000000";
+        sha256 = "sha256-XgBwUr26qW6wvqhrnhhhhcN4wkI+eXDHnNSm1HDbP6M=";
       };
     };
      extraAppsEnable = true;
