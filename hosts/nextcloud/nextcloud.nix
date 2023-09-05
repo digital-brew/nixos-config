@@ -50,10 +50,10 @@ in
 #        url = "https://github.com/mwalbeck/nextcloud-breeze-dark/releases/download/v26.0.0/breezedark.tar.gz";
 #        sha256 = "sha256-ASHF9mT2EHoanwqUSDstXQmmQDIQA5WsNuGk74poRhk=";
 #      };
-#      cospend = pkgs.fetchNextcloudApp rec {
-#        url = "https://github.com/julien-nc/cospend-nc/releases/download/v1.5.10/cospend-1.5.10.tar.gz";
-#        sha256 = "sha256-ASHF9mT2EHoanwqUSDstXQmmQDIQA5WsNuGk74poRhk=";
-#      };
+      cospend = pkgs.fetchNextcloudApp rec {
+        url = "https://github.com/julien-nc/cospend-nc/releases/download/v1.5.10/cospend-1.5.10.tar.gz";
+        sha256 = "sha256-ASHF9mT2EHoanwqUSDstXQmmQDIQA5WsNuGk74poRhk=";
+      };
 #      money = pkgs.fetchNextcloudApp rec {
 #        url = "https://github.com/powerpaul17/nc_money/releases/download/v0.20.0/money.tar.gz";
 #        sha256 = "sha256-ASHF9mT2EHoanwqUSDstXQmmQDIQA5WsNuGk74poRhk=";
