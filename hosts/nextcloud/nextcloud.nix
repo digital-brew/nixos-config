@@ -53,7 +53,7 @@ in
       };
       cospend = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/julien-nc/cospend-nc/releases/download/v1.5.10/cospend-1.5.10.tar.gz";
-        sha256 = "0000000000000000000000000000000000000000000000000000";
+        sha256 = "sha256-ASHF9mT2EHoanwqUSDstXQmmQDIQA5WsNuGk74poRhk=";
       };
       money = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/powerpaul17/nc_money/releases/download/v0.20.0/money.tar.gz";
