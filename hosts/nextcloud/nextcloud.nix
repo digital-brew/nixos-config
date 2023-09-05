@@ -35,7 +35,7 @@ in
         url = "https://github.com/nextcloud-releases/calendar/releases/download/v4.5.0-rc1/calendar-v4.5.0-rc1.tar.gz";
         sha256 = "0000000000000000000000000000000000000000000000000000";
       };
-      calendar = pkgs.fetchNextcloudApp rec {
+      notes = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/nextcloud-releases/notes/releases/download/v4.8.1/notes.tar.gz";
         sha256 = "0000000000000000000000000000000000000000000000000000";
       };
