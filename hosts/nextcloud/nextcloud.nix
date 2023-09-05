@@ -23,21 +23,49 @@ in
         url = "https://github.com/juliushaertl/theming_customcss/releases/download/v1.14.0/theming_customcss.tar.gz";
         sha256 = "sha256-tNTr4teb5K9GGERzyxksowNe4EVYbhQYNjvgaQ0B9JM=";
       };
-      mail = pkgs.fetchNextcloudApp rec {
-        url = "https://github.com/nextcloud-releases/mail/releases/download/v3.4.0-rc.1/mail-v3.4.0-rc.1.tar.gz";
-        sha256 = "sha256-/0TzLHFX0+QlN15UaBzIQWeng/uQ9YKhDLVBHsqPCYQ=";
-      };
       contacts = pkgs.fetchNextcloudApp rec {
-        url = "https://github.com/nextcloud-releases/contacts/releases/download/v5.4.0-rc1/contacts-v5.4.0-rc1.tar.gz";
-        sha256 = "sha256-/0TzLHFX0+QlN15UaBzIQWeng/uQ9YKhDLVBHsqPCYQ=";
+        url = "https://github.com/nextcloud-releases/contacts/releases/download/v5.3.2/contacts-v5.3.2.tar.gz";
+        sha256 = "0000000000000000000000000000000000000000000000000000";
       };
       calendar = pkgs.fetchNextcloudApp rec {
-        url = "https://github.com/nextcloud-releases/calendar/releases/download/v4.5.0-rc1/calendar-v4.5.0-rc1.tar.gz";
-        sha256 = "sha256-7GkTGyGTvtDbZsq/zOdbBE7xh6DZO183W6I5XX1ekbw=";
+        url = "https://github.com/nextcloud-releases/calendar/releases/download/v4.4.4/calendar-v4.4.4.tar.gz";
+        sha256 = "0000000000000000000000000000000000000000000000000000";
       };
       notes = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/nextcloud-releases/notes/releases/download/v4.8.1/notes.tar.gz";
         sha256 = "sha256-7GkTGyGTvtDbZsq/zOdbBE7xh6DZO183W6I5XX1ekbw=";
+      };
+      deck = pkgs.fetchNextcloudApp rec {
+        url = "https://github.com/nextcloud-releases/deck/releases/download/v1.10.0/deck-v1.10.0.tar.gz";
+        sha256 = "0000000000000000000000000000000000000000000000000000";
+      };
+      groupfolders = pkgs.fetchNextcloudApp rec {
+        url = "https://github.com/nextcloud-releases/groupfolders/releases/download/v15.0.2/groupfolders-v15.0.2.tar.gz";
+        sha256 = "0000000000000000000000000000000000000000000000000000";
+      };
+      mail = pkgs.fetchNextcloudApp rec {
+        url = "https://github.com/nextcloud-releases/mail/releases/download/v3.3.1/mail-v3.3.1.tar.gz";
+        sha256 = "0000000000000000000000000000000000000000000000000000";
+      };
+      breezedark = pkgs.fetchNextcloudApp rec {
+        url = "https://github.com/mwalbeck/nextcloud-breeze-dark/releases/download/v26.0.0/breezedark.tar.gz";
+        sha256 = "0000000000000000000000000000000000000000000000000000";
+      };
+      cospend = pkgs.fetchNextcloudApp rec {
+        url = "https://github.com/julien-nc/cospend-nc/releases/download/v1.5.10/cospend-1.5.10.tar.gz";
+        sha256 = "0000000000000000000000000000000000000000000000000000";
+      };
+      money = pkgs.fetchNextcloudApp rec {
+        url = "https://github.com/powerpaul17/nc_money/releases/download/v0.20.0/money.tar.gz";
+        sha256 = "0000000000000000000000000000000000000000000000000000";
+      };
+      appointments = pkgs.fetchNextcloudApp rec {
+        url = "https://github.com/SergeyMosin/Appointments/raw/v1.15.3/build/artifacts/appstore/appointments.tar.gz";
+        sha256 = "0000000000000000000000000000000000000000000000000000";
+      };
+      weather = pkgs.fetchNextcloudApp rec {
+        url = "https://github.com/nextcloud/weather/releases/download/1.7.7/weather-1.7.7.tar.gz";
+        sha256 = "0000000000000000000000000000000000000000000000000000";
       };
     };
      extraAppsEnable = true;
