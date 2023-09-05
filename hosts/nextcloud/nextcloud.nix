@@ -58,10 +58,10 @@ in
         url = "https://github.com/powerpaul17/nc_money/releases/download/v0.20.0/money.tar.gz";
         sha256 = "sha256-ASHF9mT2EHoanwqUSDstXQmmQDIQA5WsNuGk74poRhk=";
       };
-      appointments = pkgs.fetchNextcloudApp rec {
-        url = "https://github.com/SergeyMosin/Appointments/raw/v1.15.3/build/artifacts/appstore/appointments.tar.gz";
-        sha256 = "sha256-XgBwUr26qW6wvqhrnhhhhcN4wkI+eXDHnNSm1HDbP6M=";
-      };
+#      appointments = pkgs.fetchNextcloudApp rec {
+#        url = "https://github.com/SergeyMosin/Appointments/raw/v1.15.3/build/artifacts/appstore/appointments.tar.gz";
+#        sha256 = "sha256-XgBwUr26qW6wvqhrnhhhhcN4wkI+eXDHnNSm1HDbP6M=";
+#      };
 #      weather = pkgs.fetchNextcloudApp rec {
 #        url = "https://github.com/nextcloud/weather/releases/download/1.7.7/weather-1.7.7.tar.gz";
 #        sha256 = "sha256-XgBwUr26qW6wvqhrnhhhhcN4wkI+eXDHnNSm1HDbP6M=";
