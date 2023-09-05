@@ -25,7 +25,7 @@ in
       };
       contacts = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/nextcloud-releases/contacts/releases/download/v5.3.2/contacts-v5.3.2.tar.gz";
-        sha256 = "0000000000000000000000000000000000000000000000000000";
+        sha256 = "sha256-aG2wD4ioDYXwbyzZBpsEzz0PNvuF95V0JdJNw+kbMzk=";
       };
       calendar = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/nextcloud-releases/calendar/releases/download/v4.4.4/calendar-v4.4.4.tar.gz";
