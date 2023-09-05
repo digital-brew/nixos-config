@@ -57,7 +57,7 @@ in
       };
       money = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/powerpaul17/nc_money/releases/download/v0.20.0/money.tar.gz";
-        sha256 = "0000000000000000000000000000000000000000000000000000";
+        sha256 = "sha256-ASHF9mT2EHoanwqUSDstXQmmQDIQA5WsNuGk74poRhk=";
       };
       appointments = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/SergeyMosin/Appointments/raw/v1.15.3/build/artifacts/appstore/appointments.tar.gz";
