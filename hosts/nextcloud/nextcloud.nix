@@ -19,10 +19,10 @@ in
     autoUpdateApps.startAt = "03:00:00";
     extraApps = {
 #      inherit news contacts calendar tasks mail notes;
-      customcss = pkgs.fetchNextcloudApp rec {
-        url = "https://github.com/juliushaertl/theming_customcss/releases/download/v1.14.0/theming_customcss.tar.gz";
-        sha256 = "sha256-tNTr4teb5K9GGERzyxksowNe4EVYbhQYNjvgaQ0B9JM=";
-      };
+#      customcss = pkgs.fetchNextcloudApp rec {
+#        url = "https://github.com/juliushaertl/theming_customcss/releases/download/v1.14.0/theming_customcss.tar.gz";
+#        sha256 = "sha256-tNTr4teb5K9GGERzyxksowNe4EVYbhQYNjvgaQ0B9JM=";
+#      };
       mail = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/nextcloud-releases/mail/releases/download/v1.14.1/mail-v1.14.1.tar.gz";
         sha256 = "sha256-sQUsYC3cco6fj9pF2l1NrCEhA3KJoOvJRhXvBlVpNqo=";
