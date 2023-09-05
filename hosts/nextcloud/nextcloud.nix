@@ -41,7 +41,7 @@ in
       };
       groupfolders = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/nextcloud-releases/groupfolders/releases/download/v15.0.2/groupfolders-v15.0.2.tar.gz";
-        sha256 = "0000000000000000000000000000000000000000000000000000";
+        sha256 = "sha256-ASHF9mT2EHoanwqUSDstXQmmQDIQA5WsNuGk74poRhk=";
       };
       mail = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/nextcloud-releases/mail/releases/download/v3.3.1/mail-v3.3.1.tar.gz";
