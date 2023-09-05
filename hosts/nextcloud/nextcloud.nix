@@ -19,10 +19,10 @@ in
     autoUpdateApps.startAt = "03:00:00";
     extraApps = {
 #      inherit news contacts calendar tasks mail notes;
-#      customcss = pkgs.fetchNextcloudApp rec {
-#        url = "https://github.com/juliushaertl/theming_customcss/releases/download/v1.14.0/theming_customcss.tar.gz";
-#        sha256 = "sha256-tNTr4teb5K9GGERzyxksowNe4EVYbhQYNjvgaQ0B9JM=";
-#      };
+      theming_customcss = pkgs.fetchNextcloudApp rec {
+        url = "https://github.com/juliushaertl/theming_customcss/releases/download/v1.14.0/theming_customcss.tar.gz";
+        sha256 = "sha256-tNTr4teb5K9GGERzyxksowNe4EVYbhQYNjvgaQ0B9JM=";
+      };
       mail = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/nextcloud-releases/mail/releases/download/v3.4.0-rc.1/mail-v3.4.0-rc.1.tar.gz";
         sha256 = "sha256-/0TzLHFX0+QlN15UaBzIQWeng/uQ9YKhDLVBHsqPCYQ=";
@@ -30,6 +30,14 @@ in
       contacts = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/nextcloud-releases/contacts/releases/download/v5.4.0-rc1/contacts-v5.4.0-rc1.tar.gz";
         sha256 = "sha256-/0TzLHFX0+QlN15UaBzIQWeng/uQ9YKhDLVBHsqPCYQ=";
+      };
+      calendar = pkgs.fetchNextcloudApp rec {
+        url = "https://github.com/nextcloud-releases/calendar/releases/download/v4.5.0-rc1/calendar-v4.5.0-rc1.tar.gz";
+        sha256 = "0000000000000000000000000000000000000000000000000000";
+      };
+      calendar = pkgs.fetchNextcloudApp rec {
+        url = "https://github.com/nextcloud-releases/notes/releases/download/v4.8.1/notes.tar.gz";
+        sha256 = "0000000000000000000000000000000000000000000000000000";
       };
     };
      extraAppsEnable = true;
