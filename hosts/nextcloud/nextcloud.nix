@@ -24,12 +24,12 @@ in
 #        sha256 = "sha256-tNTr4teb5K9GGERzyxksowNe4EVYbhQYNjvgaQ0B9JM=";
 #      };
       mail = pkgs.fetchNextcloudApp rec {
-        url = "https://github.com/nextcloud-releases/mail/releases/download/v1.14.1/mail-v1.14.1.tar.gz";
-        sha256 = "sha256-sQUsYC3cco6fj9pF2l1NrCEhA3KJoOvJRhXvBlVpNqo=";
+        url = "https://github.com/nextcloud-releases/mail/releases/download/v3.4.0-rc.1/mail-v3.4.0-rc.1.tar.gz";
+        sha256 = "0000000000000000000000000000000000000000000000000000";
       };
       contacts = pkgs.fetchNextcloudApp rec {
-        url = "https://github.com/nextcloud-releases/contacts/releases/download/v4.2.2/contacts-v4.2.2.tar.gz";
-        sha256 = "sha256-eTc51pkg3OdHJB7X4/hD39Ce+9vKzw1nlJ7BhPOzdy0=";
+        url = "https://github.com/nextcloud-releases/contacts/releases/download/v5.4.0-rc1/contacts-v5.4.0-rc1.tar.gz";
+        sha256 = "0000000000000000000000000000000000000000000000000000";
       };
     };
      extraAppsEnable = true;
