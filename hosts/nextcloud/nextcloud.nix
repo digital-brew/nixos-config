@@ -37,7 +37,7 @@ in
       };
       notes = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/nextcloud-releases/notes/releases/download/v4.8.1/notes.tar.gz";
-        sha256 = "0000000000000000000000000000000000000000000000000000";
+        sha256 = "sha256-7GkTGyGTvtDbZsq/zOdbBE7xh6DZO183W6I5XX1ekbw=";
       };
     };
      extraAppsEnable = true;
