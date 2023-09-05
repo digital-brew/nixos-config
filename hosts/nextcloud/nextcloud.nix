@@ -67,6 +67,10 @@ in
         url = "https://github.com/nextcloud/weather/releases/download/1.7.7/weather-1.7.7.tar.gz";
         sha256 = "0000000000000000000000000000000000000000000000000000";
       };
+      Cookbook = pkgs.fetchNextcloudApp rec {
+        url = "https://github.com/nextcloud/cookbook/releases/download/v0.10.2/Cookbook-0.10.2.tar.gz";
+        sha256 = "0000000000000000000000000000000000000000000000000000";
+      };
     };
      extraAppsEnable = true;
 #    caching = {
