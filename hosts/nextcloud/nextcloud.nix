@@ -22,10 +22,10 @@ in
         url = "https://github.com/juliushaertl/theming_customcss/releases/download/v1.14.0/theming_customcss.tar.gz";
         sha256 = "sha256-tNTr4teb5K9GGERzyxksowNe4EVYbhQYNjvgaQ0B9JM=";
       };
-      contacts = pkgs.fetchNextcloudApp rec {
-        url = "https://github.com/nextcloud-releases/contacts/releases/download/v5.3.2/contacts-v5.3.2.tar.gz";
-        sha256 = "sha256-aG2wD4ioDYXwbyzZBpsEzz0PNvuF95V0JdJNw+kbMzk=";
-      };
+#      contacts = pkgs.fetchNextcloudApp rec {
+#        url = "https://github.com/nextcloud-releases/contacts/releases/download/v5.3.2/contacts-v5.3.2.tar.gz";
+#        sha256 = "sha256-aG2wD4ioDYXwbyzZBpsEzz0PNvuF95V0JdJNw+kbMzk=";
+#      };
       calendar = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/nextcloud-releases/calendar/releases/download/v4.4.4/calendar-v4.4.4.tar.gz";
         sha256 = "sha256-ASHF9mT2EHoanwqUSDstXQmmQDIQA5WsNuGk74poRhk=";
