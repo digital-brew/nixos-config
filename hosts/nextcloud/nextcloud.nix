@@ -12,9 +12,9 @@
     autoUpdateApps.enable = true;
     # Set what time makes sense for you
     autoUpdateApps.startAt = "03:00:00";
-    extraApps = with config.services.nextcloud.package.packages.apps; {
-      inherit news contacts calendar tasks mail;
-    };
+#    extraApps = with config.services.nextcloud.package.packages.apps; {
+#      inherit news contacts calendar tasks mail;
+#    };
 #    extraApps = {
 #      mail = pkgs.fetchNextcloudApp rec {
 #        url = "https://github.com/nextcloud-releases/mail/releases/download/v1.14.1/mail-v1.14.1.tar.gz";
