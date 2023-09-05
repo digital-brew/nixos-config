@@ -46,26 +46,26 @@ in
         url = "https://github.com/nextcloud-releases/mail/releases/download/v3.3.1/mail-v3.3.1.tar.gz";
         sha256 = "sha256-ASHF9mT2EHoanwqUSDstXQmmQDIQA5WsNuGk74poRhk=";
       };
-      breezedark = pkgs.fetchNextcloudApp rec {
-        url = "https://github.com/mwalbeck/nextcloud-breeze-dark/releases/download/v26.0.0/breezedark.tar.gz";
-        sha256 = "sha256-ASHF9mT2EHoanwqUSDstXQmmQDIQA5WsNuGk74poRhk=";
-      };
-      cospend = pkgs.fetchNextcloudApp rec {
-        url = "https://github.com/julien-nc/cospend-nc/releases/download/v1.5.10/cospend-1.5.10.tar.gz";
-        sha256 = "sha256-ASHF9mT2EHoanwqUSDstXQmmQDIQA5WsNuGk74poRhk=";
-      };
-      money = pkgs.fetchNextcloudApp rec {
-        url = "https://github.com/powerpaul17/nc_money/releases/download/v0.20.0/money.tar.gz";
-        sha256 = "sha256-ASHF9mT2EHoanwqUSDstXQmmQDIQA5WsNuGk74poRhk=";
-      };
-      appointments = pkgs.fetchNextcloudApp rec {
-        url = "https://github.com/SergeyMosin/Appointments/raw/v1.15.3/build/artifacts/appstore/appointments.tar.gz";
-        sha256 = "sha256-XgBwUr26qW6wvqhrnhhhhcN4wkI+eXDHnNSm1HDbP6M=";
-      };
-      weather = pkgs.fetchNextcloudApp rec {
-        url = "https://github.com/nextcloud/weather/releases/download/1.7.7/weather-1.7.7.tar.gz";
-        sha256 = "sha256-XgBwUr26qW6wvqhrnhhhhcN4wkI+eXDHnNSm1HDbP6M=";
-      };
+#      breezedark = pkgs.fetchNextcloudApp rec {
+#        url = "https://github.com/mwalbeck/nextcloud-breeze-dark/releases/download/v26.0.0/breezedark.tar.gz";
+#        sha256 = "sha256-ASHF9mT2EHoanwqUSDstXQmmQDIQA5WsNuGk74poRhk=";
+#      };
+#      cospend = pkgs.fetchNextcloudApp rec {
+#        url = "https://github.com/julien-nc/cospend-nc/releases/download/v1.5.10/cospend-1.5.10.tar.gz";
+#        sha256 = "sha256-ASHF9mT2EHoanwqUSDstXQmmQDIQA5WsNuGk74poRhk=";
+#      };
+#      money = pkgs.fetchNextcloudApp rec {
+#        url = "https://github.com/powerpaul17/nc_money/releases/download/v0.20.0/money.tar.gz";
+#        sha256 = "sha256-ASHF9mT2EHoanwqUSDstXQmmQDIQA5WsNuGk74poRhk=";
+#      };
+#      appointments = pkgs.fetchNextcloudApp rec {
+#        url = "https://github.com/SergeyMosin/Appointments/raw/v1.15.3/build/artifacts/appstore/appointments.tar.gz";
+#        sha256 = "sha256-XgBwUr26qW6wvqhrnhhhhcN4wkI+eXDHnNSm1HDbP6M=";
+#      };
+#      weather = pkgs.fetchNextcloudApp rec {
+#        url = "https://github.com/nextcloud/weather/releases/download/1.7.7/weather-1.7.7.tar.gz";
+#        sha256 = "sha256-XgBwUr26qW6wvqhrnhhhhcN4wkI+eXDHnNSm1HDbP6M=";
+#      };
 #      Cookbook = pkgs.fetchNextcloudApp rec {
 #        url = "https://github.com/nextcloud/cookbook/releases/download/v0.10.2/Cookbook-0.10.2.tar.gz";
 #        sha256 = "sha256-XgBwUr26qW6wvqhrnhhhhcN4wkI+eXDHnNSm1HDbP6M=";
