@@ -1,7 +1,7 @@
 { pkgs, ...}:
 
 {
-  service.samba = {
+  services.samba = {
     enable = true;
     shares = {
       public =
@@ -13,4 +13,9 @@
         };
     };
   };
+
+  # Curiously, `services.samba` does not automatically open
+  # the needed ports in the firewall.
+  networking.firewall.allowedTCPPorts = [ 445 139 ];
+  networking.firewall.allowedUDPPorts = [ 137 138 ];
 }

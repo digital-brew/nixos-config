@@ -12,10 +12,14 @@
     autoUpdateApps.enable = true;
     # Set what time makes sense for you
     autoUpdateApps.startAt = "03:00:00";
-#    extraApps = with config.services.nextcloud.package.packages.apps; {
-#      inherit news contacts calendar tasks mail;
-#    };
-#    extraApps = {
+    extraApps = with config.services.nextcloud.package.packages.apps; {
+      inherit news contacts calendar tasks mail notes;
+    };
+    extraApps = {
+      customcss = pkgs.fetchNextcloudApp rec {
+        url = "https://github.com/juliushaertl/theming_customcss/releases/download/v1.14.0/theming_customcss.tar.gz";
+        sha256 = "0000000000000000000000000000000000000000000000000000";
+      };
 #      mail = pkgs.fetchNextcloudApp rec {
 #        url = "https://github.com/nextcloud-releases/mail/releases/download/v1.14.1/mail-v1.14.1.tar.gz";
 #        sha256 = "sha256-sQUsYC3cco6fj9pF2l1NrCEhA3KJoOvJRhXvBlVpNqo=";
@@ -24,8 +28,8 @@
 #        url = "https://github.com/nextcloud-releases/contacts/releases/download/v4.2.2/contacts-v4.2.2.tar.gz";
 #        sha256 = "sha256-eTc51pkg3OdHJB7X4/hD39Ce+9vKzw1nlJ7BhPOzdy0=";
 #      };
-#    };
-    extraAppsEnable = false;
+    };
+    extraAppsEnable = true;
 #    caching = {
 #      apcu = true;
 #      memcached = true;
