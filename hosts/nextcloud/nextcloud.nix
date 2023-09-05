@@ -37,7 +37,7 @@ in
       };
       deck = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/nextcloud-releases/deck/releases/download/v1.10.0/deck-v1.10.0.tar.gz";
-        sha256 = "0000000000000000000000000000000000000000000000000000";
+        sha256 = "sha256-ASHF9mT2EHoanwqUSDstXQmmQDIQA5WsNuGk74poRhk=";
       };
       groupfolders = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/nextcloud-releases/groupfolders/releases/download/v15.0.2/groupfolders-v15.0.2.tar.gz";
