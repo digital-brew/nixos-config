@@ -58,6 +58,10 @@ in
         url = "https://github.com/powerpaul17/nc_money/releases/download/v0.20.0/money.tar.gz";
         sha256 = "sha256-ASHF9mT2EHoanwqUSDstXQmmQDIQA5WsNuGk74poRhk=";
       };
+      side_menu = pkgs.fetchNextcloudApp rec {
+        url = "https://gitnet.fr/attachments/9c9be610-5d3b-414d-a523-396c237c15ef";
+        sha256 = "0000000000000000000000000000000000000000000000000000";
+      };
 #      appointments = pkgs.fetchNextcloudApp rec {
 #        url = "https://github.com/SergeyMosin/Appointments/raw/v1.15.3/build/artifacts/appstore/appointments.tar.gz";
 #        sha256 = "sha256-XgBwUr26qW6wvqhrnhhhhcN4wkI+eXDHnNSm1HDbP6M=";
