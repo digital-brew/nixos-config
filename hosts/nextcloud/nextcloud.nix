@@ -60,7 +60,7 @@ in
       };
       apporder = pkgs.fetchNextcloudApp rec {
         url = "https://github.com/juliushaertl/apporder/releases/download/v0.15.0/apporder.tar.gz";
-        sha256 = "0000000000000000000000000000000000000000000000000000";
+        sha256 = "sha256-JtWkZSlmMD8Cki5UVdHV7+wKQ+ldQMF36cN7THnbods=";
       };
 #      appointments = pkgs.fetchNextcloudApp rec {
 #        url = "https://github.com/SergeyMosin/Appointments/raw/v1.15.3/build/artifacts/appstore/appointments.tar.gz";
