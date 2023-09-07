@@ -78,11 +78,11 @@ in
       sddm-theme-sugar-dark.default                           # sddm theme
       sddm-theme-sugar-candy.default                          # sddm theme
       trellis-cli.default
-      browserstack.default
-      pkgs.libsForQt5.sddm-kcm                        # sddm theme installer
-      pkgs.libsForQt5.kdeconnect-kde
-      pkgs.libsForQt5.gwenview
-      pkgs.libsForQt5.plasma-thunderbolt              # plasma integration for controlling Thunderbolt devicesx
+#      browserstack.default
+#      pkgs.libsForQt5.sddm-kcm                        # sddm theme installer
+#      pkgs.libsForQt5.kdeconnect-kde
+#      pkgs.libsForQt5.gwenview
+#      pkgs.libsForQt5.plasma-thunderbolt              # plasma integration for controlling Thunderbolt devicesx
       pkgs.xclip                                      # command line interface to X selections (clipboard)
       pkgs.xsel                                       # manipulate the X selection
       pkgs.xfce.thunar                                # xfce file manager
@@ -104,7 +104,7 @@ in
       pkgs.figma-linux
       pkgs.vlc
       pkgs.libreoffice
-      pkgs.# qmk
+      pkgs.qmk
       pkgs.spotifyd
       pkgs.xkeysnail
       pkgs.yubioath-flutter
@@ -118,11 +118,6 @@ in
       pkgs.pw-volume
       pkgs.xdotool
       pkgs.google-fonts
-      pkgs.# swappy
-      pkgs.# swaylock
-      pkgs.# wl-clipboard
-      pkgs.# wlr-randr
-      pkgs.# wofi
       pkgs.krita
       pkgs.inkscape
       pkgs.blender
@@ -134,11 +129,12 @@ in
       pkgs.libsecret
       pkgs.gnome.gnome-calendar
       pkgs.pika-backup
-      pkgs.# Audio
+      # Audio
       pkgs.ladspaPlugins
       pkgs.lsp-plugins
       pkgs.pipewire
       pkgs.wireplumber
+      pkgs.colordiff
     ];
   };
 }
