@@ -11,7 +11,7 @@
     }}/apple/t2")] ++
     # Apple sound setting patch
     [(import ../../modules/nixos/firmware/work/sound/pipewire_sink_conf.nix)] ++
-    [(import ../../modules/nixos/desktop/gnome.nix)] ++
+    [(import ../../modules/nixos/desktop/xfce.nix)] ++
     [(import ../../modules/nixos/services/qemu.nix)] ++
     [(import ../../modules/nixos/services/samba.nix)] ++
     [(import ./configuration.nix)] ++
