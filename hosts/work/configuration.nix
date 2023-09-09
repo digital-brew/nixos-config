@@ -10,8 +10,10 @@ in
 {
   # Systemd-boot EFI boot loader
   boot = {
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
     kernel.sysctl = {
       "net.ipv4.ip_unprivileged_port_start" = 0;
     };

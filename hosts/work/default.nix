@@ -14,6 +14,7 @@
     [(import ../../modules/nixos/desktop/xfce.nix)] ++
     [(import ../../modules/nixos/services/qemu.nix)] ++
     [(import ../../modules/nixos/services/samba.nix)] ++
+    [(import ../../modules/nixos/patches/dell-d6000-ethernet/patch.nix)] ++
     [(import ./configuration.nix)] ++
     [(import ./overlays.nix)] ++
     [(import ./hosts.nix)];
