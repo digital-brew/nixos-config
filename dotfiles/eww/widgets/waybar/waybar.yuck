@@ -1,0 +1,8 @@
+(defwidget waybar []
+    (box
+        :orientation "v"
+        :class "waybar"
+        :space-evenly "false"
+        waybar
+    )
+)

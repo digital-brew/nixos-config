@@ -1,0 +1,12 @@
+(defwidget keyboard []
+	  (box
+	      :orientation "h"
+		    :space-evenly false
+		    :class "widget keyboard"
+  	    (button
+  	        :class "keyboard-button"
+		   	    :onclick "scripts/popup launcher"
+		   	    keyboard-icon
+        )
+    )
+)

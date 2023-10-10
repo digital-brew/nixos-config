@@ -2,9 +2,10 @@
 # Patch to enable IPv6 for Dell D6000 Docking Station
 #
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
+  # source: https://nixos.wiki/wiki/Hardware/Dell/D6000_Universal_Dock
   boot.kernelPatches = lib.singleton {
     name = "enable-d6000";
     patch = [

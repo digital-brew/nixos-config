@@ -1,0 +1,25 @@
+.widget.workspaces {
+  padding: 2px 8px 2px 12px;
+
+  .workspace {
+    margin: 0 5px;
+    padding: 4px 4px;
+    border-radius: 40px;
+    //background-color: $black;
+    color: $gray;
+    font-size: 13px;
+  }
+
+  .occupied {
+    color: $foreground;
+  }
+
+  .current {
+    color: $blue;
+  }
+
+  .focused,
+  .workspace-active {
+    border-top: 1px solid $magenta;
+  }
+}

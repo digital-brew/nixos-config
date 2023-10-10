@@ -1,0 +1,19 @@
+{
+    "layer": "top",
+        "position": "top",
+        "height": 28,
+        "width": 810,
+        "output": ["DP-5"],
+        "spacing": 24,
+        "modules-center": ["clock"],
+        "tray": {
+            "icon-size": 15,
+            "spacing": 16
+        },
+        "clock": {
+            "format": "{:%a, %d %b %y  %I:%M %p}",
+            "icon-size": 15,
+            "spacing": 20,
+            "on-click": "eww open modal-calendar --toggle"
+        },
+}

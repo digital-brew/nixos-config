@@ -7,9 +7,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-alien.url = "github:thiagokokada/nix-alien";
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-alien, ... }:
+  outputs = { self, nixpkgs, home-manager, nix-alien, ... }@inputs:
   let 
     system = "x86_64-linux";
     pkgs = import nixpkgs {
@@ -23,7 +24,7 @@
     nixosConfigurations = (
       import ./hosts {
         inherit (nixpkgs) lib;
-        inherit system nixpkgs home-manager nix-alien user;
+        inherit system nixpkgs home-manager inputs nix-alien user;
       }
     );
   };

@@ -1,0 +1,36 @@
+(deflisten workspaces-left
+    :initial "[]"
+    "bash ~/.config/eww/scripts/workspaces/get_left {}"
+)
+
+(deflisten current_workspace_left
+    :initial "101"
+    "bash ~/.config/eww/scripts/workspaces/get_active"
+)
+
+(defwidget workspaces-left []
+    (eventbox
+        :onscroll
+        "bash ~/.config/eww/scripts/workspaces/change_active {} ${current_workspace_left}"
+        :class "widget workspaces"
+        (box
+            :space-evenly false
+            :halign "start"
+            (label
+                :text "${workspaces-left}${current_workspace_left}"
+                :visible false
+            )
+            (for workspace in workspaces-left
+                (eventbox
+                    :onclick "hyprctl dispatch workspace ${workspace.id}"
+                    (box
+                        :class "workspace ${workspace.id == current_workspace_left ? "current" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
+                        (label
+                            :text "${replace(workspace.id, "10", "")}"
+                        )
+                    )
+                )
+            )
+        )
+    )
+)

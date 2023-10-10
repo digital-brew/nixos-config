@@ -1,0 +1,14 @@
+
+
+(defwidget time-tracking []
+	  (box
+	      :orientation "h"
+		    :space-evenly false
+		    :class "widget time-tracking"
+  	    (button
+  	        :class "time-tracking-button"
+		   	    :onclick "scripts/popup launcher"
+            time-tracking-icon
+        )
+    )
+)

@@ -1,11 +1,13 @@
 { config, lib, pkgs, ... }:
-let
- 
-in
+
 {
   programs.git = {
     enable = true;
+    lfs.enable = true;
     extraConfig = {
+      init = {
+        defaultBranch = "main";
+      };
       user = {
         name = "digital-brew";
         email = "rafal+github@digitalbrew.io";
@@ -13,15 +15,37 @@ in
 
       core = {
         autocrlf = "input";
+        excludesfile = "~/.config/git/ignore";
       };
-
-#      [filter "lfs"]
-#      	process = git-lfs filter-process
-#      	required = true
-#      	clean = git-lfs clean -- %f
-#      	smudge = git-lfs smudge -- %f
-#      [init]
-#      	defaultBranch = main
     };
+    ignores = [
+      # Nix development
+      ".devenv"
+      ".envrc"
+      "devenv.local.nix"
+      ".devenv.flake.nix"
+      "devenv.lock"
+      "devenv.nix"
+      "devenv.yaml"
+      ".direnv"
+
+      # pre-commit
+      ".pre-commit-config.yaml"
+
+      # IDE's
+      ".idea"
+      ".vscode"
+
+      # OS related
+      ".DS_Store"
+      "._*"
+      ".Spotlight-V100"
+      ".Trashes"
+      "ehthumbs.db"
+      "Thumbs.db"
+
+      # Deps
+      "node_modules"
+    ];
   };
 }

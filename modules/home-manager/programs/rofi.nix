@@ -12,8 +12,8 @@ in
   home = {
     packages = with pkgs; [
       rofi-power-menu
-      rofi-calc
-      rofi-emoji
+#      rofi-calc
+#      rofi-emoji
     ];
   };
 
@@ -23,6 +23,17 @@ in
       terminal = "${pkgs.alacritty}/bin/alacritty";           # Alacritty is default terminal emulator
       location = "center";
       font = "Be Vietnam Pro, Semibold 11";
+      plugins = with pkgs; [
+#        rofi-power-menu
+        rofi-calc
+        rofi-emoji
+      ];
+      extraConfig = {
+        display-drun = "Applications:";
+        display-window = "Windows:";
+        drun-display-format = "{name}";
+        modi = "drun,run,ssh,calc,window,emoji";
+      };
       theme =  with colors.scheme.doom; {
         "*" = {
           bg0 = mkLiteral "#${bg}";

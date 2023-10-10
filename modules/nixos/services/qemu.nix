@@ -30,9 +30,11 @@
     systemPackages = with pkgs; [
       virt-manager
       virt-viewer
+      virtiofsd
       qemu
       OVMF
       gvfs                                    # Used for shared folders between Linux and Windows
+      freerdp
     ];
   };
 

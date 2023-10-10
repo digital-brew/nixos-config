@@ -1,0 +1,13 @@
+(defwidget launcher []
+    (box
+        :orientation "h"
+		    :space-evenly false
+		    :halign "start"
+		    :class "widget launcher"
+  	    (button
+  	        :class "launcher-button"
+		   	    :onclick "rofi -show drun -show-icons &"
+		   	    rocket-icon
+        )
+    )
+)

@@ -41,12 +41,13 @@ in
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 80 443 4040 2019 ];
-      allowedUDPPorts = [ 22 80 443 4040 2019 ];
+      allowedTCPPorts = [ 22 80 443 4040 2019 57621 ];
+      allowedUDPPorts = [ 22 80 443 4040 2019 5353 ];
     };
   };
 
   # Needed for Dell D6000 dockind station
+  # Source: https://nixos.wiki/wiki/Displaylink
   services.xserver.videoDrivers = [ "displaylink" "modesetting" ];
 
   # Enable CUPS to print documents
@@ -68,6 +69,40 @@ in
     LADSPA_PATH = "${pkgs.ladspaPlugins}/lib/ladspa";
   };
 
+  services.mpd.enable = true;
+
+  environment.etc."t2fand.conf".text = ''
+    [Fan1]
+    low_temp = 55
+    high_temp = 75
+    speed_curve = linear
+    always_full_speed = false
+
+    [Fan2]
+    low_temp = 55
+    high_temp = 75
+    speed_curve = linear
+    always_full_speed = false
+  '';
+
+  environment.etc."/udev/rules.d/30-amdgpu-pm.rules".text = ''
+    KERNEL=="card1", SUBSYSTEM=="drm", DRIVERS=="amdgpu", ATTR{device/power_dpm_force_performance_level}="low"
+  '';
+
+  systemd.services.t2fand = {
+    enable = true;
+    description = "A simple daemon to control fan speed on Macs with T2 chip";
+    unitConfig = {
+      Type = "simple";
+    };
+    serviceConfig = {
+      Restart = "always";
+      RestartSec = 2;
+      ExecStart = "/nix/store/wlxpsdzfvdanfzh704qmgyzb42qvy4fr-python3-3.10.12/bin/python3 /nix/store/82v0vcr5kj5y8p6a9ygc6rmmbqs9yhs3-macbook-pro-t2-fans/bin/t2fand";
+    };
+    wantedBy = [ "default.target" ];
+  };
+
   environment = {
     pathsToLink = [ "/share/zsh" ];
     systemPackages =
@@ -75,11 +110,22 @@ in
       sddm-theme-sugar-dark = pkgs.callPackage ../../modules/nixos/themes/sddm-sugar-dark.nix {};
       sddm-theme-sugar-candy = pkgs.callPackage ../../modules/nixos/themes/sddm-sugar-candy.nix {};
       trellis-cli = pkgs.callPackage ../../modules/nixos/packages/trellis-cli.nix {};
+      stripe-cli = pkgs.callPackage ../../modules/nixos/packages/stripe-cli.nix {};
+      hyprland-workspaces = pkgs.callPackage ../../modules/nixos/packages/hyprland-workspaces.nix {};
+      eww-stray = pkgs.callPackage ../../modules/nixos/packages/eww-stray.nix {};
+      eww-wayland = pkgs.callPackage ../../modules/nixos/packages/eww-wayland.nix {};
+      macbook-pro-t2-fans = pkgs.callPackage ../../modules/nixos/packages/macbook-pro-t2-fans.nix {};
       browserstack = pkgs.callPackage ../../modules/nixos/packages/browserstack.nix {};
     in [
       sddm-theme-sugar-dark.default                           # sddm theme
       sddm-theme-sugar-candy.default                          # sddm theme
       trellis-cli.default
+      stripe-cli.default
+      macbook-pro-t2-fans.default
+      hyprland-workspaces
+#      eww-stray
+      pkgs.eww-wayland
+      pkgs.pkg-config
 #      browserstack.default
 #      pkgs.libsForQt5.sddm-kcm                        # sddm theme installer
 #      pkgs.libsForQt5.kdeconnect-kde
@@ -107,15 +153,16 @@ in
       pkgs.vlc
       pkgs.libreoffice
       pkgs.qmk
-      pkgs.spotifyd
+#      pkgs.spotifyd
       pkgs.xkeysnail
       pkgs.yubioath-flutter
       pkgs.handbrake                                  # A tool for converting video files and ripping DVDs
       pkgs.sddm-chili-theme                           # sddm theme
       pkgs.pciutils                                   # collection of programs for inspecting and manipulating configuration of PCI devices
-      (pkgs.python3.withPackages python-pkgs)  # python 3 with extensions
+      (pkgs.python3.withPackages python-pkgs)         # python 3 with extensions
       pkgs.maia-icon-theme
       pkgs.rhythmbox
+      pkgs.zoom
       pkgs.playerctl
       pkgs.pw-volume
       pkgs.xdotool
@@ -130,13 +177,24 @@ in
       pkgs.pro-office-calculator
       pkgs.libsecret
       pkgs.gnome.gnome-calendar
-      pkgs.pika-backup
+      pkgs.imagemagick
+      pkgs.spotify
+      pkgs.cinnamon.nemo-with-extensions
+      pkgs.cinnamon.folder-color-switcher
+      pkgs.wlr-randr
+#      pkgs.pika-backups
       # Audio
       pkgs.ladspaPlugins
       pkgs.lsp-plugins
       pkgs.pipewire
       pkgs.wireplumber
       pkgs.colordiff
+      pkgs.lm_sensors
+      pkgs.pavucontrol
+      pkgs.filezilla
+      pkgs.glxinfo
+      pkgs.wofi
+      pkgs.socat
     ];
   };
 }

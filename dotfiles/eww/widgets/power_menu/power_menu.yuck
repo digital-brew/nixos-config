@@ -1,0 +1,13 @@
+(defwidget power-menu []
+	  (box
+	      :orientation "h"
+		    :space-evenly false
+		    :class "widget power-menu"
+  	    (button
+  	        :class "power-menu-button"
+		   	    :onclick "rofi -show power-menu -modi power-menu:rofi-power-menu &"
+		   	    :halign "center"
+		   	    power-switch-icon
+        )
+    )
+)

@@ -11,11 +11,11 @@ in
     initExtra = ''
       zsh -c 'neofetch'
       export PATH="$HOME/.npm-packages/bin:$PATH"
+      export NVM_DIR="$HOME/.nvm"
+      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+      export PATH=$PATH:/run/current-system/sw/bin/python3
       '';
     envExtra = "eval \"$(direnv hook zsh)\"";
-    shellAliases = {
-
-    };
     syntaxHighlighting = {
       enable = true;
     };
@@ -26,6 +26,9 @@ in
         "sudo"
       ];
       theme = "robbyrussell";
+    };
+    shellAliases = {
+
     };
   };
 }

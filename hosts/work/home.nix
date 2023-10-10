@@ -10,7 +10,7 @@
     ../../modules/home-manager/programs/kitty.nix
     ../../modules/home-manager/programs/obs.nix
     ../../modules/home-manager/programs/rofi.nix
-#    ../../modules/home-manager/programs/ssh.nix
+    ../../modules/home-manager/programs/git.nix
   ];
 
   # home.file.".config/qtile".source = ./../../dotfiles/qtile;
@@ -43,7 +43,6 @@
       discord
       freetube
       ruby
-      zoom-us
       caffeine-ng
       gnome.gnome-disk-utility
       junction
@@ -70,9 +69,9 @@
    };                     # shell extension that manages your environment
    jq.enable = true;
    sioyek.enable = true;                      # PDF reader
-   vscode = {
-    enable = true;
-   };
+#   vscode = {
+#    enable = true;
+#   };
   };
 
   services = {
@@ -104,4 +103,10 @@
      Requires = [ "graphical-session-pre.target" ];
     };
   };
+
+#  programs.eww = {
+#    enable = true;
+#    package = pkgs.eww;
+#    configDir = ./../../../../../home/moonlander/.config/eww;
+#  };
 }

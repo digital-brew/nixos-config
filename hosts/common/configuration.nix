@@ -26,7 +26,7 @@ in
   # Define a user account
   users.users.moonlander = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "lp" "kvm" "libvirtd" ];
+    extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "lp" "kvm" "libvirtd" "input" ];
     openssh = {
       authorizedKeys.keyFiles = [];
     };

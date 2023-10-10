@@ -3,7 +3,7 @@
 
 from libqtile import qtile
 from libqtile import bar, layout, widget, hook
-from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
+from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from qtile_extras.popup.toolkit import (
@@ -19,7 +19,7 @@ import subprocess
 
 mod = "mod4"
 terminal = "alacritty"
-isMultiMonitorMode = "DP-2" in subprocess.getoutput('xrandr | grep "DP-2 connected"')
+isMultiMonitorMode = "DP-1-5" in subprocess.getoutput('xrandr | grep "DP-1-5 connected"')
 
 bar_height = 27 # 26
 bar_opacity = 0.85   #0.8
@@ -231,7 +231,7 @@ layouts = [
 
 if isMultiMonitorMode :
     screenGens = [
-        screenGenInfo(groupScreen=1, groups=[
+        screenGenInfo(groupScreen=2, groups=[
             groupGenInfo(
               spawn=[],  # "slack", "discord", "signal-desktop", "telegram-desktop"
               layout="Max"
@@ -251,7 +251,7 @@ if isMultiMonitorMode :
             groupGenInfo(),
             groupGenInfo()
         ]),
-        screenGenInfo(groupScreen=2, groups=[
+        screenGenInfo(groupScreen=1, groups=[
             groupGenInfo(
               spawn=["brave"]
             ),
@@ -343,6 +343,10 @@ for screenIndex, screenGen in enumerate(screenGens):
 lazy.function(focus_group, startScreen, "{screen}:{group}".format(screen=screenGens[startScreen].groupScreen, group=1))
 
 
+groups.append(
+    ScratchPad("resources", [DropDown("monitor", "alacritty -e btop", x=0.12, y=0.02, width=0.75, height=0.94, on_focus_lost_hide=False)])
+)
+
 
 ###############################################################################
 ####### KEY BINDINGS ##########################################################
@@ -384,7 +388,7 @@ keys = [
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack",
     ),
-    Key([mod], "space", lazy.spawn("rofi -m -4 -show drun"), desc="Launch Rofi"),
+    Key([mod], "space", lazy.spawn("rofi -m -4 -show drun -show-icons"), desc="Launch Rofi"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
@@ -394,6 +398,8 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "mod1"], "q", lazy.spawn("rofi -show power-menu -modi power-menu:rofi-power-menu"), desc="Power menu"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+
+    Key([mod], "p", lazy.group['resources'].dropdown_toggle('monitor')),
 
     # Treetab prompt
     Key([mod, "shift"], "a", add_treetab_section),
@@ -479,113 +485,6 @@ extension_defaults = widget_defaults.copy()
 
 if isMultiMonitorMode :
     screens = [
-        # Left screen
-        Screen(
-            top=bar.Bar(
-                [
-                    widget.Sep(
-                              linewidth = 0,
-                              padding = 2,
-                          ),
-                    # widget.Image(
-                    #           filename = "/home/moonlander/nixos-config/modules/home-manager/themes/images/svg/nix-logo-white.svg",
-                    #           margin_x = 12,
-                    #           margin_y = 3
-                    widget.TextBox(
-                                text="",
-                                fontsize = 17,
-                                foreground = "#ffffff",
-                                margin_x = 12,
-                                margin_y = 0,
-                                padding_y = 0
-                          ),
-                    widget.Sep(
-                              linewidth = 0
-                          ),
-                    widget.GroupBox(
-                              visible_groups=["1:1", "1:2", "1:3", "1:4", "1:5", "1:6", "1:7", "1:8", "1:9"],
-                              inactive = "#ffffff",
-                              active = "#fff243",
-                              font = "Be Vietnam Pro, Extrabold",
-                              fontsize = 11,
-                              highlight_method = "block",
-                              this_current_screen_border = colors['bar-lighter'],
-                              this_screen_border = colors['bar-lighter'],
-                              rounded = False,
-                              borderwidth = 0,
-                              padding_x = 12,
-                              padding_y = 6,
-                              margin = 3,
-                          ),
-                    widget.Sep(
-                            linewidth = 0,
-                            padding = 10
-                          ),
-                    widget.CurrentLayoutIcon(
-                              scale = 0.65,
-                              padding = 0
-                          ),
-                    widget.Sep(
-                              linewidth = 0,
-                              padding = 10
-                          ),
-                    widget.CurrentLayout(
-                              foreground = colors['foreground'],
-                              padding = 0
-                          ),
-                    widget.Sep(
-                              linewidth = 0,
-                              padding = 18
-                          ),
-                    widget.TextBox(
-                              text="󰄾",
-                              fontsize = 18,
-                              foreground = "#ffffff",
-                              padding = 0,
-                              margin_y = 0
-                          ),
-                    widget.Sep(
-                              linewidth = 0,
-                              padding =  10
-                          ),
-                    widget.WindowName(
-                              parse_text=longNameParse,
-                              font = "Be Vietnam Pro, Semibold",
-                              foreground = "#ffffff"
-                          ),
-                    widget.Sep(
-                              linewidth = 0,
-                              padding = 6
-                          )
-                ],
-                bar_height,
-                background = colors['bar'],
-                border_color = colors['bar-border'],
-                border_width = bar_border,
-                opacity = bar_opacity,
-                margin = bar_margin
-            ),
-            left=bar.Gap(gap_size),
-            right=bar.Gap(gap_size),
-            # bottom=bar.Gap(gap_size), 
-            bottom=bar.Bar([
-                    widget.TaskList(
-                            highlight_method = 'block',
-                            foreground = colors['foreground'],
-                            icon_size = 0,
-                            padding_y = 4,
-                            parse_text=longNameParse
-                        )
-                ], 
-                bar_height,
-                background = '#ff0000.0',
-                border_color = colors['bar-border'],
-                border_width = bar_border,
-                opacity = bar_opacity,
-                margin = bar_margin),
-            wallpaper = wallpaper,
-            wallpaper_mode = wallpaper_mode,
-        ),
         # Center screen
         Screen(
             top=bar.Bar(
@@ -604,7 +503,12 @@ if isMultiMonitorMode :
                                 foreground = "#ffffff",
                                 margin_x = 12,
                                 margin_y = 0,
-                                padding_y = 0
+                                padding_y = 0,
+                                mouse_callbacks = {
+                                    'Button1': lambda: qtile.cmd_spawn(
+                                        "rofi -m -4 -show drun -show-icons"
+                                    )
+                                }
                           ),
                     widget.Sep(
                               linewidth = 0
@@ -705,6 +609,11 @@ if isMultiMonitorMode :
                               foreground = colors['blue'],
                               padding = 0,
                             #   background = colors['bar-light']
+                              mouse_callbacks = {
+                                  'Button1': lambda: qtile.cmd_spawn(
+                                      "pavucontrol"
+                                  )
+                              }
                           ),
                     widget.Volume(
                               padding = 6,
@@ -777,11 +686,21 @@ if isMultiMonitorMode :
                               padding = 6,
                               foreground = colors['pink'],
 #                               background = colors['bar-light']
+                              mouse_callbacks = {
+                                  'Button1': lambda: qtile.cmd_spawn(
+                                      "gnome-calendar"
+                                  )
+                              }
                           ),
                     widget.Clock(
                               format = "%a %d %b",
                               foreground = colors['foreground'],
 #                               background = colors['bar-light']
+                              mouse_callbacks = {
+                                  'Button1': lambda: qtile.cmd_spawn(
+                                      "gnome-calendar"
+                                  )
+                              }
                           ),
                     widget.Sep(
                               linewidth = 0,
@@ -857,7 +776,7 @@ if isMultiMonitorMode :
                             padding_y = 4,
                             parse_text=longNameParse
                         )
-                ], 
+                ],
                 bar_height,
                 background = '#ff0000.0',
                 border_color = colors['bar-border'],
@@ -867,6 +786,118 @@ if isMultiMonitorMode :
             wallpaper = wallpaper,
             wallpaper_mode = wallpaper_mode
         ),
+        # Left screen
+                Screen(
+                    top=bar.Bar(
+                        [
+                            widget.Sep(
+                                      linewidth = 0,
+                                      padding = 2,
+                                  ),
+                            # widget.Image(
+                            #           filename = "/home/moonlander/nixos-config/modules/home-manager/themes/images/svg/nix-logo-white.svg",
+                            #           margin_x = 12,
+                            #           margin_y = 3
+                            widget.TextBox(
+                                        text="",
+                                        fontsize = 17,
+                                        foreground = "#ffffff",
+                                        margin_x = 12,
+                                        margin_y = 0,
+                                        padding_y = 0,
+                                        mouse_callbacks = {
+                                            'Button1': lambda: qtile.cmd_spawn(
+                                                "rofi -m -4 -show drun -show-icons"
+                                            )
+                                        }
+                                  ),
+                            widget.Sep(
+                                      linewidth = 0
+                                  ),
+                            widget.GroupBox(
+                                      visible_groups=["1:1", "1:2", "1:3", "1:4", "1:5", "1:6", "1:7", "1:8", "1:9"],
+                                      inactive = "#ffffff",
+                                      active = "#fff243",
+                                      font = "Be Vietnam Pro, Extrabold",
+                                      fontsize = 11,
+                                      highlight_method = "block",
+                                      this_current_screen_border = colors['bar-lighter'],
+                                      this_screen_border = colors['bar-lighter'],
+                                      rounded = False,
+                                      borderwidth = 0,
+                                      padding_x = 12,
+                                      padding_y = 6,
+                                      margin = 3,
+                                  ),
+                            widget.Sep(
+                                    linewidth = 0,
+                                    padding = 10
+                                  ),
+                            widget.CurrentLayoutIcon(
+                                      scale = 0.65,
+                                      padding = 0
+                                  ),
+                            widget.Sep(
+                                      linewidth = 0,
+                                      padding = 10
+                                  ),
+                            widget.CurrentLayout(
+                                      foreground = colors['foreground'],
+                                      padding = 0
+                                  ),
+                            widget.Sep(
+                                      linewidth = 0,
+                                      padding = 18
+                                  ),
+                            widget.TextBox(
+                                      text="󰄾",
+                                      fontsize = 18,
+                                      foreground = "#ffffff",
+                                      padding = 0,
+                                      margin_y = 0
+                                  ),
+                            widget.Sep(
+                                      linewidth = 0,
+                                      padding =  10
+                                  ),
+                            widget.WindowName(
+                                      parse_text=longNameParse,
+                                      font = "Be Vietnam Pro, Semibold",
+                                      foreground = "#ffffff"
+                                  ),
+                            widget.Sep(
+                                      linewidth = 0,
+                                      padding = 6
+                                  )
+                        ],
+                        bar_height,
+                        background = colors['bar'],
+                        border_color = colors['bar-border'],
+                        border_width = bar_border,
+                        opacity = bar_opacity,
+                        margin = bar_margin
+                    ),
+                    left=bar.Gap(gap_size),
+                    right=bar.Gap(gap_size),
+                    # bottom=bar.Gap(gap_size),
+                    bottom=bar.Bar([
+                            widget.TaskList(
+                                    highlight_method = 'block',
+                                    foreground = colors['foreground'],
+                                    icon_size = 0,
+                                    padding_y = 4,
+                                    parse_text=longNameParse
+                                )
+                        ],
+                        bar_height,
+                        background = '#ff0000.0',
+                        border_color = colors['bar-border'],
+                        border_width = bar_border,
+                        opacity = bar_opacity,
+                        margin = bar_margin),
+                    wallpaper = wallpaper,
+                    wallpaper_mode = wallpaper_mode,
+                ),
         # Right screen
         Screen(
             top=bar.Bar(
@@ -885,7 +916,12 @@ if isMultiMonitorMode :
                                 foreground = "#ffffff",
                                 margin_x = 12,
                                 margin_y = 0,
-                                padding_y = 0
+                                padding_y = 0,
+                                mouse_callbacks = {
+                                    'Button1': lambda: qtile.cmd_spawn(
+                                        "rofi -m -4 -show drun -show-icons"
+                                    )
+                                }
                           ),
                     widget.Sep(
                               linewidth = 0

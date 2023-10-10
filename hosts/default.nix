@@ -1,4 +1,4 @@
-{ lib, nixpkgs, home-manager, nix-alien, user, ... }:
+{ lib, nixpkgs, home-manager, inputs, nix-alien, user, ... }:
 
 let
   system = "x86_64-linux";                                  # System architecture
@@ -12,7 +12,7 @@ let
 in
 {
 
-  work = lib.nixosSystem {                                # Work profile
+  work = lib.nixosSystem {                                  # Work profile
     inherit system;
     specialArgs = {
       inherit system user;
@@ -33,7 +33,12 @@ in
           inherit user;
         };
         home-manager.users.${user}  = {
-          imports = [(import ./common/home.nix)] ++ [(import ./work/home.nix)];
+          imports = [
+          (import ./common/home.nix)] ++
+          [(import ./work/home.nix)] ++
+          [inputs.nix-colors.homeManagerModules.default];
+
+           colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
         };
       }
     ];

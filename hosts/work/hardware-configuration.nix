@@ -5,6 +5,8 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
+  hardware.apple-t2.enableAppleSetOsLoader = true;
+
   hardware.firmware = [
     (pkgs.stdenvNoCC.mkDerivation {
       name = "brcm-firmware";

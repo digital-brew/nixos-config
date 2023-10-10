@@ -1,0 +1,12 @@
+(defwidget resources-monitor []
+	  (box
+	      :orientation "h"
+		    :space-evenly false
+		    :class "widget resources-monitor"
+  	    (button
+  	        :class "resources-monitor-button"
+		   	    :onclick "alacritty -e btop &"
+            resources-monitor-icon
+        )
+    )
+)

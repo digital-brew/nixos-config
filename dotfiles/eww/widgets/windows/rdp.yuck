@@ -1,0 +1,12 @@
+(defwidget windows-rdp []
+	  (box
+	      :orientation "h"
+		    :space-evenly false
+		    :class "widget windows-rdp"
+  	    (button
+  	        :class "windows-rdp-button"
+		   	    :onclick "eww open modal-win-10-rdp --toggle"
+            windows-icon
+        )
+    )
+)
