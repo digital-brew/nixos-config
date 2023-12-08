@@ -1,0 +1,123 @@
+@import url("colors.css");
+
+* {
+    font-family: "Be Vietnam Pro", Arial, sans-serif;
+    font-size: 13px;
+}
+
+window#waybar {
+    background-color: @background;
+    color: @color06;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#workspaces {
+    padding: 5px 10px;
+}
+
+#workspaces button {
+    font-weight: bold;
+    background: @color02;
+    margin: 0 3px;
+    padding: 0 4px;
+}
+
+#workspaces button.active {
+    color: @color0B;
+}
+
+#window {
+    font-weight: bold;
+    padding: 0 4px;
+}
+
+#pulseaudio {
+    padding: 0 8px 0 12px;
+}
+
+#battery {
+    padding: 0 8px;
+}
+
+#tray {
+    padding: 0 14px;
+}
+
+#clock {
+    padding: 0 14px;
+}
+
+#custom-separator_1,
+#custom-separator_2,
+#custom-separator_3 {
+    padding: 0 4px;
+    color: @color03;
+}
+
+#custom-separator_1 {
+    font-size: 13px;
+}
+
+#custom-separator_2 {
+    font-size: 25px;
+    margin-bottom: 2px;
+}
+
+#custom-separator_3 {
+    font-size: 15px;
+    padding: 0 10px;
+    color: @color04;
+}
+
+#custom-appmenu {
+    padding: 0 20px;
+    font-size: 18px;
+    color: @color0C;
+}
+
+#custom-screencapture,
+#custom-filemanager,
+#custom-chatgpt,
+#custom-windowsvm,
+#custom-cliphist,
+#custom-btop {
+    color: @color07;
+}
+
+#custom-screencapture {
+    padding: 0 8px;
+    font-size: 18px;
+}
+
+#custom-filemanager {
+    padding: 0 8px;
+    font-size: 18px;
+}
+
+#custom-chatgpt {
+    padding: 0 8px;
+    font-size: 21px;
+}
+
+#custom-windowsvm {
+    padding: 0 10px;
+    font-size: 16px;
+}
+
+#custom-cliphist {
+    padding: 0 10px;
+    font-size: 16px;
+    margin-right: 8px;
+}
+
+#custom-btop {
+    padding: 0 8px;
+    font-size: 20px;
+}
+
+#custom-exit {
+    padding: 0 22px 0 12px;
+    font-size: 17px;
+    color: @color08;
+}

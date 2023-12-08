@@ -2,7 +2,6 @@
 
 { 
   imports = [
-#    ../../modules/home-manager/services/udiskie.nix
     ../../modules/home-manager/programs/git.nix
     ../../modules/home-manager/programs/zsh.nix
   ];
@@ -22,6 +21,11 @@
     home-manager.enable = true;
     btop.enable = true;                       # a monitor of system resources
     htop.enable = true;
-    gh.enable = true;
+    gh = {
+      enable = true;
+      settings.git_protocol = "ssh";
+    };
   };
+
+  services.ssh-agent.enable = true;
 }

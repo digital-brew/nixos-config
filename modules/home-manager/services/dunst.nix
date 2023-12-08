@@ -4,22 +4,16 @@
 
 { config, lib, pkgs, ... }:
 
-let
-  colors = import ../themes/colors.nix;                 # Import colors theme
-in
+#let
+#  colors = import ../themes/colors.nix;                 # Import colors theme
+#in
 {
   home.packages = [ pkgs.libnotify ];                   # Dependency
   services.dunst = {
     enable = true;
-#    iconTheme = {                                       # Icons
-#      name = "Adwaita";
-#      package = pkgs.papirus-icon-theme;
-#      size = "48x48";
-#    };
-    settings = with colors.scheme.doom; {               # Settings
+    settings = {               # Settings
       global = {
         ### Display ###
-
         # Which monitor should the notifications be displayed on.
         monitor = 1;
 
@@ -38,11 +32,11 @@ in
 
         ### Geometry ###
 
-        geometry = "0x0-30+20";
+#        geometry = "0x0-30+20";
         # dynamic width from 0 to 300
         # width = (0, 300)
         # constant width of 300
-#        width = "300";
+        width = "340";
 
         # The maximum height of a single notification, excluding the frame.
 #        height = "300";
@@ -51,7 +45,7 @@ in
 #        origin = "top-right";
 
         # Offset from the origin
-#        offset = "10x50";
+        offset = "20x50";
 
         # Scale factor. It is auto-detected if value is 0.
 #        scale = 0;
@@ -63,11 +57,11 @@ in
 
         # Turn on the progess bar. It appears when a progress hint is passed with
         # for example dunstify -h int:value:12
-#        progress_bar = true;
+        progress_bar = true;
 
         # Set the progress bar height. This includes the frame, so make sure
         # it's at least twice as big as the frame width.
-#        progress_bar_height = 10;
+        progress_bar_height = 10;
 
         # Set the frame width of the progress bar
 #        progress_bar_frame_width = 1;
@@ -91,7 +85,7 @@ in
         # The transparency of the window.  Range: [0; 100].
         # This option will only work if a compositing window manager is
         # present (e.g. xcompmgr, compiz, etc.). (X11 only)
-#        transparency = 0;
+#        transparency = 20;
 
         # Draw a line of "separator_height" pixel height between two
         # notifications.
@@ -100,17 +94,17 @@ in
 #        separator_height = 2;
 
         # Padding between text and separator.
-#        padding = 8;
+        padding = 14;
 
         # Horizontal padding.
-#        horizontal_padding = 8;
+        horizontal_padding = 20;
 
         # Padding between text and icon.
 #        text_icon_padding = 0;
 
         # Defines width in pixels of frame around the notification window.
         # Set to 0 to disable.
-#        frame_width = 3;
+        frame_width = 1;
 
         # Defines color of the frame around the notification window.
 #        frame_color = "#aaaaaa";
@@ -119,7 +113,7 @@ in
         # If value is greater than 0, separator_height will be ignored and a border
         # of size frame_width will be drawn around each notification instead.
         # Click events on gaps do not currently propagate to applications below.
-#        gap_size = 0;
+        gap_size = 8;
 
         # Define a color for the separator.
         # possible values are:
@@ -141,11 +135,11 @@ in
 
         ### Text ###
 
-        font = "Monospace 8";
+        font = "Be Vietnam Pro 10";
 
         # The spacing between lines.  If the height is smaller than the
         # font height, it will get raised to the font height.
-        line_height = 0;
+#        line_height = 7;
 
         # Possible values are:
         # full: Allow a small subset of html markup in notifications:
@@ -181,7 +175,7 @@ in
         #   %n  progress value if set without any extra characters
         #   %%  Literal %
         # Markup is allowed
-        format = "<b>%s</b>\n%b";
+        format = "<b>%s</b>\\n%b";
 
         # Alignment of message text.
         # Possible values are "left", "center" and "right".
@@ -232,7 +226,7 @@ in
         min_icon_size = 32;
 
         # Scale larger icons down to this size, set to 0 to disable
-        max_icon_size = 128;
+        max_icon_size = 64;
 
         # Paths to default icons (only neccesary when not using recursive icon lookup)
         icon_path = "/usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/";
@@ -268,13 +262,13 @@ in
         # corners.
         # The radius will be automatically lowered if it exceeds half of the
         # notification height to avoid clipping text and/or icons.
-        corner_radius = 5;
+        corner_radius = 7;
 
         # Ignore the dbus closeNotification message.
         # Useful to enforce the timeout set by dunst configuration. Without this
         # parameter, an application may close the notification sent before the
         # user defined timeout.
-        ignore_dbusclose = "false";
+        ignore_dbusclose = "true";
 
         ### Wayland ###
         # These settings are Wayland-specific. They have no effect when using X11
@@ -284,7 +278,7 @@ in
         # layer = top
 
         # Set this to true to use X11 output on Wayland.
-        force_xwayland = "false";
+        force_xwayland = "true";
 
         ### Legacy
 
@@ -332,26 +326,28 @@ in
       urgency_low = {
         # IMPORTANT: colors have to be defined in quotation marks.
         # Otherwise the "#" and following would be interpreted as a comment.
-        background = "#222222";
-        foreground = "#888888";
-        timeout = 10;
+        background = "#1A1B26";
+        foreground = "#A9B1D6";
+        frame_color = "#565F89";
+        timeout = 8;
         # Icon for notifications with low urgency, uncomment to enable
         #default_icon = /path/to/icon
       };
 
       urgency_normal = {
-        background = "#285577";
-        foreground = "#ffffff";
+        background = "#1A1B26";
+        foreground = "#A9B1D6";
+        frame_color = "#565F89";
         timeout = 10;
         # Icon for notifications with normal urgency, uncomment to enable
         #default_icon = /path/to/icon
       };
 
       urgency_critical = {
-        background = "#900000";
-        foreground = "#ffffff";
-        frame_color = "#ff0000";
-        timeout = 0;
+        background = "#1A1B26";
+        foreground = "#A9B1D6";
+        frame_color = "#565F89";
+        timeout = 12;
         # Icon for notifications with critical urgency, uncomment to enable
         #default_icon = /path/to/icon
       };

@@ -5,7 +5,7 @@
 		    :class "widget power-menu"
   	    (button
   	        :class "power-menu-button"
-		   	    :onclick "rofi -show power-menu -modi power-menu:rofi-power-menu &"
+		   	    :onclick "wlogout &"
 		   	    :halign "center"
 		   	    power-switch-icon
         )

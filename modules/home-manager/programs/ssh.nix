@@ -3,6 +3,10 @@
 {
   programs.ssh = {
     enable = true;
+    startAgent = true;
+    extraConfig = ''
+      UserKnownHostsFile ~/.ssh/known_hosts
+    '';
     matchBlocks = {
       # GitHub DigitalBrew
       "git.digitalbrew.io" = {

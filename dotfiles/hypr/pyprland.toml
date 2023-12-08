@@ -1,0 +1,24 @@
+[pyprland]
+plugins = [
+  "scratchpads"
+]
+
+[scratchpads.chat]
+animation = "fromBottom"
+command = "brave --app=https://chat.openai.com/?model=gpt-4"
+size = "75% 45%"
+unfocus = "hide"
+
+[scratchpads.term]
+animation = "fromTop"
+command = "kitty --class kitty-dropterm"
+class = "kitty-dropterm"
+size = "75% 60%"
+
+[scratchpads.volume]
+animation = "fromRight"
+command = "pavucontrol"
+class = "pavucontrol"
+lazy = true
+size = "40% 90%"
+unfocus = "hide"

@@ -20,9 +20,9 @@
   ];
 
   boot = {
-    initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "nvme" "usbhid" "usb_storage" "sd_mod" ];
+    initrd.availableKernelModules = [ "xhci_pci" "vmd" "nvme" "usbhid" "usb_storage" "sd_mod" ];
     initrd.kernelModules = [ ];
-    kernelModules = [ "kvm-intel" "evdi" ];
+    kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
     # kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_4.override {
     #   argsOverride = rec {

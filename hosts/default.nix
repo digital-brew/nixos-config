@@ -1,4 +1,4 @@
-{ lib, nixpkgs, home-manager, inputs, nix-alien, user, ... }:
+{ lib, nixpkgs, home-manager, inputs, nix-alien, nixpkgs-wayland, user, nix-shopify-cli, ... }:
 
 let
   system = "x86_64-linux";                                  # System architecture
@@ -15,14 +15,34 @@ in
   work = lib.nixosSystem {                                  # Work profile
     inherit system;
     specialArgs = {
-      inherit system user;
+      inherit system user nix-shopify-cli;
     };
     modules = [
       ./common
       ./work
-      ({ self, system, ... }: {
+      ({ self, system, nix-shopify-cli, ... }: {
+        nix.settings = {
+          # add binary caches
+          trusted-public-keys = [
+            "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+            "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+          ];
+          substituters = [
+            "https://cache.nixos.org"
+            "https://nixpkgs-wayland.cachix.org"
+          ];
+        };
+
         environment.systemPackages = [
           nix-alien.packages.${system}.nix-alien
+          nixpkgs-wayland.packages.${system}.grim
+          nixpkgs-wayland.packages.${system}.slurp
+          nixpkgs-wayland.packages.${system}.swww
+          nixpkgs-wayland.packages.${system}.waybar
+          nixpkgs-wayland.packages.${system}.wf-recorder
+          nixpkgs-wayland.packages.${system}.wl-clipboard
+          nixpkgs-wayland.packages.${system}.wlroots
+          nix-shopify-cli.packages.${system}.default
         ];
       })
 
@@ -38,7 +58,7 @@ in
           [(import ./work/home.nix)] ++
           [inputs.nix-colors.homeManagerModules.default];
 
-           colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
+           colorScheme = inputs.nix-colors.colorSchemes.ayu-mirage;
         };
       }
     ];

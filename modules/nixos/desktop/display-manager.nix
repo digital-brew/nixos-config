@@ -2,7 +2,7 @@
 
 {
   services.xserver.displayManager = {
-    defaultSession = "none+qtile";
+    defaultSession = "hyprland";
     setupCommands = ''
       SCREEN_0="eDP-1"
       SCREEN_1="DP-1-5"
