@@ -116,7 +116,8 @@
   gtk = {                                     # Theming
     enable = true;
     theme = {
-      name = "Adwaita-dark";
+      name = "Arc-dark";
+#      name = "Adwaita-dark";
     };
     iconTheme = {
       name = "rose-pine";

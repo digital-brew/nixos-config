@@ -59,14 +59,15 @@ in
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 80 443 631 32016 4040 2019 57621 65432 ];
-      allowedUDPPorts = [ 22 80 443 631 32016 4040 2019 5353 65432 ];
+      allowedTCPPorts = [ 22 80 443 631 3000 3006 32016 4040 2019 57621 65432 ];
+      allowedUDPPorts = [ 22 80 443 631 3000 3006 32016 4040 2019 5353 65432 ];
     };
   };
 
   # Needed for Dell D6000 dockind station
   # Source: https://nixos.wiki/wiki/Displaylink
-  services.xserver.videoDrivers = [ "displaylink" "modesetting" ];
+  services.xserver.videoDrivers = [ "modesetting" ];
+#  services.xserver.videoDrivers = [ "displaylink" "modesetting" ];
 
   # Enable CUPS to print documents
   services.avahi = {
@@ -201,6 +202,7 @@ in
       pkgs.diffuse
       pkgs.kdiff3
       pkgs.tkdiff
+      pkgs.arc-theme
       pkgs.jetbrains.pycharm-community
       pkgs.poedit
       pkgs.rose-pine-icon-theme
@@ -271,6 +273,8 @@ in
       pkgs.socat
       pkgs.cliphist
       pkgs.xdg-desktop-portal-hyprland
+      pkgs.nwg-look
+      pkgs.qt6Packages.qt6ct
     ];
   };
 

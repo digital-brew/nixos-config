@@ -1,11 +1,14 @@
 {
-  description = "My Personal NixOS and Darwin System Flake Configuration";
+  description = "My Personal NixOS Flake Configuration";
 
   inputs = {
     home-manager = {
       url = github:nix-community/home-manager;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    hyprland.url = "github:hyprwm/Hyprland";
+
     nix-alien.url = "github:thiagokokada/nix-alien";
     nix-colors.url = "github:misterio77/nix-colors";
 
@@ -17,7 +20,7 @@
     nix-shopify-cli.url = "github:digital-brew/nix-shopify-cli";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-alien, nixpkgs-wayland, nix-shopify-cli, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nix-alien, nixpkgs-wayland, nix-shopify-cli, hyprland, ... }@inputs:
   let 
     system = "x86_64-linux";
     pkgs = import nixpkgs {
@@ -31,7 +34,7 @@
     nixosConfigurations = (
       import ./hosts {
         inherit (nixpkgs) lib;
-        inherit system nixpkgs home-manager inputs nix-alien user nixpkgs-wayland nix-shopify-cli;
+        inherit system nixpkgs home-manager inputs nix-alien user nixpkgs-wayland nix-shopify-cli hyprland;
       }
     );
   };

@@ -11,7 +11,7 @@
   // Left bar
   {
       "position": "top",
-      "output": "DP-4", // eDP-1
+      "output": "DP-1", // eDP-1
       "margin-top": 0,
       "margin-bottom": 0,
 
@@ -51,7 +51,7 @@
   // Center bar
   {
       "position": "top",
-      "output": "DP-5",
+      "output": "DP-2",
       "margin-top": 0,
       "margin-bottom": 0,
 
@@ -121,7 +121,7 @@
   // right bar
   {
       "position": "top",
-      "output": "DP-6",
+      "output": "DP-3",
       "margin-top": 0,
       "margin-bottom": 0,
 

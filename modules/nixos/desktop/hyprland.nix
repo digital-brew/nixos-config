@@ -1,13 +1,12 @@
 { config, lib, pkgs, ... }:
 
 {
-  programs.hyprland = {
-    enable = true;
-    enableNvidiaPatches = false;
-    xwayland.enable = true;
+  programs = {
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
   };
-
-  programs.xwayland.enable = true;
 
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";

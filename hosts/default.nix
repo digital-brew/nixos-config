@@ -1,4 +1,4 @@
-{ lib, nixpkgs, home-manager, inputs, nix-alien, nixpkgs-wayland, user, nix-shopify-cli, ... }:
+{ lib, nixpkgs, home-manager, inputs, nix-alien, nixpkgs-wayland, user, nix-shopify-cli, hyprland, ... }:
 
 let
   system = "x86_64-linux";                                  # System architecture
@@ -46,6 +46,8 @@ in
         ];
       })
 
+      hyprland.nixosModules.default
+
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
@@ -56,7 +58,7 @@ in
           imports = [
           (import ./common/home.nix)] ++
           [(import ./work/home.nix)] ++
-          [inputs.nix-colors.homeManagerModules.default];
+          [inputs.nix-colors.homeManagerModules.default];#
 
            colorScheme = inputs.nix-colors.colorSchemes.ayu-mirage;
         };
