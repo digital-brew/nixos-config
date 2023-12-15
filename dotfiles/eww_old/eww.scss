@@ -1,0 +1,143 @@
+* {
+  all: unset; //Unsets everything so you can style everything from scratch
+}
+
+// Variable Color's
+$background: #1A1B26;
+$foreground: #A9B1D6;
+
+$black: #24283B;
+$gray: #565F89;
+$red: #F7768E;
+$green: #73DACA;
+$yellow: #E0AF68;
+$blue: #7AA2F7;
+$magenta: #BB9AF7;
+$cyan: #7DCFFF;
+$white: $foreground;
+
+//Global Styles
+.left-bar,
+.center-bar,
+.right-bar {
+  background-color: $background;
+  color: $gray;
+  // padding: 20px;
+  font-weight: bold;
+}
+
+// Styles on classes (see eww.yuck for more information)
+
+.sidestuff slider {
+  all: unset;
+  color: #ffd5cd;
+}
+
+.metric scale trough highlight {
+  all: unset;
+  background-color: #D35D6E;
+  color: #000000;
+  border-radius: 10px;
+}
+.metric scale trough {
+  all: unset;
+  background-color: #4e4e4e;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+.metric scale trough highlight {
+  all: unset;
+  background-color: #D35D6E;
+  color: #000000;
+  border-radius: 10px;
+}
+.metric scale trough {
+  all: unset;
+  background-color: #4e4e4e;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+.label-ram {
+  font-size: large;
+}
+.workspacesLeft button:hover {
+  color: #D35D6E;
+}
+
+.occupied {
+  color: $foreground; 
+}
+
+.current-left,
+.current-center, 
+.current-right {
+  color: $blue;
+}
+
+
+
+.focused,
+.workspace-active {
+  border-top: 1px solid $magenta;
+}
+
+.workspace-entry {
+  margin: 3px 6px;
+  padding: 0 10px;
+  border-radius: 4px;
+  background-color: $black;
+  font-size: 14px;
+}
+
+.launcher-icon,
+.power-menu-icon,
+.battery-icon,
+.speaker-icon,
+.keyboard-icon {
+    font-size: 24px;
+    padding: 1px 16px 1px 16px;
+}
+
+.keyboard-icon {
+  color: $yellow;
+}
+
+.launcher-icon {
+  color: $cyan;
+  padding: 0 1.2rem 0 1.2rem;
+}
+
+.battery-icon {
+  color: $blue;
+  padding: 0 0.5rem 0 1rem;
+}
+
+.speaker-icon {
+  color: $magenta;
+}
+
+.power-menu-icon {
+  color: $red;
+  padding: 0 1.5rem 0 1rem;
+}
+
+.date-time {
+  color: $foreground;
+  padding: 0 10px 0 14px;
+}
+
+.date-time .time {
+  font-size: 0.95rem;
+  margin-top: 1px;
+}
+
+.date-time .date {
+  font-size: 0.7rem;
+  margin-top: -5px;
+}

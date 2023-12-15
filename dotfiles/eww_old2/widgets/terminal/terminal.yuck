@@ -1,0 +1,12 @@
+(defwidget terminal []
+	  (box
+	      :orientation "h"
+		    :space-evenly false
+		    :class "widget terminal"
+  	    (button
+  	        :class "terminal-button"
+		   	    :onclick "alacritty &"
+            terminal-icon
+        )
+    )
+)

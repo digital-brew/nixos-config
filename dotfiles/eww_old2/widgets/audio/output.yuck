@@ -1,0 +1,12 @@
+(defwidget audio-output []
+	  (box
+	      :orientation "h"
+		    :space-evenly false
+		    :class "widget audio-output"
+  	    (button
+  	        :class "audio-output-button"
+		   	    :onclick "scripts/popup launcher"
+		   	    speaker-icon
+        )
+    )
+)

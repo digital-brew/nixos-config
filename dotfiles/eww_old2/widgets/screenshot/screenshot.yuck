@@ -1,0 +1,14 @@
+
+
+(defwidget screenshot []
+	  (box
+	      :orientation "h"
+		    :space-evenly false
+		    :class "widget screenshot"
+  	    (button
+  	        :class "screenshot-button"
+		   	    :onclick "~/.config/eww/scripts/screenshot/screenshot.sh"
+            screenshot-icon
+        )
+    )
+)

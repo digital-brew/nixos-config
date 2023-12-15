@@ -1,0 +1,12 @@
+(defwidget xkill []
+	  (box
+	      :orientation "h"
+		    :space-evenly false
+		    :class "widget xkill"
+  	    (button
+  	        :class "xkill-button"
+		   	    :onclick "xkill &"
+            xkill-icon
+        )
+    )
+)

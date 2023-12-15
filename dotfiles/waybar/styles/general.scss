@@ -1,0 +1,26 @@
+$background: #1A1B26;
+$foreground: #A9B1D6;
+
+$black: #24283B;
+$gray: #565F89;
+$dark-gray: #3c4262;
+$red: #F7768E;
+$green: #73DACA;
+$yellow: #E0AF68;
+$blue: #7AA2F7;
+$magenta: #BB9AF7;
+$cyan: #7DCFFF;
+$white: $foreground;
+
+* {
+  /* `otf-font-awesome` is required to be installed for icons */
+  font-family: "Be Vietnam Pro", Arial, sans-serif;
+  font-size: 13px;
+}
+
+window#waybar {
+  background-color: $background;
+  color: $foreground;
+  transition-property: background-color;
+  transition-duration: .5s;
+}

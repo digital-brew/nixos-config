@@ -1,0 +1,39 @@
+(defpoll date
+    :interval "1s"
+    "date '+%a, %d.%m.%y'"
+)
+
+(defpoll time
+    :interval "1s"
+    "date '+%l:%M %p'"
+)
+
+(defwidget date []
+    (box
+        :orientation "h"
+        :class "date"
+        :space-evenly false
+        :halign "center"
+        date
+    )
+)
+
+(defwidget time []
+    (box
+        :orientation "h"
+        :class "time"
+        :space-evenly false
+        :halign "center"
+        time
+    )
+)
+
+(defwidget date-time []
+    (box
+        :orientation "v"
+        :class "widget date-time"
+        :space-evenly false
+        (time)
+        (date)
+    )
+)
