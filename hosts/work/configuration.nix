@@ -81,18 +81,18 @@ in
   };
   services.printing = {
     enable = true;
-    listenAddresses = [ "*:631" ];
-    allowFrom = [ "all" ];
-    browsing = true;
-    defaultShared = true;
-    browsedConf = ''
-      BrowseDNSSDSubTypes _cups,_print
-      BrowseLocalProtocols all
-      BrowseRemoteProtocols all
-      CreateIPPPrinterQueues All
-
-      BrowseProtocols all
-    '';
+#    listenAddresses = [ "*:631" ];
+#    allowFrom = [ "all" ];
+#    browsing = true;
+#    defaultShared = true;
+#    browsedConf = ''
+#      BrowseDNSSDSubTypes _cups,_print
+#      BrowseLocalProtocols all
+#      BrowseRemoteProtocols all
+#      CreateIPPPrinterQueues All
+#
+#      BrowseProtocols all
+#    '';
   };
 
   # Enable for Mailspring
