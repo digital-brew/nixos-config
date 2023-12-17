@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-echo "$(hyprctl monitors -j | jq '.[] | select(.name == "DP-4").activeWorkspace.id')"
-
-socat -u UNIX-CONNECT:/tmp/hypr/$(echo $HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock - |
-  stdbuf -o0 awk -F '>>,' -e '/^workspace>> 105'
