@@ -43,6 +43,13 @@
           ./hosts/kids/configuration.nix
         ];
       };
+
+      vm = nixpkgs.lib.nixosSystem {
+        extraSpecialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/vm/configuration.nix
+        ];
+      };
     };
   };
 }
