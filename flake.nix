@@ -24,28 +24,28 @@
   in {
     nixosConfigurations = {
       work = nixpkgs.lib.nixosSystem {
-        extraSpecialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs;};
         modules = [
           ./hosts/work/configuration.nix
         ];
       };
 
       nextcloud = nixpkgs.lib.nixosSystem {
-        extraSpecialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs;};
         modules = [
           ./hosts/nextcloud/configuration.nix
         ];
       };
 
       kids = nixpkgs.lib.nixosSystem {
-        extraSpecialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs;};
         modules = [
           ./hosts/kids/configuration.nix
         ];
       };
 
       vm = nixpkgs.lib.nixosSystem {
-        extraSpecialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs;};
         modules = [
           ./hosts/vm/configuration.nix
         ];
