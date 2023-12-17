@@ -18,9 +18,11 @@
 
 #    nix-shopify-cli.url = "https://flakehub.com/f/digital-brew/nix-shopify-cli/*.tar.gz";
     nix-shopify-cli.url = "github:digital-brew/nix-shopify-cli";
+
+    phps.url = "github:fossar/nix-phps";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-alien, nixpkgs-wayland, nix-shopify-cli, hyprland, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nix-alien, nixpkgs-wayland, nix-shopify-cli, hyprland, phps, ... }@inputs:
   let 
     system = "x86_64-linux";
     pkgs = import nixpkgs {
@@ -31,6 +33,12 @@
 
     user = "moonlander";
   in {
+    devShell.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.mkShell {
+      buildInputs = [
+        phps.packages.x86_64-linux.php
+      ];
+    };
+
     nixosConfigurations = (
       import ./hosts {
         inherit (nixpkgs) lib;
