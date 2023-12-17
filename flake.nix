@@ -9,6 +9,12 @@
     };
     nix-alien.url = "github:thiagokokada/nix-alien";
     nix-colors.url = "github:misterio77/nix-colors";
+    hyprland.url = "github:hyprwm/hyprland";
+    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    # only needed if you use as a package set:
+#    nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
+    nix-shopify-cli.url = "github:digital-brew/nix-shopify-cli";
+    phps.url = "github:fossar/nix-phps";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
