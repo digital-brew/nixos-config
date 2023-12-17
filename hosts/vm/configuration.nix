@@ -5,10 +5,9 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+   imports = 
+    [(import ./hardware-configuration.nix)] ++
+    [(import ../../modules/home-manager/browsers)];
 
   # Bootloader.
   boot.loader.grub.enable = true;
