@@ -27,6 +27,7 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/work/configuration.nix
+          inputs.home-manager.nixosModules.default
         ];
       };
 
@@ -34,6 +35,7 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/nextcloud/configuration.nix
+          inputs.home-manager.nixosModules.default
         ];
       };
 
@@ -41,6 +43,7 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/kids/configuration.nix
+          inputs.home-manager.nixosModules.default
         ];
       };
 
@@ -48,6 +51,7 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/vm/configuration.nix
+          inputs.home-manager.nixosModules.default
         ];
       };
     };
