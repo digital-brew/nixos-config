@@ -1,8 +1,8 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
+
 {
-  # imports = [
-  #   ../../modules/home-manager/browsers
-  # ] ;
+  imports = [];
+
   home.username = "moonlander";
   home.homeDirectory = "/home/moonlander";
 

@@ -2,17 +2,23 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
-   imports = 
-    [(import ./hardware-configuration.nix)] ++
-    [(import ../../modules/home-manager/browsers)];
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/home-manager/browsers
+  ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/vda";
   boot.loader.grub.useOSProber = true;
+
+  # Modules
+  services = { 
+    browsers.enable = false;
+  };
 
   networking.hostName = "NixOS-VM"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -100,7 +106,6 @@
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
-    brave
     signal-desktop
     zip
     unzip
@@ -118,6 +123,14 @@
   # };
 
   programs.git.enable = true;
+
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      "moonlander" = import ./home.nix;
+    };
+  };
 
   # List services that you want to enable:
 
