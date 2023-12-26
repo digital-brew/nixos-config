@@ -1,0 +1,24 @@
+[
+  ./apple/brcm
+  ./apple/fans
+  ./apple/sound
+  ./browsers
+  ./communication
+  ./design
+  ./desktop/display-manager
+  ./desktop/gnome
+  ./desktop/hyprland
+  ./desktop/sddm
+  ./desktop/themes
+  ./desktop/wayland
+  ./devenv
+  ./flatpak
+  ./networking
+  ./nix-alien
+  ./media
+  ./office
+  ./printer
+  ./qemu
+  ./samba
+  ./sound
+]
