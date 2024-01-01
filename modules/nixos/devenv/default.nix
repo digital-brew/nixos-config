@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, ... } @ args:
 let
   pythonDeps = ps: with ps; [
     pandas
@@ -33,12 +33,15 @@ with lib;
       jetbrains.pycharm-community-bin           # Free Python IDE from JetBrains
       kdiff3                                    # Compares and merges 2 or 3 files or directories
       ngrok                                     # Allows you to expose a web server running on your local machine to the internet
-      phpstorm                                  # PHP IDE from JetBrains
       poedit                                    # Gettext catalogs (.po files) editor
       tkdiff                                    # A graphical front end to the diff program
+      vscode                                    # Open source source code editor developed by Microsoft
+
+      # PHPStorm with overlay
+      phpstorm                                  # PHP IDE from JetBrains
 
       # Python 3
-      (pkgs.python310.withPackages pythonDeps) # python 3 with extensions
+      (python3.withPackages pythonDeps)         # python 3 with extensions
 
       # POEdit deps
       aspell                                    # Spell checker for many languages

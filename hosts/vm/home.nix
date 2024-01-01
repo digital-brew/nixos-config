@@ -1,10 +1,10 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, main-user, ... }:
 
 {
   imports = [];
 
-  home.username = "moonlander";
-  home.homeDirectory = "/home/moonlander";
+  home.username = main-user.username;
+  home.homeDirectory = main-user.home-dir;
 
   home.packages = [];
 

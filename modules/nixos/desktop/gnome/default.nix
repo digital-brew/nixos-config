@@ -1,11 +1,11 @@
 { lib, config, pkgs, ... }:
   with lib;
 {
-  options.gnome = {
-    enable = mkEnableOption "display-manager service";
+  options.modules.desktop.gnome = {
+    enable = mkEnableOption "gnome service";
   };
 
-  config = mkIf config.gnome.enable {
-   
+  config = mkIf config.modules.desktop.gnome.enable {
+    services.xserver.desktopManager.gnome.enable = true;
   };
 }

@@ -7,7 +7,8 @@
 
   config = mkIf config.modules.office.enable {
     environment.systemPackages = with pkgs; [
-     
+      libreoffice                               # Comprehensive, professional-quality productivity suite
+      pro-office-calculator                     # A completely normal office calculator
     ];
 
     programs = {

@@ -21,6 +21,13 @@
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
+    main-user = {
+      username = "moonlander";
+      home-dir = "/home/moonlander";
+    };
+    my-config = {
+      location = "$HOME/nixos-config";
+    };
   in {
     nixosConfigurations = {
       work = nixpkgs.lib.nixosSystem {
@@ -48,7 +55,7 @@
       };
 
       vm = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs main-user;};
         modules = [
           ./hosts/vm/configuration.nix
           inputs.home-manager.nixosModules.default

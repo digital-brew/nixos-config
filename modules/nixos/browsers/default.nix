@@ -1,11 +1,11 @@
 { lib, config, pkgs, ... }:
   with lib;
 {
-  options.browsers = {
+  options.modules.browsers = {
     enable = mkEnableOption "browsers service";
   };
 
-  config = mkIf config.browsers.enable {
+  config = mkIf config.modules.browsers.enable {
     environment.systemPackages = with pkgs; [
       brave
       epiphany
