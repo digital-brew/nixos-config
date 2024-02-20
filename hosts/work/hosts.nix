@@ -1,3 +1,9 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Name: WORK: HOSTS
+# Type: Config (NixOS)
+# Location: /hosts/work/
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 { ... }:
 
 {
@@ -8,8 +14,6 @@
             "local.stratus.earth"
             "local.thearena.network"
             "local.trimit.co.uk"
-            "local.themosis4.test"
-            "local.themosis41.test"
         ];
     };
 }
