@@ -1,0 +1,22 @@
+(defpoll off-countdown :interval "0s" "eww get power-countdown")
+
+(defwindow power-off
+  :monitor 1
+  :geometry (geometry
+    :width "100%"
+    :height "104%"
+    :anchor "center center")
+  :stacking "fg"
+  :orientation "v"
+  :valign "center"
+    (eventbox
+      :onclick "$HOME/.config/eww/scripts/power-cancel.sh 'off'"
+        (power-box
+          :countdown off-countdown
+          :action "power off"
+          :button "Power off"
+          :submit-script "$HOME/.config/eww/scripts/power-submit.sh 'off'"
+          :cancel-script "$HOME/.config/eww/scripts/power-cancel.sh 'off'"
+        )
+    )
+)

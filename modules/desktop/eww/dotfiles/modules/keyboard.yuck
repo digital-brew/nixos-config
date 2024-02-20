@@ -1,0 +1,26 @@
+(defwidget keyboard []
+    (box :class "button-module keyboard-module" :space-evenly false
+        (button :class {keyboard-state-active ? "display" : "display display-disabled"} :hexpand true :onclick "$HOME/.config/eww/scripts/keyboard-state.sh"
+            (box :orientation "h" :space-evenly false
+                (box :class "display-icon" :halign "start" :width 36
+                    "󰖨"
+                )
+                (box :orientation "v" :halign "start"
+                    (box :class "display-text-main" :halign "start"
+                        "Keyboard"
+                    )
+                )
+            )
+        )
+        (button :class "button" :width 34 :onclick "$HOME/.config/eww/scripts/keyboard-dropdown.sh"
+            (box
+                (box :class "chevron-right" :visible {!keyboard-dropdown-opened}
+                    ""
+                )
+                (box :class "chevron-down" :visible {keyboard-dropdown-opened}
+                    ""
+                )
+            )
+        )
+    )
+)

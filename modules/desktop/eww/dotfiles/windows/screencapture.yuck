@@ -1,0 +1,37 @@
+(defwindow screencapture
+  :monitor 1
+  :geometry (geometry
+    :y "60"
+    :width "260"
+    :height "160"
+    :anchor "bottom center")
+  :valign "end"
+  :focusable false
+    (box :class "screencapture" :space-evenly false :orientation "v" :halign "center" :valign "center" :active false
+        (box :class "top-row" :orientation "h" :halign "center" :spacing 24
+            (button
+                (image :path "/home/moonlander/nixos-config/assets/images/svg/selection-white.svg" :image-width 26 :image-height 26)
+            )
+            (button
+                (image :path "/home/moonlander/nixos-config/assets/images/svg/screen-white.svg" :image-width 26 :image-height 26)
+            )
+            (button
+                (image :path "/home/moonlander/nixos-config/assets/images/svg/window-white.svg" :image-width 26 :image-height 26)
+            )
+        )
+        (box :class "bottom-row" :orientation "h" :halign "center" :spacing 24
+            (button
+                (image :path "/home/moonlander/nixos-config/assets/images/svg/picture-white.svg" :image-width 20 :image-height 20)
+            )
+            (button
+                (image :path "/home/moonlander/nixos-config/assets/images/svg/movie-white.svg" :image-width 20 :image-height 20)
+            )
+            (button :class "take"
+                (box:class "take-inner")
+            )
+            (button)
+            (button)
+        )
+    )
+
+)

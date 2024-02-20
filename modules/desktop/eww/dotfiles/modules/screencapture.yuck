@@ -1,0 +1,5 @@
+(defwidget screencapture []
+    (button :class "screencapture-module" :onclick "$HOME/.config/eww/scripts/screencapture-link.sh"
+        "󱣵"
+    )
+)

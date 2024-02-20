@@ -1,0 +1,31 @@
+(defpoll volume :interval "0s" "amixer get Master | tail -n1 | awk -F ' ' '{print $5}' | tr -d '[%]'")
+(defpoll volume_icon :interval "1s" "1")
+
+(defwidget sound []
+    (eventbox
+        (box :class "module-sound" :space-evenly true :orientation "h"
+            (metric-sound :label "${volume}%" :value volume :hexpand true :onchange "amixer sset Master {}%")
+        )
+    )
+)
+
+(defwidget metric-sound [label value onchange]
+    (box :orientation "h" :class "metric" :space-evenly false
+        (button :visible {volume < 26}
+            (image :path "/home/moonlander/nixos-config/assets/images/svg/volume-0-white.svg" :image-width 22 :image-height 22)
+        )
+        (button :visible {volume >= 26 && volume < 45}
+            (image :path "/home/moonlander/nixos-config/assets/images/svg/volume-1-white.svg" :image-width 22 :image-height 22)
+        )
+        (button :visible {volume >= 45 && volume < 75}
+            (image :path "/home/moonlander/nixos-config/assets/images/svg/volume-2-white.svg" :image-width 22 :image-height 22)
+        )
+        (button :visible {volume >= 75}
+            (image :path "/home/moonlander/nixos-config/assets/images/svg/volume-3-white.svg" :image-width 22 :image-height 22)
+        )
+        (scale :min 0 :max 101 :hexpand true :active {onchange != ""} :value value :onchange onchange)
+        (button :class "button" :space-evenly false :onclick "exec pavucontrol &" :hexpand false :halign "end"
+            ""
+        )
+    )
+)

@@ -1,0 +1,37 @@
+@import "./colors";
+
+* {
+  all: unset; //Unsets everything so you can style everything from scratch
+}
+
+.top-row {
+  margin-bottom: 6px;
+}
+
+.buttons-row {
+  margin-bottom: 12px;
+}
+
+.metric scale {
+  trough {
+    all: unset;
+    background-color: #4e4e4e;
+    border-radius: 50px;
+    min-width: 100px;
+  }
+
+  highlight {
+    all: unset;
+    background-color: darken($base0D, 25);
+    border-radius: 10px;
+  }
+
+  slider {
+    background-color: $base07;
+    min-height: 18px;
+    min-width: 18px;
+    margin-top: -7px;
+    margin-bottom: -7px;
+    border-radius: 100%;
+  }
+}

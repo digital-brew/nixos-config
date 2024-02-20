@@ -1,0 +1,15 @@
+@import "./../colors";
+
+.settings-module {
+  padding: 8px 16px 8px 12px;
+  font-size: 19px;
+  border-radius: 54px;
+  border: 1px solid lighten($base02, 8);
+  background-color: lighten($base02, 8);
+  transition: all 0.15s ease-in-out;
+
+  &:hover {
+    border-color: lighten($base02, 18);
+    background-color: lighten($base02, 18);
+  }
+}

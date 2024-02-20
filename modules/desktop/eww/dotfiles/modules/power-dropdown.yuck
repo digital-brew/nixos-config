@@ -1,0 +1,38 @@
+(defwidget power-dropdown [state]
+    (revealer :reveal state :transition "slidedown" :duration dropdown-animation-duration
+        (box :class "power-dropdown" :orientation "v" :space-evenly false
+            (box :class "dropdown-header" :orientation "h" :halign "start" :space-evenly false
+                (box :class "dropdown-header-icon" :width 38 :height 38 :halign "center" :valign "center"
+                    "󰐥"
+                )
+                (box :class "dropdown-header-text"
+                    "Power Off"
+                )
+            )
+            (box :class "dropdown-body" :orientation "v" :hexpand true
+                (button :class "dropdown-button" :hexpand true :onclick "$HOME/.config/eww/scripts/power-restart-link.sh"
+                    (box :halign "start"
+                        "Restart..."
+                    )
+                )
+                (button :class "dropdown-button" :hexpand true :onclick "$HOME/.config/eww/scripts/power-off-link.sh"
+                    (box :halign "start"
+                        "Power Off..."
+                    )
+                )
+                (button :class "dropdown-button" :hexpand true :onclick "$HOME/.config/eww/scripts/power-lock-screen.sh"
+                    (box :halign "start"
+                        "Lock Screen..."
+                    )
+                )
+            )
+            (box :class "dropdown-footer" :hexpand true
+                (button :class "dropdown-button" :hexpand true :onclick "$HOME/.config/eww/scripts/power-logoff.sh"
+                    (box :halign "start"
+                        "Log Out..."
+                    )
+                )
+            )
+        )
+    )
+)

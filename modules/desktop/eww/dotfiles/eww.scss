@@ -1,0 +1,18 @@
+@import "./styles/colors";
+@import "./styles/global";
+
+@import "./styles/windows/dashboard";
+@import "./styles/windows/screencapture";
+@import "./styles/windows/volume-popup";
+@import "./styles/windows/power-box";
+
+@import "./styles/modules/battery";
+@import "./styles/modules/button";
+@import "./styles/modules/ethernet-dropdown";
+@import "./styles/modules/keyboard-dropdown";
+@import "./styles/modules/power";
+@import "./styles/modules/power-dropdown";
+@import "./styles/modules/screencapture";
+@import "./styles/modules/settings";
+@import "./styles/modules/sound";
+@import "./styles/modules/weather-dropdown";

@@ -1,0 +1,27 @@
+.volume-popup {
+  //background-color: rgba($base02, 0.7);
+  background-color: $base02;
+  border: 1px solid lighten($base02, 4);
+  border-radius: 50px;
+
+  & > * {
+    border: 0;
+    background-color: transparent;
+  }
+
+  image {
+    margin-top: -4px;
+  }
+
+  .blocks {
+    margin-top: 15px;
+  }
+
+  .block {
+    background-color: $base04;
+
+    &.active {
+      background-color: $base07;
+    }
+  }
+}

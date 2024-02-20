@@ -1,0 +1,52 @@
+@import "./../colors";
+@import "./../global";
+
+.power {
+  &-restart,
+  &-off {
+    background-color: rgba(#000000, 0.6);
+  }
+
+  &-box {
+    background-color: $base00;
+    border: 1px solid $base01;
+    padding: 28px 0 0;
+    border-radius: 20px;
+  }
+
+  &-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding: 0 44px;
+  }
+
+  &-message {
+    font-size: 16px;
+    padding: 0 44px;
+  }
+
+  &-button {
+    background-color: $base02;
+    padding: 14px;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: lighten($base02, 5);
+    }
+
+    &.cancel {
+      border-bottom-left-radius: 20px;
+      border: 1px solid lighten($base02, 2);
+    }
+
+    &.confirm {
+      border-bottom-right-radius: 20px;
+      border: 1px solid lighten($base02, 2);
+    }
+  }
+}
+
+.side-screen-mask {
+  background-color: rgba(#000000, 0.6);
+}

@@ -1,0 +1,29 @@
+(defwidget ethernet []
+    (box :class "button-module ethernet-module" :space-evenly false
+        (button :class "display" :hexpand true :onclick "$HOME/.config/eww/scripts/ethernet-state.sh"
+            (box :orientation "h" :space-evenly false
+                (box :class "display-icon" :halign "start" :width 36
+                    "󰈀"
+                )
+                (box :orientation "v" :halign "start"
+                    (box :class "display-text-heading" :halign "start"
+                        "Wired"
+                    )
+                    (box :class "display-text-body" :halign "start"
+                        "Realtek Ethernet"
+                    )
+                )
+            )
+        )
+        (button :class "button" :width 34 :onclick "$HOME/.config/eww/scripts/ethernet-dropdown.sh"
+            (box
+                (box :class "chevron-right" :visible {!ethernet-dropdown-opened}
+                    ""
+                )
+                (box :class "chevron-down" :visible {ethernet-dropdown-opened}
+                    ""
+                )
+            )
+        )
+    )
+)

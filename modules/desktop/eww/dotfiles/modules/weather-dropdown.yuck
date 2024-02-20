@@ -1,0 +1,29 @@
+(defwidget weather-dropdown [state]
+    (revealer :reveal state :transition "slidedown" :duration dropdown-animation-duration
+        (box :class "weather-dropdown" :orientation "v" :space-evenly false
+            (box :class "dropdown-header" :orientation "h" :valign "start"
+                (box :orientation "h" :valign "center" :halign "start" :space-evenly false
+                    (label :text "󰖐" :class "dropdown-header-icon" :width 38 :height 38 :halign "center" :valign "center")
+                    (label :text "Weather Forecast" :class "dropdown-header-text")
+                )
+                (box :orientation "h" :valign "center" :halign "end" :space-evenly false :spacing 12
+                    (button :class "weather-update-btn" :halign "end" :valign "center" :width 38 :height 38
+                        "󰑓"
+                    )
+                )
+            )
+            (box :class "dropdown-body" :orientation "v" :hexpand true
+                (button :class "dropdown-button" :hexpand true
+                    (box :halign "start"
+                        "Restart..."
+                    )
+                )
+                (button :class "dropdown-button" :hexpand true
+                    (box :halign "start"
+                        "Power Off..."
+                    )
+                )
+            )
+        )
+    )
+)

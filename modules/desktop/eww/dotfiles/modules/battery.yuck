@@ -1,0 +1,12 @@
+(defwidget battery []
+    (button :class "battery" :valign: "center"
+        (box :class "battery-inner" :orientation "horizontal" :valign "center" :halign "center" :space-evenly true :spacing 3 :onclick "$HOME/.config/eww/scripts/battery-link.sh"
+            (box :class "icon"
+                ""
+            )
+            (box :class "text"
+                { EWW_BATTERY["BAT0"].capacity }"%"
+            )
+        )
+    )
+)

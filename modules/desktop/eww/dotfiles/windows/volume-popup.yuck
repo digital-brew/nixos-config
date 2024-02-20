@@ -1,0 +1,36 @@
+(defwindow volume-popup
+  :monitor 1
+  :geometry (geometry
+    :y "200"
+    :width "210"
+    :height "210"
+    :anchor "bottom center")
+  :valign "end"
+  :focusable false
+    (box :class "volume-popup" :space-evenly false :orientation "v" :halign "center" :valign "center" :active false
+        (box :visible {volume < 26}
+            (image :path "/home/moonlander/nixos-config/assets/images/svg/volume-0-white.svg" :image-width 100 :image-height 100)
+        )
+        (box :visible {volume >= 26 && volume < 45}
+            (image :path "/home/moonlander/nixos-config/assets/images/svg/volume-1-white.svg" :image-width 100 :image-height 100)
+        )
+        (box :visible {volume >= 45 && volume < 75}
+            (image :path "/home/moonlander/nixos-config/assets/images/svg/volume-2-white.svg" :image-width 100 :image-height 100)
+        )
+        (box :visible {volume >= 75}
+            (image :path "/home/moonlander/nixos-config/assets/images/svg/volume-3-white.svg" :image-width 100 :image-height 100)
+        )
+        (box :class "blocks" :spacing 4 :space-evenly false :orientation "h"
+            (box :class {volume > 0 ? "block active" : "block"} :width 9 :height 9)
+            (box :class {volume > 10 ? "block active" : "block"} :width 9 :height 9)
+            (box :class {volume > 20 ? "block active" : "block"} :width 9 :height 9)
+            (box :class {volume > 30 ? "block active" : "block"} :width 9 :height 9)
+            (box :class {volume > 40 ? "block active" : "block"} :width 9 :height 9)
+            (box :class {volume > 50 ? "block active" : "block"} :width 9 :height 9)
+            (box :class {volume > 60 ? "block active" : "block"} :width 9 :height 9)
+            (box :class {volume > 70 ? "block active" : "block"} :width 9 :height 9)
+            (box :class {volume > 80 ? "block active" : "block"} :width 9 :height 9)
+            (box :class {volume > 90 ? "block active" : "block"} :width 9 :height 9)
+        )
+    )
+)

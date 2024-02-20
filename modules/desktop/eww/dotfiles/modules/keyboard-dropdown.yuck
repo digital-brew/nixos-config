@@ -1,0 +1,27 @@
+(defpoll brightness :interval "0s" "$HOME/.config/eww/scripts/keyboard-value.sh")
+
+(defwidget keyboard-dropdown [state]
+    (revealer :reveal state :transition "slidedown" :duration dropdown-animation-duration
+        (box :class "keyboard-dropdown" :orientation "v" :space-evenly false
+            (box :class "dropdown-header" :orientation "h" :valign "start"
+                (box :orientation "h" :valign "center" :halign "start" :space-evenly false
+                    (label :text "󰖨" :class "dropdown-header-icon" :width 38 :height 38 :halign "center" :valign "center")
+                    (label :text "Keyboard backlight" :class "dropdown-header-text")
+                )
+            )
+            (box :class "dropdown-body" :orientation "v" :hexpand true
+                (eventbox
+                    (box :class "keyboard-scale-wrapper" :space-evenly true :orientation "h"
+                        (metric-keyboard :value brightness :hexpand true :onchange "brightnessctl -d :white:kbd_backlight set {}%")
+                    )
+                )
+            )
+        )
+    )
+)
+
+(defwidget metric-keyboard [value onchange]
+    (box :orientation "h" :class "metric" :space-evenly false
+        (scale :min 0 :max 101 :hexpand true :active {onchange != ""} :value value :onchange onchange)
+    )
+)

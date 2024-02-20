@@ -1,0 +1,7 @@
+(defwidget power []
+    (box
+        (button :class "power-module" :onclick "$HOME/.config/eww/scripts/power-dropdown.sh"
+            "󰐥"
+        )
+    )
+)

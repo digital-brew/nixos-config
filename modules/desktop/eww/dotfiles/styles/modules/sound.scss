@@ -1,0 +1,17 @@
+.module-sound {
+  margin: 4px 0 14px;
+
+  .icon {
+    @extend .btn-secondary-hover;
+  }
+
+  .metric scale {
+    trough {
+      margin: 4px 25px 0 20px;
+    }
+  }
+
+  .button {
+    font-size: 27px;
+  }
+}

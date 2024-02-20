@@ -1,0 +1,5 @@
+(defwidget settings []
+    (button :class "settings-module" :onclick "$HOME/.config/eww/scripts/settings-link.sh"
+        ""
+    )
+)

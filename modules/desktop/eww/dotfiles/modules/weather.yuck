@@ -1,0 +1,29 @@
+(defwidget weather []
+    (box :class "button-module weather-module" :space-evenly false
+        (button :class "display" :hexpand true :onclick "$HOME/.config/eww/scripts/weather-state.sh"
+            (box :orientation "h" :space-evenly false
+                (box :class "display-icon" :halign "start" :width 36
+                    "󰖐"
+                )
+                (box :orientation "v" :halign "start"
+                    (box :class "display-text-heading" :halign "start"
+                        "Weather"
+                    )
+                    (box :class "display-text-body" :halign "start"
+                        "Sunny, 12*C"
+                    )
+                )
+            )
+        )
+        (button :class "button" :width 34 :onclick "$HOME/.config/eww/scripts/weather-dropdown.sh"
+            (box
+                (box :class "chevron-right" :visible {!weather-dropdown-opened}
+                    ""
+                )
+                (box :class "chevron-down" :visible {weather-dropdown-opened}
+                    ""
+                )
+            )
+        )
+    )
+)

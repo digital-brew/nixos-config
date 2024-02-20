@@ -1,0 +1,51 @@
+(defwindow dashboard
+    :monitor 1
+    :geometry (geometry
+        :x "14px"
+        :y "14px"
+        :width "400px"
+        :height1 "440px"
+        :anchor "top right")
+    :stacking "fg"
+    :orientation "v"
+    :valign "start"
+    (box :orientation "v" :valign "start" :space-evenly false
+        (box :class "top-row" :orientation "h" :valign "start"
+            (box :orientation "h" :valign "center" :halign "start" :space-evenly false
+                (battery)
+            )
+            (box :orientation "h" :valign "center" :halign "end" :space-evenly false :spacing 12
+                (screencapture)
+                (settings)
+                (power)
+            )
+        )
+        (box :orientation "h"  :valign "center" :space-evenly true :hexpand true
+            (power-dropdown :state power-dropdown-opened)
+        )
+        (box :orientation "h"  :valign "center" :space-evenly true :hexpand true
+            (sound)
+        )
+        (box :class "buttons-row" :orientation "h"  :valign "center" :space-evenly true :hexpand true
+            (box :orientation "h" :space-evenly true :spacing 16
+                (ethernet)
+                (keyboard)
+            )
+        )
+        (box :orientation "h"  :valign "center" :space-evenly true :hexpand true
+            (ethernet-dropdown :state ethernet-dropdown-opened)
+        )
+        (box :orientation "h"  :valign "center" :space-evenly true :hexpand true
+            (keyboard-dropdown :state keyboard-dropdown-opened)
+        )
+        (box :class "buttons-row" :orientation "h"  :valign "center" :space-evenly true :hexpand true
+            (box :orientation "h" :space-evenly true :spacing 16
+                (night-light)
+                (weather)
+            )
+        )
+        (box :orientation "h"  :valign "center" :space-evenly true :hexpand true
+            (weather-dropdown :state weather-dropdown-opened)
+        )
+    )
+)

@@ -1,0 +1,38 @@
+(defwidget ethernet-dropdown [state]
+    (revealer :reveal state :transition "slidedown" :duration dropdown-animation-duration
+        (box :class "ethernet-dropdown" :orientation "v" :space-evenly false
+            (box :class "dropdown-header" :orientation "h" :halign "start" :space-evenly false
+                (box :class "dropdown-header-icon" :width 40 :height 40 :halign "center" :valign "center"
+                    "󰈀"
+                )
+                (box :class "dropdown-header-text"
+                    "Wired Connections"
+                )
+            )
+            (box :class "dropdown-body" :orientation "v" :hexpand true
+                (button :class "dropdown-button" :hexpand true
+                    (box :halign "start"
+                        "Apple Ethernet"
+                    )
+                )
+                (button :class "dropdown-button" :hexpand true
+                    (box :halign "start"
+                        "Realtek Ethernet"
+                    )
+                )
+                (button :class "dropdown-button" :hexpand true
+                    (box :halign "start"
+                        "Dell D6000 Ethernet"
+                    )
+                )
+            )
+            (box :class "dropdown-footer" :hexpand true
+                (button :class "dropdown-button" :hexpand true
+                    (box :halign "start"
+                        "Wired Settings"
+                    )
+                )
+            )
+        )
+    )
+)

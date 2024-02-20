@@ -1,0 +1,131 @@
+/**
+ * Ayu Dark theme ported for rofi
+ */
+
+/*****----- Configuration -----*****/
+configuration {
+  font: "Be Vietnam Pro 13";
+  modi: "drun,run,ssh,window,screencapture:~/nixos-config/scripts/toggle_screencapture.sh";
+  display-drun: "";
+  display-run: "";
+  display-ssh: "󰣀";
+  display-window: "";
+  drun-display-format: "{name}";
+  sidebar-mode: true;
+}
+
+* {
+  accentcolor: #5CCFE6;
+  backgroundcolor: #1F2430;
+  separatorcolor: transparent;
+  foregroundcolor: #242936;
+  selectioncolor: #282E3D;
+  background-color: transparent;
+  text-color: @foregroundcolor;
+}
+
+#window {
+  location: 0;
+  background-color: @backgroundcolor;
+  border-color: #242936;
+  border: 1;
+  border-radius: 12;
+  padding: 18 6 18 18;
+  width: 620;
+  height: 584;
+}
+
+#element {
+  spacing: 12;
+  padding: 12 22;
+  margin: 0 4 0 0;
+  children: [ element-icon, element-text ];
+  border-radius: 5;
+}
+
+element-text {
+    vertical-align: 0.5;
+    size: 12px;
+}
+
+element-icon {
+    size: 32px;
+    padding: 0 10 0 0;
+}
+
+#element normal.normal {
+  text-color: #D9D7CE;
+  background-color: #1F2430;
+}
+
+#element alternate.normal {
+  text-color: #D9D7CE;
+  background-color: #1F2430;
+}
+
+#element.selected.normal {
+  background-color: @selectioncolor;
+}
+
+#element.selected.active {
+  text-color: @selectioncolor;
+}
+
+#inputbar {
+  border-radius: 5;
+  children: [prompt, entry];
+  background-color: #242936;
+  margin: 0 14 14 0;
+}
+
+#prompt {
+  color: @accentcolor;
+  padding: 6 1 0 22;
+  font: "Nerd Fonts 30";
+}
+
+#entry {
+  padding: 19 12 0 26;
+  color: #D9D7CE;
+}
+
+#scrollbar {
+  handle-color: #242936;
+}
+
+mode-switcher {
+  enabled: true;
+  spacing: 8px;
+  padding: 0 13 0 0;
+}
+
+button {
+  padding: 8px;
+  border: 0px solid;
+  border-radius: 4px;
+  border-color: #5CCFE6;
+  size: 34px;
+  background-color: #242936;
+  text-color: #707A8C;
+  cursor: pointer;
+}
+
+button selected {
+  background-color: @selectioncolor;
+  text-color: #F3F4F5;
+}
+
+error-message {
+    padding:                     10px;
+    border:                      0px solid;
+    border-radius:               4px;
+    text-color:                  #ffffff;
+}
+
+message {
+  text-color:                  #ffffff;
+}
+
+textbox {
+text-color:                  #ffffff;
+}

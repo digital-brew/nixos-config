@@ -1,0 +1,95 @@
+/**
+ * Ayu Dark theme ported for rofi
+ */
+
+/*****----- Configuration -----*****/
+configuration {
+  font: "Be Vietnam Pro 13";
+  sidebar-mode: false;
+}
+
+* {
+  accentcolor: #5CCFE6;
+  backgroundcolor: #1F2430;
+  separatorcolor: transparent;
+  foregroundcolor: #242936;
+  selectioncolor: #282E3D;
+  background-color: transparent;
+  text-color: @foregroundcolor;
+}
+
+#window {
+  location: 0;
+  background-color: @backgroundcolor;
+  border-color: #242936;
+  border: 1;
+  border-radius: 12;
+  padding: 18 6 18 18;
+  width: 400;
+  height: 318;
+}
+
+#element {
+  spacing: 12;
+  padding: 12 22;
+  margin: 0 4 0 0;
+  children: [ element-text ];
+  border-radius: 5;
+}
+
+element-text {
+    vertical-align: 0.5;
+    size: 12px;
+}
+
+#element normal.normal {
+  text-color: #D9D7CE;
+  background-color: #1F2430;
+}
+
+#element alternate.normal {
+  text-color: #D9D7CE;
+  background-color: #1F2430;
+}
+
+#element.selected.normal {
+  background-color: @selectioncolor;
+}
+
+#element.selected.active {
+  text-color: @selectioncolor;
+}
+
+#inputbar {
+  border-radius: 5;
+  children: [prompt, entry];
+  background-color: #242936;
+  margin: 0 14 14 0;
+}
+
+#prompt {
+  color: @accentcolor;
+  padding: 6 1 0 22;
+  font: "Nerd Fonts 30";
+}
+
+#entry {
+  padding: 19 12 0 26;
+  color: #D9D7CE;
+}
+
+#scrollbar {
+  handle-color: #242936;
+}
+
+error-message {
+  text-color: #ffffff;
+}
+
+message {
+  text-color: #ffffff;
+}
+
+textbox {
+  text-color: #ffffff;
+}

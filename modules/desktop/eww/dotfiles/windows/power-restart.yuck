@@ -1,0 +1,22 @@
+(defpoll restart-countdown :interval "0s" "eww get power-countdown")
+
+(defwindow power-restart
+  :monitor 1
+  :geometry (geometry
+    :width "100%"
+    :height "104%"
+    :anchor "center center")
+  :stacking "fg"
+  :orientation "v"
+  :valign "center"
+    (eventbox
+      :onclick "$HOME/.config/eww/scripts/power-cancel.sh 'restart'"
+        (power-box
+          :countdown restart-countdown
+          :action "restart"
+          :button "Restart"
+          :submit-script "$HOME/.config/eww/scripts/power-submit.sh 'restart'"
+          :cancel-script "$HOME/.config/eww/scripts/power-cancel.sh 'restart'"
+        )
+    )
+)

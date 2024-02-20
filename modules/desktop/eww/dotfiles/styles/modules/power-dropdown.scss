@@ -1,0 +1,45 @@
+@import "./../colors";
+
+.power-dropdown {
+  margin-top: 6px;
+  margin-bottom: 8px;
+  background-color: lighten($base02, 2);
+  padding: 14px;
+  border-radius: 20px;
+  border: 1px solid lighten($base02, 6);
+
+  .dropdown-header {
+    .dropdown-header-icon {
+      font-size: 22px;
+      padding: 3px;
+      border-radius: 50px;
+      background-color: lighten($base02, 8);
+    }
+
+    .dropdown-header-text {
+      font-size: 17px;
+      font-weight: bold;
+      margin-left: 12px;
+    }
+  }
+
+  .dropdown-body {
+    border-top: 1px solid lighten($base02, 6);
+    border-bottom: 1px solid lighten($base02, 6);
+    margin: 14px 0 6px;
+    padding: 2px 0 6px;
+  }
+
+  .dropdown-footer {
+
+  }
+
+  .dropdown-button {
+    padding: 8px;
+    border-radius: 10px;
+
+    &:hover {
+      background-color: $base03;
+    }
+  }
+}

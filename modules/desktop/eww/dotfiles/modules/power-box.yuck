@@ -1,0 +1,31 @@
+(defwidget power-box [countdown action button submit-script cancel-script]
+    (box :class "power-restart" :orientation "v" :valign "center" :halign "center" :hexpand true :vexpand true
+        (box :class "power-box" :orientation "v"
+            (box :orientation "v" :halign "center"
+                (box :class "power-title"
+                  button
+                )
+
+                (box :class "power-message" :halign "center" :space-evenly false :orientation "h" :hexpand false :spacing 4
+                  (label :text "The system will")
+                  (label :text action)
+                  (label :text "automatically in")
+                  (label :text countdown)
+                  (label :text "seconds.")
+                )
+            )
+            (box :class "power-buttons-wrapper" :orientation "h" :halign "fill" :valign "end" :space-evenly true :spacing 2
+                (button :class "power-button cancel" :onclick cancel-script
+                    (box :halign "center"
+                        "Cancel"
+                    )
+                )
+                (button :class "power-button confirm" :hexpand true :onclick submit-script
+                    (box :halign "center"
+                        button
+                    )
+                )
+            )
+      )
+    )
+)

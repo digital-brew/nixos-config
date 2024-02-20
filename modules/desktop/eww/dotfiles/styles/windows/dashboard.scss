@@ -1,0 +1,35 @@
+@import "./../colors";
+@import "./../global";
+
+.dashboard {
+  border-radius: 24px;
+  background-color: $base01;
+  border: 1px solid $base02;
+  padding: 16px 22px;
+
+  .row-1 {
+    .right {
+      .screencapture,
+      .settings,
+      .power {
+        border-radius: 54px;
+      }
+
+
+
+      .settings {
+        @extend .btn-secondary;
+        @extend .btn-secondary-hover;
+        padding: 8px 18px 8px 14px;
+        font-size: 18px;
+      }
+
+      .power {
+        @extend .btn-secondary;
+        @extend .btn-secondary-hover;
+        padding: 8px 16px;
+        font-size: 21px;
+      }
+    }
+  }
+}
